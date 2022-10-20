@@ -7,10 +7,10 @@ USE work.PIC_pkg.all;
 
 entity PICtop is
   port (
-    Reset    : in  std_logic;           -- Asynchronous, active low
-    Clk      : in  std_logic;           -- System clock, 20 MHz, rising_edge
-    RS232_RX : in  std_logic;           -- RS232 RX line
-    RS232_TX : out std_logic;           -- RS232 TX line
+    Reset    : in  std_logic;                      -- Asynchronous, active low
+    Clk      : in  std_logic;                      -- System clock, 20 MHz, rising_edge
+    RS232_RX : in  std_logic;                      -- RS232 RX line
+    RS232_TX : out std_logic;                      -- RS232 TX line
     switches : out std_logic_vector(7 downto 0);   -- Switch status bargraph
     Temp     : out std_logic_vector(7 downto 0);   -- Display value for T_STAT
     Disp     : out std_logic_vector(1 downto 0));  -- Display activation for T_STAT
@@ -20,10 +20,10 @@ architecture behavior of PICtop is
 
 ---------------------------------------------------------------------
 --CONSTANTES DEL PUERTO SERIE RS232
-  constant baudrate: integer:=115200;           --Baudrate RS232 
-  constant clk_freq_RS232: integer:=20000000;   --Frecuencia del reloj del puerto RS232
-  constant data_width: integer:=8;              --Ancho de palabra del dato enviado por el puerto RS232
-  constant n_start_bit:std_logic:='0';          --Nº de bits de Start y Stop en el RS232. Si '1' dos bits, si '0' 1 bit.
+  constant baudrate: integer:=115200;              --Baudrate RS232 
+  constant clk_freq_RS232: integer:=20000000;      --Frecuencia del reloj del puerto RS232
+  constant data_width: integer:=8;                 --Ancho de palabra del dato enviado por el puerto RS232
+  constant n_start_bit:std_logic:='0';             --Nº de bits de Start y Stop en el RS232. Si '1' dos bits, si '0' 1 bit.
 ----------------------------------------------------------------------
   
   component RS232top
