@@ -25,7 +25,7 @@ architecture behavior of PICtop is
   constant data_width: integer:=8;              --Ancho de palabra del dato enviado por el puerto RS232
   constant n_start_bit:std_logic:='0';          --Nº de bits de Start y Stop en el RS232. Si '1' dos bits, si '0' 1 bit.
 ----------------------------------------------------------------------
-  
+   
   component RS232top
     generic(baudrate: integer; clk_freq_RS232: integer; data_width: integer; n_start_bit:std_logic);
     port (
@@ -42,8 +42,21 @@ architecture behavior of PICtop is
       Full      : out std_logic;
       Empty     : out std_logic);
   end component;
+  
+  ------------------------------------------------------------------------
+  -- Internal Signals
+  ------------------------------------------------------------------------
 
-begin  -- behavior
+  signal TX_Data : std_logic_vector(data_width - 1 downto 0);
+  signal Valid_D : std_logic;
+  signal Ack_out : std_logic;
+  signal TX_RDY : std_logic;
+  signal RCVD_Data : std_logic_vector(data_width - 1 downto 0);
+  signal Data_read : std_logic;
+  signal RX_Full : std_logic;
+  signal RX_Empty : std_logic;
+
+begin  -- behavior    
 
   RS232_PHY: RS232top
     generic map(
