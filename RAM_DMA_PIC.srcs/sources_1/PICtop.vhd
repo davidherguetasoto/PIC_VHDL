@@ -18,10 +18,13 @@ end PICtop;
 
 architecture behavior of PICtop is
 
+---------------------------------------------------------------------
+--CONSTANTES DEL PUERTO SERIE RS232
   constant baudrate: integer:=115200;           --Baudrate RS232 
   constant clk_freq_RS232: integer:=20000000;   --Frecuencia del reloj del puerto RS232
   constant data_width: integer:=8;              --Ancho de palabra del dato enviado por el puerto RS232
   constant n_start_bit:std_logic:='0';          --Nº de bits de Start y Stop en el RS232. Si '1' dos bits, si '0' 1 bit.
+----------------------------------------------------------------------
   
   component RS232top
     generic(baudrate: integer; clk_freq_RS232: integer; data_width: integer; n_start_bit:std_logic);
