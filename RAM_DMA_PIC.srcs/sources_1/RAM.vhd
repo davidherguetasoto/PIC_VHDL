@@ -12,7 +12,10 @@ PORT (
    write_en : in    std_logic;
    oe       : in    std_logic;
    address  : in    std_logic_vector(3 downto 0);
-   databus  : inout std_logic_vector(7 downto 0));
+   databus  : inout std_logic_vector(7 downto 0);
+   switches : out   std_logic_vector(7 downto 0);
+   temp_l   : out   std_logic_vector(6 downto 0);
+   temp_h   : out   std_logic_vector(6 downto 0));   
 END ram;
 
 ARCHITECTURE behavior OF ram IS
