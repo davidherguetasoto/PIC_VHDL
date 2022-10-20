@@ -5,56 +5,52 @@ USE IEEE.numeric_std.all;
 
 USE work.PIC_pkg.all;
 
-ENTITY ram IS
+ENTITY RAM IS
 PORT (
    Clk      : in    std_logic;
    Reset    : in    std_logic;
    write_en : in    std_logic;
    oe       : in    std_logic;
    address  : in    std_logic_vector(3 downto 0);
-   databus  : inout std_logic_vector(7 downto 0));
-END ram;
+   databus  : inout std_logic_vector(7 downto 0);
+   switches : out   std_logic_vector(7 downto 0);
+   temp_l   : out   std_logic_vector(6 downto 0);
+   temp_h   : out   std_logic_vector(6 downto 0));   
+END RAM;
 
-ARCHITECTURE behavior OF ram IS
-
-  SIGNAL contents_ram : array8_ram(15 downto 0);
-
-BEGIN
-
--------------------------------------------------------------------------
--- Memoria de propósito general
--------------------------------------------------------------------------
-p_ram : process (clk)  -- no reset
-begin
+ARCHITECTURE behavior OF RAM IS
   
-  if clk'event and clk = '1' then
-    if write_en = '1' then
-      contents_ram(to_integer(unsigned(address))) <= databus;
-    end if;
-  end if;
-
-end process;
-
-databus <= contents_ram(to_integer(unsigned(address))) when oe = '0' else (others => 'Z');
--------------------------------------------------------------------------
-
--------------------------------------------------------------------------
--- Decodificador de BCD a 7 segmentos
--------------------------------------------------------------------------
---with contents_ram()(7 downto 4) select
---Temp_H <=
---    "0111111" when "0000";  -- 0
---    "0000110" when "0001",  -- 1
---    "1011011" when "0010",  -- 2
---    "1001111" when "0011",  -- 3
---    "1100110" when "0100",  -- 4
---    "1101101" when "0101",  -- 5
---    "1111101" when "0110",  -- 6
---    "0000111" when "0111",  -- 7
---    "1111111" when "1000",  -- 8
---    "1101111" when "1001",  -- 9
---    "1111001" when others;  -- E (error)
--------------------------------------------------------------------------
-
+  --SIGNAL contents_ram : array8_ram(255 downto 0);
+  component ram_especifica is 
+    PORT (
+        Clk      : in    std_logic;
+        Reset    : in    std_logic;
+        write_en : in    std_logic;
+        oe       : in    std_logic;
+        address  : in    std_logic_vector(3 downto 0);
+        databus  : inout std_logic_vector(7 downto 0);
+        switches : out   std_logic_vector(7 downto 0);
+        temp_l   : out   std_logic_vector(6 downto 0);
+        temp_h   : out   std_logic_vector(6 downto 0));
+  end component;
+  
+  component ram_general is
+    PORT (
+        Clk      : in    std_logic;
+        write_en : in    std_logic;
+        oe       : in    std_logic;
+        address  : in    std_logic_vector(7 downto 0);
+        databus  : inout std_logic_vector(7 downto 0)); 
+  end component;
+  
+BEGIN
+   RAM_ESPECIFICA:ram_especifica
+        port map(
+            Clk => Clk,
+            Reset => Reset,
+            write_en => write_en,
+            oe => oe, 
+            address => ,
+            
 END behavior;
 
