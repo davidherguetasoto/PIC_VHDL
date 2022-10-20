@@ -4,7 +4,7 @@ library ieee;
    use ieee.numeric_std.all;
    
 entity RS232top is
-generic(baudrate: integer:=115200; clk_freq_RS232: integer:=20000000; data_width: integer:=8; n_start_bit:std_logic:='1');
+generic(baudrate: integer:=115200; clk_freq_RS232: integer:=20000000; data_width: integer:=8; n_start_bit:std_logic:='0');
   port (
     Reset     : in  std_logic;   -- Low-level asynchronous reset
     Clk       : in  std_logic;   -- System clock (20MHz), rising edge 
