@@ -40,7 +40,8 @@ ARCHITECTURE behavior OF RAM IS
         write_en : in    std_logic;
         oe       : in    std_logic;
         address  : in    std_logic_vector(7 downto 0);
-        databus  : inout std_logic_vector(7 downto 0)); 
+        databus  : inout std_logic_vector(7 downto 0);
+        CS       : in    std_logic); 
   end component;
   
 BEGIN
@@ -51,6 +52,7 @@ BEGIN
             write_en => write_en,
             oe => oe, 
             address => ,
+            CS =>  );
             
 END behavior;
 
