@@ -11,7 +11,7 @@ PORT (
    Reset    : in    std_logic;
    write_en : in    std_logic;
    oe       : in    std_logic;
-   address  : in    std_logic_vector(3 downto 0);
+   address  : in    std_logic_vector(7 downto 0);
    databus  : inout std_logic_vector(7 downto 0);
    switches : out   std_logic_vector(7 downto 0);
    temp_l   : out   std_logic_vector(6 downto 0);
@@ -20,44 +20,50 @@ END ram_especifica;
 
 ARCHITECTURE behavior OF ram_especifica IS
 
-  SIGNAL contents_ram : array8_ram(15 downto 0);
+  SIGNAL contents_ram : array8_ram(63 downto 0);
 
 BEGIN
-
--------------------------------------------------------------------------
--- Memoria de propósito general
--------------------------------------------------------------------------
-p_ram : process (clk)  -- no reset
+p_ram : process (clk, reset)
 begin
-  
-  if clk'event and clk = '1' then
+  if Reset = '0' then
+    switches <= (others => '0');
+    temp_h <= "0000110";
+    temp_l <= "0111111";           
+  elsif clk'event and clk = '1' then
     if write_en = '1' then
       contents_ram(to_integer(unsigned(address))) <= databus;
     end if;
   end if;
-
 end process;
 
 databus <= contents_ram(to_integer(unsigned(address))) when oe = '0' else (others => 'Z');
--------------------------------------------------------------------------
 
+with contents_ram(to_integer(unsigned(SWITCH_BASE)))(3 downto 0) select
+    switches(to_integer(unsigned(contents_ram(to_integer(unsigned(SWITCH_BASE)))(7 downto 4)))) <=
+        '0' when "00000000",
+        '1' when "00000001",
+        '0' when others;        
 -------------------------------------------------------------------------
 -- Decodificador de BCD a 7 segmentos
 -------------------------------------------------------------------------
---with contents_ram()(7 downto 4) select
---Temp_H <=
---    "0111111" when "0000";  -- 0
---    "0000110" when "0001",  -- 1
---    "1011011" when "0010",  -- 2
---    "1001111" when "0011",  -- 3
---    "1100110" when "0100",  -- 4
---    "1101101" when "0101",  -- 5
---    "1111101" when "0110",  -- 6
---    "0000111" when "0111",  -- 7
---    "1111111" when "1000",  -- 8
---    "1101111" when "1001",  -- 9
---    "1111001" when others;  -- E (error)
--------------------------------------------------------------------------
+with contents_ram(to_integer(unsigned(T_STAT)))(7 downto 4) select
+Temp_H <=
+    "0000110" when "0001",  -- 1
+    "1011011" when "0010",  -- 2
+    "1111001" when others;  -- E (error)
+    
+with contents_ram(to_integer(unsigned(T_STAT)))(3 downto 0) select
+Temp_L <=
+    "0111111" when "0000",  -- 0
+    "0000110" when "0001",  -- 1
+    "1011011" when "0010",  -- 2
+    "1001111" when "0011",  -- 3
+    "1100110" when "0100",  -- 4
+    "1101101" when "0101",  -- 5
+    "1111101" when "0110",  -- 6
+    "0000111" when "0111",  -- 7
+    "1111111" when "1000",  -- 8
+    "1101111" when "1001",  -- 9
+    "1111001" when others;  -- E (error)  
 
 END behavior;
-
