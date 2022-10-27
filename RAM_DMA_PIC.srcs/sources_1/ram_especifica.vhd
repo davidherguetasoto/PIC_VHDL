@@ -12,6 +12,7 @@ PORT (
    write_en : in    std_logic;
    oe       : in    std_logic;
    address  : in    std_logic_vector(7 downto 0);
+   CS       : in    std_logic;
    databus  : inout std_logic_vector(7 downto 0);
    switches : out   std_logic_vector(7 downto 0);
    temp_l   : out   std_logic_vector(6 downto 0);
@@ -26,23 +27,23 @@ BEGIN
 p_ram : process (clk, reset)
 begin
   if Reset = '0' then
-    switches <= (others => '0');
-    temp_h <= "0000110";
-    temp_l <= "0111111";           
+    reset_switches : for i in 0 to 7 loop
+        contents_ram(to_integer(unsigned(SWITCH_BASE) + to_unsigned(i, SWITCH_BASE'length))) <= "00000000";               
+    end loop;    
+    contents_ram(to_integer(unsigned(T_STAT))) <= "00010000"; 
   elsif clk'event and clk = '1' then
-    if write_en = '1' then
+    if write_en = '1' and CS = '1' then
       contents_ram(to_integer(unsigned(address))) <= databus;
     end if;
   end if;
 end process;
 
-databus <= contents_ram(to_integer(unsigned(address))) when oe = '0' else (others => 'Z');
+databus <= contents_ram(to_integer(unsigned(address))) when oe = '0' and CS = '1' else (others => 'Z');
 
-with contents_ram(to_integer(unsigned(SWITCH_BASE)))(3 downto 0) select
-    switches(to_integer(unsigned(contents_ram(to_integer(unsigned(SWITCH_BASE)))(7 downto 4)))) <=
-        '0' when "00000000",
-        '1' when "00000001",
-        '0' when others;        
+gen_switches : for i in 0 to 7 generate
+   switches(i) <= contents_ram(to_integer(unsigned(SWITCH_BASE) + to_unsigned(i,SWITCH_BASE'length)))(0);
+end generate;       
+        
 -------------------------------------------------------------------------
 -- Decodificador de BCD a 7 segmentos
 -------------------------------------------------------------------------
@@ -64,6 +65,6 @@ Temp_L <=
     "0000111" when "0111",  -- 7
     "1111111" when "1000",  -- 8
     "1101111" when "1001",  -- 9
-    "1111001" when others;  -- E (error)  
+    "1010000" when others;  -- r (error)  
 
 END behavior;

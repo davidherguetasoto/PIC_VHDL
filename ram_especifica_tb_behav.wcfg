@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="ram_especifica_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="pic_pkg" />
+            <top_module name="ram_especifica_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="1.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="7.000001 us"></ZoomEndTime>
+      <Cursor1Time time="4.000000 us"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="307"></NameColumnWidth>
+      <ValueColumnWidth column_width="86"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="9" />
+   <wvobject fp_name="group12" type="group">
+      <obj_property name="label">clk, reset</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/ram_especifica_tb/reset" type="logic">
+         <obj_property name="ElementShortName">reset</obj_property>
+         <obj_property name="ObjectShortName">reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/clk" type="logic">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/clk_freq" type="other">
+         <obj_property name="ElementShortName">clk_freq</obj_property>
+         <obj_property name="ObjectShortName">clk_freq</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/ram_especifica_tb/write_en" type="logic">
+      <obj_property name="ElementShortName">write_en</obj_property>
+      <obj_property name="ObjectShortName">write_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ram_especifica_tb/oe" type="logic">
+      <obj_property name="ElementShortName">oe</obj_property>
+      <obj_property name="ObjectShortName">oe</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ram_especifica_tb/address" type="array">
+      <obj_property name="ElementShortName">address[7:0]</obj_property>
+      <obj_property name="ObjectShortName">address[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ram_especifica_tb/databus" type="array">
+      <obj_property name="ElementShortName">databus[7:0]</obj_property>
+      <obj_property name="ObjectShortName">databus[7:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ram_especifica_tb/switches" type="array">
+      <obj_property name="ElementShortName">switches[7:0]</obj_property>
+      <obj_property name="ObjectShortName">switches[7:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/ram_especifica_tb/temp_h" type="array">
+      <obj_property name="ElementShortName">temp_h[6:0]</obj_property>
+      <obj_property name="ObjectShortName">temp_h[6:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ram_especifica_tb/temp_l" type="array">
+      <obj_property name="ElementShortName">temp_l[6:0]</obj_property>
+      <obj_property name="ObjectShortName">temp_l[6:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram" type="array">
+      <obj_property name="ElementShortName">contents_ram[63:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">contents_ram[63:0][7:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[63]" type="array">
+         <obj_property name="ElementShortName">[63][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[63][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[62]" type="array">
+         <obj_property name="ElementShortName">[62][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[62][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[61]" type="array">
+         <obj_property name="ElementShortName">[61][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[61][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[60]" type="array">
+         <obj_property name="ElementShortName">[60][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[60][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[59]" type="array">
+         <obj_property name="ElementShortName">[59][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[59][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[58]" type="array">
+         <obj_property name="ElementShortName">[58][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[58][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[57]" type="array">
+         <obj_property name="ElementShortName">[57][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[57][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[56]" type="array">
+         <obj_property name="ElementShortName">[56][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[56][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[55]" type="array">
+         <obj_property name="ElementShortName">[55][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[55][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[54]" type="array">
+         <obj_property name="ElementShortName">[54][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[54][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[53]" type="array">
+         <obj_property name="ElementShortName">[53][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[53][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[52]" type="array">
+         <obj_property name="ElementShortName">[52][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[52][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[51]" type="array">
+         <obj_property name="ElementShortName">[51][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[51][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[50]" type="array">
+         <obj_property name="ElementShortName">[50][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[50][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[49]" type="array">
+         <obj_property name="ElementShortName">[49][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[49][7:0]</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[48]" type="array">
+         <obj_property name="ElementShortName">[48][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[48][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[47]" type="array">
+         <obj_property name="ElementShortName">[47][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[47][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[46]" type="array">
+         <obj_property name="ElementShortName">[46][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[46][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[45]" type="array">
+         <obj_property name="ElementShortName">[45][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[45][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[44]" type="array">
+         <obj_property name="ElementShortName">[44][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[44][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[43]" type="array">
+         <obj_property name="ElementShortName">[43][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[43][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[42]" type="array">
+         <obj_property name="ElementShortName">[42][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[42][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[41]" type="array">
+         <obj_property name="ElementShortName">[41][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[41][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[40]" type="array">
+         <obj_property name="ElementShortName">[40][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[40][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[39]" type="array">
+         <obj_property name="ElementShortName">[39][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[39][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[38]" type="array">
+         <obj_property name="ElementShortName">[38][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[38][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[37]" type="array">
+         <obj_property name="ElementShortName">[37][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[37][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[36]" type="array">
+         <obj_property name="ElementShortName">[36][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[36][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[35]" type="array">
+         <obj_property name="ElementShortName">[35][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[35][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[34]" type="array">
+         <obj_property name="ElementShortName">[34][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[34][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[33]" type="array">
+         <obj_property name="ElementShortName">[33][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[33][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[32]" type="array">
+         <obj_property name="ElementShortName">[32][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[32][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[31]" type="array">
+         <obj_property name="ElementShortName">[31][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[31][7:0]</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[30]" type="array">
+         <obj_property name="ElementShortName">[30][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[30][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[29]" type="array">
+         <obj_property name="ElementShortName">[29][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[29][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[28]" type="array">
+         <obj_property name="ElementShortName">[28][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[28][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[27]" type="array">
+         <obj_property name="ElementShortName">[27][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[27][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[26]" type="array">
+         <obj_property name="ElementShortName">[26][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[26][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[25]" type="array">
+         <obj_property name="ElementShortName">[25][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[25][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[24]" type="array">
+         <obj_property name="ElementShortName">[24][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[24][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[23]" type="array">
+         <obj_property name="ElementShortName">[23][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[23][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[22]" type="array">
+         <obj_property name="ElementShortName">[22][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[22][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[21]" type="array">
+         <obj_property name="ElementShortName">[21][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[21][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[20]" type="array">
+         <obj_property name="ElementShortName">[20][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[20][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[19]" type="array">
+         <obj_property name="ElementShortName">[19][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[19][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[18]" type="array">
+         <obj_property name="ElementShortName">[18][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[18][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[17]" type="array">
+         <obj_property name="ElementShortName">[17][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[17][7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[16]" type="array">
+         <obj_property name="ElementShortName">[16][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[16][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[15]" type="array">
+         <obj_property name="ElementShortName">[15][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[15][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[14]" type="array">
+         <obj_property name="ElementShortName">[14][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[14][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[13]" type="array">
+         <obj_property name="ElementShortName">[13][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[13][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[12]" type="array">
+         <obj_property name="ElementShortName">[12][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[12][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[11]" type="array">
+         <obj_property name="ElementShortName">[11][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[11][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[10]" type="array">
+         <obj_property name="ElementShortName">[10][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[10][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[9]" type="array">
+         <obj_property name="ElementShortName">[9][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[9][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[8]" type="array">
+         <obj_property name="ElementShortName">[8][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[8][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[7]" type="array">
+         <obj_property name="ElementShortName">[7][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[7][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[6]" type="array">
+         <obj_property name="ElementShortName">[6][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[6][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[5]" type="array">
+         <obj_property name="ElementShortName">[5][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[5][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[4]" type="array">
+         <obj_property name="ElementShortName">[4][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[4][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[3]" type="array">
+         <obj_property name="ElementShortName">[3][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[3][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[2]" type="array">
+         <obj_property name="ElementShortName">[2][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[2][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[1]" type="array">
+         <obj_property name="ElementShortName">[1][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[1][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/ram_especifica_tb/DUT/contents_ram[0]" type="array">
+         <obj_property name="ElementShortName">[0][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[0][7:0]</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>
