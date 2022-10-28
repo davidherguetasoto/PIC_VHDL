@@ -43,6 +43,7 @@ architecture Testbench of ram_especifica_tb is
             write_en : in    std_logic;
             oe       : in    std_logic;
             address  : in    std_logic_vector(7 downto 0);
+            CS       : in    std_logic;
             databus  : inout std_logic_vector(7 downto 0);
             switches : out   std_logic_vector(7 downto 0);
             temp_l   : out   std_logic_vector(6 downto 0);
@@ -58,6 +59,7 @@ architecture Testbench of ram_especifica_tb is
     signal write_en : STD_LOGIC;
     signal oe : STD_LOGIC;
     signal address : STD_LOGIC_VECTOR(7 downto 0);
+    signal CS : STD_LOGIC;
     signal databus : STD_LOGIC_VECTOR(7 downto 0);    
     
     signal switches : STD_LOGIC_VECTOR(7 downto 0);
@@ -87,6 +89,8 @@ begin
             write_en => write_en,
             oe   => oe,
             address => address,
+            CS => CS,
+            --Inout
             databus => databus,
             -- Outputs
             switches => switches,
@@ -100,36 +104,32 @@ begin
         wait until reset = '1';
         wait until reset = '0';
         wait for 4*clk_period;    
+        CS <= '1';
+        wait for 4*clk_period;
+        
+        --PREPARACIÓN PARA ESCRITURA           
+        write_en <= '1';
+        oe <= '1';
+        wait for 4*clk_period;    
         
         --ESCRITURA DE TEMPERATURA EN EL DATABUS
         address <= X"31";
-        databus <= "00010011";  
-        wait for 2*clk_period;
-        write_en <= '1';
-        wait for 10*clk_period;
-        oe <= '1'; 
-        wait for 10*clk_period;
-        write_en <= '0'; 
-        wait for 10*clk_period;
+        databus <= "00010011"; --13º  
+        wait for 20*clk_period;
         
-        --ESCRITURA DE SWITCH 1 EN EL DATABUS   
-        oe <= '1';
-        address <= X"11";
-        databus <= "00000000";
-        wait for 10*clk_period;
-        write_en <= '1';
-        wait for 10*clk_period;
-        oe <= '0'; 
-        wait for 10*clk_period;
+        --ESCRITURA DE SWITCH 4 EN EL DATABUS           
+        address <= X"14"; --SW4
+        databus <= "01000001"; --VALOR ALTO
+        wait for 20*clk_period;
+
+        --PREPARACIÓN PARA LECTURA
         write_en <= '0';
-        wait for 10*clk_period;
+        oe <= '0';
+        databus <= (others => 'Z');
+        wait for 4*clk_period;
         
         --LECTURA DE TEMPERATURA DESDE EL DATABUS
-        address <= X"31";
-        databus <= (others => 'Z');
-        wait for 10*clk_period;
-        oe <= '0';
-        write_en <= '0';    
+        address <= X"31";  
                     
         wait;    
     
