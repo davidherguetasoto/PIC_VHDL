@@ -210,25 +210,4 @@ word_counter : process(clk, reset)
     end if;               
  end process;
  
-word_counter_tx : process(clk, reset) 
-begin 
-if reset = '0' then
-    byte_count_tx <= 0;
-    end_ByteCount_tx <= '0';       
-elsif rising_edge(clk) then
-    if start_ByteCount_tx = '1' then 
-        if byte_count_tx < ByteEndOfCount_tx - 1 then
-            if end_ByteCount_tx = '1' then
-                byte_count_tx <= byte_count_tx + 1; 
-                end_ByteCount_tx <= '0';
-            end if;                 
-        end if;
-    end if;         
-    if end_ByteCount_tx = '1' then 
-        byte_count_tx <= 0; 
-        end_ByteCount_tx <= '0';
-    end if;           
-end if;               
-end process;
-
 end Behavioral;
