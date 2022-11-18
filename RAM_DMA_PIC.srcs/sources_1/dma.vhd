@@ -124,17 +124,20 @@ begin
         end case;
     end process;
     
-GESTION_SALIDAS: process(CurrentState, RCVD_Data, byte_count)
+GESTION_SALIDAS: process(CurrentState, RCVD_Data, byte_count, Databus)
 begin    
-    
     case CurrentState is    
         when Idle =>       
-            databus <= (others => 'Z');
-            address <= X"00";
-            write_en <= '0';
-            oe <= '0';
-            Data_Read <= '0';
             DMA_RQ <= '0';
+            Data_Read <= '0';
+            Valid_D <= '1';
+            Write_en <= '0';
+            OE <= '0';
+            databus <= (others => 'Z');
+            Address <= (others => '0');
+            TX_Data <= (others => '0');
+            ByteEndOfCount <= 0;
+            start_ByteCount <='0';
             
         when SolicitudCarga_RX =>
             databus <= (others => 'Z');
@@ -142,8 +145,12 @@ begin
             write_en <= '0';
             oe <= '0';
             Data_Read <= '0';  
-            DMA_RQ <= '1';           
-        
+            DMA_RQ <= '1';
+            ByteEndOfCount <= 0;
+            start_ByteCount <='0';
+            Valid_D <= '1';           
+            TX_Data <= (others => '0');
+            
         when Carga_RX =>
             databus <= RCVD_Data;
             address <= std_logic_vector(to_unsigned(byte_count, 8));
@@ -153,15 +160,20 @@ begin
             oe <= '1';  
             Data_Read <= '1'; 
             DMA_RQ <= '1';
+            Valid_D <= '1';           
+            TX_Data <= (others => '0');
        
        when FinCarga_RX =>
             databus <= X"FF";
             address <= NEW_INST;
-            start_ByteCount <= '0';
+            ByteEndOfCount <= 0;
+            start_ByteCount <='0';
             write_en <= '1';
             oe <= '1';
             Data_Read <= '1'; 
             DMA_RQ <= '1';
+            Valid_D <= '1';           
+            TX_Data <= (others => '0');
         
         when FinBus_RX =>
             databus <= (others => 'Z');
@@ -170,22 +182,75 @@ begin
             oe <= '0';
             Data_Read <= '0';  
             DMA_RQ <= '0';   
-              
+            ByteEndOfCount <= 0;
+            start_ByteCount <='0';
+            Valid_D <= '1';           
+            TX_Data <= (others => '0');
+
         when Carga_TX =>
+            DMA_RQ <= '1';
+            Data_Read <= '0';
+            Valid_D <= '1';
+            Write_en <= '0';
+            OE <= '0';
             databus <= (others => 'Z');
-      
+            Address <= (others => '0');
+            TX_Data <= (others => '0');
+            ByteEndOfCount <= 0;
+            start_ByteCount <='0';
+            
         when Envio_TX =>
-            databus <= (others => 'Z');                                  
-              
+            DMA_RQ <= '1';
+            TX_Data <= Databus;
+            databus <= (others => 'Z');
+            Write_en <= '0';
+            OE <= '0';
+            ByteEndOfCount <= MAX_TX_DATA;
+            start_ByteCount <='1';
+            Address <= std_logic_vector(unsigned(DMA_TX_BUFFER_MSB) + to_unsigned(byte_count,Address'length));                                  
+            Valid_D <= '0';
+            Data_Read <= '0';
+           
+        when DevolverDataBus_TX => 
+            DMA_RQ <= '0';
+            Data_Read <= '0';
+            Valid_D <= '1';
+            Write_en <= '0';
+            OE <= '0';
+            databus <= (others => 'Z');
+            Address <= (others => '0');
+            TX_Data <= (others => '0');
+            ByteEndOfCount <= 0;
+            start_ByteCount <='0';
+           
+        when EsperarCPU_TX =>
+            DMA_RQ <= '0';
+            Data_Read <= '0';
+            Valid_D <= '1';
+            Write_en <= '0';
+            OE <= '0';
+            databus <= (others => 'Z');
+            Address <= (others => '0');
+            TX_Data <= (others => '0');
+            ByteEndOfCount <= 0;
+            start_ByteCount <='0';
+            
         when others => 
-             databus <= (others => 'Z');
-             address <= X"00";
-             write_en <= '0';
-             oe <= '0';
-             Data_Read <= '0';    
-             DMA_RQ <= '0';    
+            DMA_RQ <= '0';
+            Data_Read <= '0';
+            Valid_D <= '1';
+            Write_en <= '0';
+            OE <= '0';
+            databus <= (others => 'Z');
+            Address <= (others => '0');
+            TX_Data <= (others => '0');
+            ByteEndOfCount <= 0;
+            start_ByteCount <='0';
+                
     end case;                  
 end process;
+
+READY <= '0' when Send_comm='1' and not(CurrentState=EsperarCPU_TX) else '1';
     
 word_counter : process(clk, reset) 
   begin 
