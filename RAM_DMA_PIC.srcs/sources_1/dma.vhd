@@ -30,20 +30,17 @@ end dma;
 
 architecture Behavioral of dma is
 
-    type state is (Idle, Carga_TX, Envio_TX, SolicitudCarga_RX, Carga_RX, FinCarga_RX, FinBus_RX); --tipo estados
+    constant MAX_TX_DATA:integer:=2;    --Nº de bytes a enviar desde RAM a RS232
+    constant MAX_RX_DATA:integer:=3;    --Nº de bytes a recibir desde RS232 a RAM
+    
+    type state is (Idle, Carga_TX, Envio_TX,DevolverDataBus_TX,EsperarCPU_TX, SolicitudCarga_RX, Carga_RX, FinCarga_RX, FinBus_RX); --tipo estados
     signal CurrentState, NextState: state; --estados  
     
-    --Contador de bytes de RX
-    signal byte_count_rx : integer;
-    signal start_ByteCount_rx : STD_LOGIC;
-    signal end_ByteCount_rx : STD_LOGIC;
-    signal ByteEndOfCount_rx : integer := 3; 
-    
-    --Contador de bytes de TX
-    signal byte_count_tx : integer;
-    signal start_ByteCount_tx : STD_LOGIC;
-    signal end_ByteCount_tx : STD_LOGIC;
-    signal ByteEndOfCount_tx : integer;       
+    --Contador de bytes
+    signal byte_count : integer;
+    signal start_ByteCount : STD_LOGIC;
+    signal end_ByteCount : STD_LOGIC;
+    signal ByteEndOfCount : integer;    --Dependiendo del estado en el que se encuentre, la maquina le cargara un valor de fin u otro 
 
 begin
     FFs : process(clk, reset)
@@ -55,7 +52,7 @@ begin
         end if; 
     end process; 
     
-    next_state : process(CurrentState, Send_comm, RX_Empty, DMA_ACK, RX_Full, end_ByteCount_rx, TX_RDY, ACK_out)
+    next_state : process(CurrentState, Send_comm, RX_Empty, DMA_ACK, RX_Full, TX_RDY, end_ByteCount)
     begin 
         case CurrentState is
             when Idle =>   
@@ -76,7 +73,7 @@ begin
                 end if;
             
             when Carga_RX =>
-                if end_ByteCount_rx = '1' then
+                if end_ByteCount = '1' then
                     NextState <= FinCarga_RX;
                 else
                    NextState <= Carga_RX;  
@@ -98,19 +95,36 @@ begin
                             
             --Transmisión      
             when Carga_TX =>                
-                if ACK_out = '1' and TX_RDY = '1' then
+                if DMA_ACK = '1' and TX_RDY = '1' then
                     NextState <= Envio_TX;
                 else
                     NextState <= Carga_TX;
                 end if;
                 
             when Envio_TX =>
-                NextState <= Envio_TX; 
-                                    
+                if TX_RDY = '1' and end_ByteCount = '1' then
+                    NextState <= DevolverDataBus_TX;
+                else
+                    NextState <= Envio_TX;
+                end if; 
+                
+            when DevolverDataBus_TX =>
+                if DMA_ACK = '0' then 
+                    NextState <= EsperarCPU_TX;
+                else
+                    NextState <= DevolverDataBus_TX;
+                end if;
+                
+            when EsperarCPU_TX =>
+                if Send_comm = '0' then 
+                    NextState <= Idle;
+                else 
+                    NextState <= EsperarCPU_TX;
+                end if;                                    
         end case;
     end process;
     
-GESTION_SALIDAS: process(CurrentState, RCVD_Data, byte_count_rx)
+GESTION_SALIDAS: process(CurrentState, RCVD_Data, byte_count)
 begin    
     
     case CurrentState is    
@@ -132,8 +146,9 @@ begin
         
         when Carga_RX =>
             databus <= RCVD_Data;
-            address <= std_logic_vector(to_unsigned(byte_count_rx, 8));
-            start_ByteCount_rx <= '1';
+            address <= std_logic_vector(to_unsigned(byte_count, 8));
+            ByteEndOfCount <= MAX_RX_DATA;
+            start_ByteCount <= '1';
             write_en <= '1';
             oe <= '1';  
             Data_Read <= '1'; 
@@ -142,7 +157,7 @@ begin
        when FinCarga_RX =>
             databus <= X"FF";
             address <= NEW_INST;
-            start_ByteCount_rx <= '0';
+            start_ByteCount <= '0';
             write_en <= '1';
             oe <= '1';
             Data_Read <= '1'; 
@@ -172,25 +187,25 @@ begin
     end case;                  
 end process;
     
-word_counter_rx : process(clk, reset) 
+word_counter : process(clk, reset) 
   begin 
     if reset = '0' then
-        byte_count_rx <= 0;
-        end_ByteCount_rx <= '0';       
+        byte_count <= 0;
+        end_ByteCount <= '0';       
     elsif rising_edge(clk) then
-        if start_ByteCount_rx = '1' then
+        if start_ByteCount = '1' then
             if RX_Empty = '0' then
-                if byte_count_rx < ByteEndOfCount_rx - 1 then                     
-                    byte_count_rx <= byte_count_rx + 1; 
-                    end_ByteCount_rx <= '0'; 
+                if byte_count < ByteEndOfCount - 1 then                     
+                    byte_count <= byte_count + 1; 
+                    end_ByteCount <= '0'; 
                 else
-                    end_ByteCount_rx <= '1';                                          
+                    end_ByteCount <= '1';                                          
                 end if;           
             end if;
         end if;         
-        if end_ByteCount_rx = '1' then 
-            byte_count_rx <= 0; 
-            end_ByteCount_rx <= '0'; 
+        if end_ByteCount = '1' then 
+            byte_count <= 0; 
+            end_ByteCount <= '0'; 
         end if;           
     end if;               
  end process;
