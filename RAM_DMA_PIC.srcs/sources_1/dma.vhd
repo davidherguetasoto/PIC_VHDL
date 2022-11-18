@@ -250,7 +250,7 @@ begin
     end case;                  
 end process;
 
-READY <= '0' when Send_comm='1' and not(CurrentState=EsperarCPU_TX) else '1';
+READY <='0' when Send_comm='1' and not(CurrentState=EsperarCPU_TX) else '1';
     
 word_counter : process(clk, reset) 
   begin 
@@ -259,14 +259,12 @@ word_counter : process(clk, reset)
         end_ByteCount <= '0';       
     elsif rising_edge(clk) then
         if start_ByteCount = '1' then
-            if RX_Empty = '0' then
-                if byte_count < ByteEndOfCount - 1 then                     
-                    byte_count <= byte_count + 1; 
-                    end_ByteCount <= '0'; 
-                else
-                    end_ByteCount <= '1';                                          
-                end if;           
-            end if;
+            if byte_count < ByteEndOfCount - 1 then                     
+                byte_count <= byte_count + 1; 
+                end_ByteCount <= '0'; 
+            else
+                end_ByteCount <= '1';                                          
+            end if;           
         end if;         
         if end_ByteCount = '1' then 
             byte_count <= 0; 

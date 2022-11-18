@@ -1,38 +1,7 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 10.11.2022 16:06:25
--- Design Name: 
--- Module Name: dma_tb - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
-
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
-
 entity dma_tb is
---  Port ( );
 end dma_tb;
 
 architecture Testbench of dma_tb is
@@ -135,7 +104,10 @@ begin
         wait until reset = '0';        
         wait for 4*clk_period;   
         
-        RX_Empty <= '1';    
+        TX_RDY<='1';
+        Send_comm<='0';
+        RX_Empty <= '1';
+        DMA_ACK<='0';    
         wait for 4*clk_period;
         RCVD_Data <= "10100101";
         RX_Empty <= '0';
@@ -171,8 +143,40 @@ begin
         RX_Empty <= '1';
               
         wait for 10*clk_period;        
-        DMA_ACK <= '0';       
-        wait;    
+        DMA_ACK <= '0';      
+        wait for 10*clk_period;
+
+--  TEST TX        
+        Send_comm<='1';
+        Databus<="11110000";
+        wait for 4*clk_period;
+        
+        DMA_ACK<='1';
+        TX_RDY<='1';
+        wait for clk_period;
+        
+        Databus<="00001111";
+        TX_RDY<='0';
+        wait for 2*clk_period;
+        
+        TX_RDY<='1';
+        wait for clk_period;
+        
+        TX_RDY<='1';
+        wait for clk_period;
+        
+        TX_RDY<='0';
+        wait for clk_period;
+        
+        TX_RDY<='1';
+        wait for 5*clk_period;
+        
+        DMA_ACK<='0';
+        wait for 4*clk_period;
+        
+        Send_comm<='0';
+        wait;
+            
     
     end process;
     
