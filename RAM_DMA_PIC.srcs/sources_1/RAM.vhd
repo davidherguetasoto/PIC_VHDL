@@ -11,7 +11,7 @@ PORT (
    Reset    : in    std_logic;
    write_en : in    std_logic;
    oe       : in    std_logic;
-   address  : in    std_logic_vector(3 downto 0);
+   address  : in    std_logic_vector(7 downto 0);
    databus  : inout std_logic_vector(7 downto 0);
    switches : out   std_logic_vector(7 downto 0);
    temp_l   : out   std_logic_vector(6 downto 0);
@@ -28,7 +28,7 @@ ARCHITECTURE behavior OF RAM IS
         Reset    : in    std_logic;
         write_en : in    std_logic;
         oe       : in    std_logic;
-        address  : in    std_logic_vector(3 downto 0);
+        address  : in    std_logic_vector(7 downto 0);
         CS       : in    std_logic;
         databus  : inout std_logic_vector(7 downto 0);
         switches : out   std_logic_vector(7 downto 0);
@@ -69,7 +69,7 @@ BEGIN
             CS => CS_ram_general,
             databus => databus);
             
-  CS_ram_especifica<= '1' when unsigned(address) < unsigned(X"40") else '0';
-  CS_ram_general<= '1' when unsigned(address) >= unsigned(X"40") else '0';
+  CS_ram_especifica<= '1' when (unsigned(address) < X"40") else '0';
+  CS_ram_general<= '1' when (unsigned(address) >= X"40") else '0';
 END behavior;
 
