@@ -104,6 +104,8 @@ begin
         wait until reset = '0';        
         wait for 4*clk_period;   
         
+        Databus <= (others => 'Z');
+        
         TX_RDY<='1';
         Send_comm<='0';
         RX_Empty <= '1';
@@ -175,8 +177,7 @@ begin
         wait for 4*clk_period;
         
         Send_comm<='0';
-        wait;
-            
+        wait;           
     
     end process;
     

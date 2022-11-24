@@ -125,7 +125,7 @@ begin
     end process;
     
 GESTION_SALIDAS: process(CurrentState, RCVD_Data, byte_count, Databus)
-begin    
+begin       
     case CurrentState is    
         when Idle =>       
             DMA_RQ <= '0';
@@ -146,7 +146,7 @@ begin
             oe <= '0';
             Data_Read <= '0';  
             DMA_RQ <= '1';
-            ByteEndOfCount <= 0;
+            ByteEndOfCount <= MAX_RX_DATA;
             start_ByteCount <='0';
             Valid_D <= '1';           
             TX_Data <= (others => '0');
@@ -166,7 +166,7 @@ begin
        when FinCarga_RX =>
             databus <= X"FF";
             address <= NEW_INST;
-            ByteEndOfCount <= 0;
+            ByteEndOfCount <= MAX_RX_DATA;
             start_ByteCount <='0';
             write_en <= '1';
             oe <= '1';
@@ -182,7 +182,7 @@ begin
             oe <= '0';
             Data_Read <= '0';  
             DMA_RQ <= '0';   
-            ByteEndOfCount <= 0;
+            ByteEndOfCount <= MAX_RX_DATA;
             start_ByteCount <='0';
             Valid_D <= '1';           
             TX_Data <= (others => '0');
@@ -196,7 +196,7 @@ begin
             databus <= (others => 'Z');
             Address <= (others => '0');
             TX_Data <= (others => '0');
-            ByteEndOfCount <= 0;
+            ByteEndOfCount <= MAX_TX_DATA;
             start_ByteCount <='0';
             
         when Envio_TX =>
@@ -220,7 +220,7 @@ begin
             databus <= (others => 'Z');
             Address <= (others => '0');
             TX_Data <= (others => '0');
-            ByteEndOfCount <= 0;
+            ByteEndOfCount <= MAX_TX_DATA;
             start_ByteCount <='0';
            
         when EsperarCPU_TX =>
@@ -232,7 +232,7 @@ begin
             databus <= (others => 'Z');
             Address <= (others => '0');
             TX_Data <= (others => '0');
-            ByteEndOfCount <= 0;
+            ByteEndOfCount <= MAX_TX_DATA;
             start_ByteCount <='0';
             
         when others => 
@@ -245,8 +245,7 @@ begin
             Address <= (others => '0');
             TX_Data <= (others => '0');
             ByteEndOfCount <= 0;
-            start_ByteCount <='0';
-                
+            start_ByteCount <='0';                
     end case;                  
 end process;
 
@@ -259,12 +258,14 @@ word_counter : process(clk, reset)
         end_ByteCount <= '0';       
     elsif rising_edge(clk) then
         if start_ByteCount = '1' then
-            if byte_count < ByteEndOfCount - 1 then                     
-                byte_count <= byte_count + 1; 
-                end_ByteCount <= '0'; 
-            else
-                end_ByteCount <= '1';                                          
-            end if;           
+             if (CurrentState = Carga_RX and RX_Empty = '0') or (CurrentState = Envio_TX and TX_RDY = '1') then
+                if byte_count < ByteEndOfCount - 1 then                     
+                    byte_count <= byte_count + 1; 
+                    end_ByteCount <= '0'; 
+                else
+                    end_ByteCount <= '1';                                          
+                end if;  
+             end if;         
         end if;         
         if end_ByteCount = '1' then 
             byte_count <= 0; 
