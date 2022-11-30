@@ -44,18 +44,21 @@ begin
                 REG_A <= Databus;               
                 REG_B <= REG_B;
                 REG_ACC <= REG_ACC;
+                FlagE <= '0';
                 
         --Carga de datos en el acumulador B    
             when op_ldb => 
                 REG_B <= Databus;        
                 REG_A <= REG_A;
                 REG_ACC <= REG_ACC;
+                FlagE <= '0';
                 
         --Carga de datos en el registro acumulador        
             when op_ldacc => 
                 REG_ACC(REG_ACC'high-1 downto 0) <= Databus;       
                 REG_B <= REG_B;
                 REG_A <= REG_A;
+                FlagE <= '0';
                 
         --Carga de datos en el registro indexado        
             when op_ldid => 
@@ -63,6 +66,7 @@ begin
                 REG_B <= REG_B;
                 REG_ACC <= REG_ACC;
                 REG_A <= REG_A;
+                FlagE <= '0';
                 
         --Mover datos del acumulador al registro indexado      
             when op_mvacc2id => 
@@ -70,12 +74,14 @@ begin
                 REG_B <= REG_B;
                 REG_ACC <= REG_ACC;
                 REG_A <= REG_A;
+                FlagE <= '0';
                 
         --Mover datos del acumulador al registro A 
             when op_mvacc2a => 
                 REG_A <= REG_ACC(REG_ACC'high-1 downto 0);               
                 REG_B <= REG_B;
                 REG_ACC <= REG_ACC;
+                FlagE <= '0';
                 
         --Mover datos del acumulador al registro B 
             when op_mvacc2b => 
@@ -88,12 +94,14 @@ begin
                 REG_ACC <= std_logic_vector(unsigned('0'&REG_A) + unsigned('0'&REG_B));
                 REG_A <= REG_A;
                 REG_B <= REG_B;
-                              
+                FlagE <= '0';
+                             
         --RESTA 
             when op_sub => 
                REG_ACC <= std_logic_vector(signed('0'&REG_A)- signed('0'&REG_B));             
                REG_A <= REG_A;
                REG_B <= REG_B;
+               FlagE <= '0';
                
         --Desplazamiento hacia la izquierda
             when op_shiftl =>  
@@ -103,7 +111,8 @@ begin
                REG_ACC(0) <= '0';               
                REG_A <= REG_A;
                REG_B <= REG_B;
-
+               FlagE <= '0';
+               
         --Desplazamiento hacia la derecha 
             when op_shiftr => 
                 for i in REG_ACC'right+1 to REG_ACC'left-1 loop 
@@ -112,7 +121,8 @@ begin
                 REG_ACC(REG_ACC'left-1) <= '0';                
                 REG_A <= REG_A;
                 REG_B <= REG_B;
-               
+                FlagE <= '0';
+                
         --AND
             when op_and => 
                for i in REG_ACC'right to REG_ACC'left-1 loop 
@@ -120,7 +130,8 @@ begin
                 end loop;                
                 REG_A <= REG_A;
                 REG_B <= REG_B;
-       
+                FlagE <= '0';
+                
         --OR 
             when op_or => 
                 for i in REG_ACC'right to REG_ACC'left-1 loop 
@@ -128,6 +139,7 @@ begin
                 end loop;                 
                 REG_A <= REG_A;
                 REG_B <= REG_B;
+                FlagE <= '0';
                 
         --XOR
             when op_xor => 
@@ -136,13 +148,16 @@ begin
                 end loop;                  
                 REG_A <= REG_A;
                 REG_B <= REG_B;
+                FlagE <= '0';
                 
       --ASCII a Binario 
            when op_ascii2bin => 
                if REG_A >= std_logic_vector(to_unsigned(48,REG_A'length)) and REG_A <= std_logic_vector(to_unsigned(57,REG_A'length)) then
                    REG_A <= std_logic_vector(unsigned(REG_A)-to_unsigned(48,REG_A'length));
+                   FlagE<= '0';
                else 
                 REG_A <= REG_A;
+                FlagE <= '1';
                end if;
                REG_ACC <= REG_ACC;
                REG_B <= REG_B;
@@ -151,8 +166,10 @@ begin
            when op_bin2ascii => 
               if REG_A >= std_logic_vector(to_unsigned(0,REG_A'length)) and REG_A <= std_logic_vector(to_unsigned(9,REG_A'length)) then
                   REG_A <= std_logic_vector(unsigned(REG_A)+to_unsigned(48,REG_A'length));
+                  FlagE <= '0';
               else
                   REG_A <= REG_A;
+                  FlagE <= '1';
               end if;
               REG_ACC <= REG_ACC;
               REG_B <= REG_B;
@@ -161,6 +178,7 @@ begin
                REG_ACC <= REG_ACC;
                REG_A <= REG_A;
                REG_B <= REG_B;
+               FlagE <= '0';
            
       end case;
    end if;              
@@ -179,10 +197,10 @@ FlagZ <= '0' when Reset = '0' else
          '1' when (REG_A < REG_B) and (u_instruction = op_cmpl) else 
          '0';
          
-FlagE <= '0' when Reset = '0' else 
-         '1' when (REG_A < std_logic_vector(to_unsigned(48,REG_A'length)) or REG_A > std_logic_vector(to_unsigned(57,REG_A'length))) and (u_instruction = op_ascii2bin) else
-         '1' when (REG_A > std_logic_vector(to_unsigned(9,REG_A'length))) and (u_instruction = op_bin2ascii) else 
-         '0';
+--FlagE <= '0' when Reset = '0' else 
+--         '1' when (REG_A < std_logic_vector(to_unsigned(48,REG_A'length)) or REG_A > std_logic_vector(to_unsigned(57,REG_A'length))) and (u_instruction = op_ascii2bin) else
+--         '1' when (REG_A > std_logic_vector(to_unsigned(9,REG_A'length))) and (u_instruction = op_bin2ascii) else 
+--         '0';
          
 FlagN <= '0'; 
 
