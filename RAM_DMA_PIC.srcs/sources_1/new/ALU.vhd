@@ -98,7 +98,7 @@ begin
                              
         --RESTA 
             when op_sub => 
-               REG_ACC <= std_logic_vector(signed('0'&REG_A)- signed('0'&REG_B));             
+               REG_ACC <= std_logic_vector(unsigned('0'&REG_A)- unsigned('0'&REG_B));             
                REG_A <= REG_A;
                REG_B <= REG_B;
                FlagE <= '0';
