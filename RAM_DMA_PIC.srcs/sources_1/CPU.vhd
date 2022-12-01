@@ -42,7 +42,7 @@ ROM_Addr <= "0000" & PC_reg;
 process(current_state, FlagZ, Index_Reg, DMA_RQ, DMA_READY, ROM_Data, PC_reg, INS_reg, TMP_reg)
 begin
 		-- Valores por defecto
-		Databus <= "ZZZZZZZZ";
+		Databus <= (others => 'Z');
 		RAM_Addr <= (others => '0'); -- By default, address zero of the RAM is selected.
 		RAM_Write <= '0'; -- By default, values are not written in the RAM. (The write enable is active high).
 		RAM_OE <= '1'; -- By default, the output of the RAM is not enabled. (The RAM OE is active low).
