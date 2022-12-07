@@ -146,31 +146,35 @@ end component;
 -- Internal Signals
 ------------------------------------------------------------------------
 
- signal TX_Data      : STD_LOGIC_VECTOR (7 downto 0);
- signal RCVD_Data    : STD_LOGIC_VECTOR (7 downto 0);
- signal address      : STD_LOGIC_VECTOR (7 downto 0);
- signal databus      : STD_LOGIC_VECTOR (7 downto 0);
- signal Valid_D      : STD_LOGIC;
- signal Ack_out      : STD_LOGIC;
- signal TX_RDY       : STD_LOGIC;
- signal Data_Read    : STD_LOGIC;
- signal Full         : STD_LOGIC;
- signal Empty        : STD_LOGIC;
- signal DMA_RQ       : STD_LOGIC;
- signal DMA_ACK      : STD_LOGIC;
- signal Send_comm    : STD_LOGIC;
- signal DMA_READY    : STD_LOGIC;
- signal ROM_Data     : STD_LOGIC_VECTOR (11 downto 0);
- signal ROM_Addr     : STD_LOGIC_VECTOR (11 downto 0);
- signal RAM_Addr     : STD_LOGIC_VECTOR (7 downto 0);
- signal RAM_Write    : STD_LOGIC;
- signal RAM_OE       : STD_LOGIC;
- signal ALU_op       : alu_op;
- signal Index_REG    : STD_LOGIC_VECTOR (7 downto 0);
- signal FlagZ        : STD_LOGIC;
- signal FlagC        : STD_LOGIC;
- signal FlagN        : STD_LOGIC;
- signal FlagE        : STD_LOGIC;
+ signal TX_Data          : STD_LOGIC_VECTOR (7 downto 0);
+ signal RCVD_Data        : STD_LOGIC_VECTOR (7 downto 0);
+ signal address          : STD_LOGIC_VECTOR (7 downto 0);
+ signal databus          : STD_LOGIC_VECTOR (7 downto 0);
+ signal Valid_D          : STD_LOGIC;
+ signal Ack_out          : STD_LOGIC;
+ signal TX_RDY           : STD_LOGIC;
+ signal Data_Read        : STD_LOGIC;
+ signal Full             : STD_LOGIC;
+ signal Empty            : STD_LOGIC;
+ signal DMA_RQ           : STD_LOGIC;
+ signal DMA_ACK          : STD_LOGIC;
+ signal Send_comm        : STD_LOGIC;
+ signal DMA_READY        : STD_LOGIC;
+ signal ROM_Data         : STD_LOGIC_VECTOR (11 downto 0);
+ signal ROM_Addr         : STD_LOGIC_VECTOR (11 downto 0);
+ signal RAM_Addr         : STD_LOGIC_VECTOR (7 downto 0);
+ signal RAM_Write_outDMA : STD_LOGIC;
+ signal RAM_Write_outCPU : STD_LOGIC;
+ signal RAM_Write_inRAM  : STD_LOGIC;
+ signal RAM_OE_outDMA    : STD_LOGIC;
+ signal RAM_OE_outCPU    : STD_LOGIC;
+ signal RAM_OE_inRAM     : STD_LOGIC;
+ signal ALU_op           : alu_op;
+ signal Index_REG        : STD_LOGIC_VECTOR (7 downto 0);
+ signal FlagZ            : STD_LOGIC;
+ signal FlagC            : STD_LOGIC;
+ signal FlagN            : STD_LOGIC;
+ signal FlagE            : STD_LOGIC;
  
 
 
@@ -200,8 +204,8 @@ begin  -- behavior
     port map (
         Clk      => Clk,
         Reset    => Reset,
-        write_en => RAM_Write,
-        oe       => RAM_OE,
+        write_en => RAM_Write_inRAM,
+        oe       => RAM_OE_inRAM,
         address  => RAM_Addr,
         databus  => databus,
         Switches => switches,
@@ -222,8 +226,8 @@ begin  -- behavior
         TX_Data   => TX_Data,
         Address   => address,
         Databus   => databus,
-        Write_en  => RAM_Write,
-        OE        => RAM_OE,
+        Write_en  => RAM_Write_outDMA,
+        OE        => RAM_OE_outDMA,
         DMA_RQ    => DMA_RQ,
         DMA_ACK   => DMA_ACK,
         Send_comm => Send_comm,
@@ -236,8 +240,8 @@ begin  -- behavior
         ROM_Data => ROM_Data,
         ROM_Addr => ROM_Addr,
         RAM_Addr => RAM_Addr,
-        RAM_Write => RAM_Write,
-        RAM_OE => RAM_OE,
+        RAM_Write => RAM_Write_outCPU,
+        RAM_OE => RAM_OE_outCPU,
         Databus => databus,
         DMA_RQ => DMA_RQ,
         DMA_ACK => DMA_ACK,
@@ -267,5 +271,6 @@ begin  -- behavior
         Index_REG => Index_REG,
         Databus => Databus);
        
-        
+ RAM_OE_inRAM <= RAM_OE_outCPU or RAM_OE_outDMA;    
+ RAM_Write_inRAM <= RAM_Write_outCPU or RAM_Write_outDMA;   
 end behavior;
