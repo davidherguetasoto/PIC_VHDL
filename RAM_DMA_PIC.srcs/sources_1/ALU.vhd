@@ -36,6 +36,7 @@ begin
         REG_B <= (others=>'0');
         REG_ACC <= (others=>'0');
         Index_Reg <= (others=>'0');
+        FlagE <= '0';
     elsif clk'event and clk='1' then    
     --DEFINICIÓN DE INSTRUCCIONES DE LA ALU
         case u_instruction is 
@@ -127,7 +128,8 @@ begin
             when op_and => 
                for i in REG_ACC'right to REG_ACC'left-1 loop 
                     REG_ACC(i) <= REG_A(i) and REG_B(i);
-                end loop;                
+                end loop; 
+                REG_ACC(REG_ACC'left) <= '0';               
                 REG_A <= REG_A;
                 REG_B <= REG_B;
                 FlagE <= '0';
@@ -137,6 +139,7 @@ begin
                 for i in REG_ACC'right to REG_ACC'left-1 loop 
                     REG_ACC(i) <= REG_A(i) or REG_B(i);
                 end loop;                 
+                REG_ACC(REG_ACC'left) <= '0';
                 REG_A <= REG_A;
                 REG_B <= REG_B;
                 FlagE <= '0';
@@ -145,7 +148,8 @@ begin
             when op_xor => 
                for i in REG_ACC'right to REG_ACC'left-1 loop 
                     REG_ACC(i) <= REG_A(i) xor REG_B(i);
-                end loop;                  
+                end loop;
+                REG_ACC(REG_ACC'left) <= '0';                  
                 REG_A <= REG_A;
                 REG_B <= REG_B;
                 FlagE <= '0';
