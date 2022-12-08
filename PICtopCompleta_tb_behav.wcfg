@@ -13,12 +13,12 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="1,931.202 ns"></ZoomEndTime>
-      <Cursor1Time time="1,000.000 ns"></Cursor1Time>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="800.000001 us"></ZoomEndTime>
+      <Cursor1Time time="800.000000 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="252"></NameColumnWidth>
+      <NameColumnWidth column_width="247"></NameColumnWidth>
       <ValueColumnWidth column_width="72"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="16" />
@@ -68,7 +68,6 @@
    <wvobject fp_name="group159" type="group">
       <obj_property name="label">RS232</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Clk" type="logic">
          <obj_property name="ElementShortName">Clk</obj_property>
          <obj_property name="ObjectShortName">Clk</obj_property>
@@ -264,6 +263,7 @@
       <wvobject fp_name="group158" type="group">
          <obj_property name="label">FIFO_RS232</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Internal_memory/srst" type="logic">
             <obj_property name="ElementShortName">srst</obj_property>
             <obj_property name="ObjectShortName">srst</obj_property>
@@ -341,6 +341,7 @@
       <wvobject fp_name="group429" type="group">
          <obj_property name="label">RAM especifica</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/PICtopCompleta_tb/UUT/RAM_PHY/INST_RAM_ESPECIFICA/CS" type="logic">
             <obj_property name="ElementShortName">CS</obj_property>
             <obj_property name="ObjectShortName">CS</obj_property>
@@ -411,7 +412,6 @@
       <wvobject fp_name="group519" type="group">
          <obj_property name="label">DMA_TX</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/Send_comm" type="logic">
             <obj_property name="ElementShortName">Send_comm</obj_property>
             <obj_property name="ObjectShortName">Send_comm</obj_property>
@@ -436,6 +436,7 @@
       <wvobject fp_name="group518" type="group">
          <obj_property name="label">DMA_RX</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/RCVD_Data" type="array">
             <obj_property name="ElementShortName">RCVD_Data[7:0]</obj_property>
             <obj_property name="ObjectShortName">RCVD_Data[7:0]</obj_property>
@@ -494,7 +495,6 @@
    <wvobject fp_name="group598" type="group">
       <obj_property name="label">ALU</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/PICtopCompleta_tb/UUT/ALU_PHY/Clk" type="logic">
          <obj_property name="ElementShortName">Clk</obj_property>
          <obj_property name="ObjectShortName">Clk</obj_property>

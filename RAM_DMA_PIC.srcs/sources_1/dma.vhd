@@ -43,7 +43,6 @@ architecture Behavioral of dma is
     signal ByteEndOfCount : integer;    --Dependiendo del estado en el que se encuentre, la maquina le cargara un valor de fin u otro
     
     signal TX_RDY_aux : std_logic; -- Señal auxiliar para detectar flancos de bajada de TX_RDY 
-
 begin
     FFs : process(clk, reset)
     begin 
@@ -82,7 +81,7 @@ begin
                 end if;  
                 
             when FinCarga_RX =>
-                if RX_Empty = '0' then
+                if RX_Empty = '1' then
                     NextState <= FinBus_RX;
                 else
                     NextState <= FinCarga_RX;
@@ -145,7 +144,7 @@ begin
             databus <= (others => 'Z');
             address <= X"00";
             write_en <= '0';
-            oe <= '0';
+            oe <= 'Z';
             Data_Read <= '0';  
             DMA_RQ <= '1';
             ByteEndOfCount <= MAX_RX_DATA;
@@ -231,7 +230,7 @@ begin
             Data_Read <= '0';
             Valid_D <= 'Z';
             Write_en <= 'Z';
-            OE <= '0';
+            OE <= 'Z';
             databus <= (others => 'Z');
             Address <= (others => 'Z');
             TX_Data <= (others => '0');
@@ -263,7 +262,7 @@ word_counter : process(clk, reset)
     elsif rising_edge(clk) then
         if start_ByteCount = '1' then
              if (CurrentState = Carga_RX and RX_Empty = '0') then
-                if byte_count < ByteEndOfCount - 1 then                     
+                if byte_count < ByteEndOfCount-1 then                     
                     byte_count <= byte_count + 1; 
                     end_ByteCount <= '0'; 
                 else
