@@ -26,14 +26,14 @@ BEGIN
 p_ram : process (clk)  -- no reset
 begin
   if clk'event and clk = '1' then
-    if write_en = '1' and CS='1' then
+    if write_en = '1' and CS='1'and unsigned(address) >= contents_ram'low and (unsigned(address) <= contents_ram'high) then
       contents_ram(to_integer(unsigned(address))) <= databus;
     end if;
   end if;
 
 end process;
 
-databus <= contents_ram(to_integer(unsigned(address))) when oe = '0' and CS='1' else (others => 'Z');
+databus <= contents_ram(to_integer(unsigned(address))) when oe = '0' and CS='1' and unsigned(address) >= contents_ram'low and (unsigned(address) <= contents_ram'high) else (others => 'Z');
 
 END behavior;
 

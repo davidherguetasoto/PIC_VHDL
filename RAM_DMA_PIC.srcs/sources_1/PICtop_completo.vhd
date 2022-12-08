@@ -148,7 +148,6 @@ end component;
 
  signal TX_Data          : STD_LOGIC_VECTOR (7 downto 0);
  signal RCVD_Data        : STD_LOGIC_VECTOR (7 downto 0);
- signal address          : STD_LOGIC_VECTOR (7 downto 0);
  signal databus          : STD_LOGIC_VECTOR (7 downto 0);
  signal Valid_D          : STD_LOGIC;
  signal Ack_out          : STD_LOGIC;
@@ -163,12 +162,8 @@ end component;
  signal ROM_Data         : STD_LOGIC_VECTOR (11 downto 0);
  signal ROM_Addr         : STD_LOGIC_VECTOR (11 downto 0);
  signal RAM_Addr         : STD_LOGIC_VECTOR (7 downto 0);
- signal RAM_Write_outDMA : STD_LOGIC;
- signal RAM_Write_outCPU : STD_LOGIC;
- signal RAM_Write_inRAM  : STD_LOGIC;
- signal RAM_OE_outDMA    : STD_LOGIC;
- signal RAM_OE_outCPU    : STD_LOGIC;
- signal RAM_OE_inRAM     : STD_LOGIC;
+ signal RAM_Write        : STD_LOGIC;
+ signal RAM_OE           : STD_LOGIC;
  signal ALU_op           : alu_op;
  signal Index_REG        : STD_LOGIC_VECTOR (7 downto 0);
  signal FlagZ            : STD_LOGIC;
@@ -204,8 +199,8 @@ begin  -- behavior
     port map (
         Clk      => Clk,
         Reset    => Reset,
-        write_en => RAM_Write_inRAM,
-        oe       => RAM_OE_inRAM,
+        write_en => RAM_Write,
+        oe       => RAM_OE,
         address  => RAM_Addr,
         databus  => databus,
         Switches => switches,
@@ -224,10 +219,10 @@ begin  -- behavior
         TX_RDY    => TX_RDY,
         Valid_D   => Valid_D,
         TX_Data   => TX_Data,
-        Address   => address,
+        Address   => RAM_Addr,
         Databus   => databus,
-        Write_en  => RAM_Write_outDMA,
-        OE        => RAM_OE_outDMA,
+        Write_en  => RAM_Write,
+        OE        => RAM_OE,
         DMA_RQ    => DMA_RQ,
         DMA_ACK   => DMA_ACK,
         Send_comm => Send_comm,
@@ -240,8 +235,8 @@ begin  -- behavior
         ROM_Data => ROM_Data,
         ROM_Addr => ROM_Addr,
         RAM_Addr => RAM_Addr,
-        RAM_Write => RAM_Write_outCPU,
-        RAM_OE => RAM_OE_outCPU,
+        RAM_Write => RAM_Write,
+        RAM_OE => RAM_OE,
         Databus => databus,
         DMA_RQ => DMA_RQ,
         DMA_ACK => DMA_ACK,
@@ -270,7 +265,5 @@ begin  -- behavior
         FlagE => FlagE,
         Index_REG => Index_REG,
         Databus => Databus);
-       
- RAM_OE_inRAM <= RAM_OE_outCPU or RAM_OE_outDMA;    
- RAM_Write_inRAM <= RAM_Write_outCPU or RAM_Write_outDMA;   
+         
 end behavior;

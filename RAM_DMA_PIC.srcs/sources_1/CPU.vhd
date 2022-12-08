@@ -65,6 +65,9 @@ begin
 
 			when Receive =>
 				DMA_ACK<='1';
+				RAM_OE <= 'Z';
+				RAM_Write <= 'Z';
+				RAM_Addr <= (others => 'Z');
 				if DMA_RQ='0' then
 					next_state <= Fetch;
 				end if;
@@ -255,6 +258,14 @@ begin
 
 			when Transmit =>
 				SEND_comm <= '1';
+				RAM_Addr <= (others => 'Z');
+				RAM_OE <= 'Z';
+				RAM_Write <= 'Z';
+				if DMA_RQ = '1' then 
+				    DMA_ACK <= '1'; 
+				else 
+				    DMA_ACK <= '0'; 
+				end if;
 				if DMA_READY='1' then
 					next_state <= Idle;
 				end if;				
