@@ -139,27 +139,31 @@ begin
         RX_Empty <= '1';
         
         wait for 100*clk_period;
-        
-        RX_Empty <= '0';
-        wait for clk_period;
-        RX_Empty <= '1';
-              
-        wait for 10*clk_period;        
+     
         DMA_ACK <= '0';      
         wait for 10*clk_period;
 
 --  TEST TX        
         Send_comm<='1';
-        Databus<="11110000";
+        
         wait for 4*clk_period;
         
         DMA_ACK<='1';
-        TX_RDY<='1';
+        TX_RDY<='1';        
+        Databus<="11110000";
         wait for clk_period;
         
-        Databus<="00001111";
         TX_RDY<='0';
         wait for 2*clk_period;
+        
+        TX_RDY<='1';
+        Databus<="00001111";
+        wait for clk_period;        
+        
+        TX_RDY<='0';
+        wait for 2*clk_period;
+        
+        Databus <= (others => 'Z');
         
         TX_RDY<='1';
         wait for clk_period;

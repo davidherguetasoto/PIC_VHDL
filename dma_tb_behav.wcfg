@@ -11,18 +11,32 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="17,248.882 ns"></ZoomStartTime>
-      <ZoomEndTime time="23,083.883 ns"></ZoomEndTime>
-      <Cursor1Time time="22,568.882 ns"></Cursor1Time>
+      <ZoomStartTime time="21,189.430 ns"></ZoomStartTime>
+      <ZoomEndTime time="23,655.431 ns"></ZoomEndTime>
+      <Cursor1Time time="22,100.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="297"></NameColumnWidth>
-      <ValueColumnWidth column_width="72"></ValueColumnWidth>
+      <ValueColumnWidth column_width="68"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="5" />
+   <WVObjectSize size="6" />
+   <wvobject fp_name="group84" type="group">
+      <obj_property name="label">reset, clk</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/dma_tb/DUT/CLK" type="logic">
+         <obj_property name="ElementShortName">CLK</obj_property>
+         <obj_property name="ObjectShortName">CLK</obj_property>
+      </wvobject>
+      <wvobject fp_name="/dma_tb/DUT/Reset" type="logic">
+         <obj_property name="ElementShortName">Reset</obj_property>
+         <obj_property name="ObjectShortName">Reset</obj_property>
+      </wvobject>
+   </wvobject>
    <wvobject fp_name="group85" type="group">
       <obj_property name="label">rx</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/dma_tb/DUT/RCVD_Data" type="array">
          <obj_property name="ElementShortName">RCVD_Data[7:0]</obj_property>
          <obj_property name="ObjectShortName">RCVD_Data[7:0]</obj_property>
@@ -36,22 +50,13 @@
          <obj_property name="ElementShortName">RX_Empty</obj_property>
          <obj_property name="ObjectShortName">RX_Empty</obj_property>
       </wvobject>
+      <wvobject fp_name="/dma_tb/DUT/DMA_ACK" type="logic">
+         <obj_property name="ElementShortName">DMA_ACK</obj_property>
+         <obj_property name="ObjectShortName">DMA_ACK</obj_property>
+      </wvobject>
       <wvobject fp_name="/dma_tb/DUT/Data_Read" type="logic">
          <obj_property name="ElementShortName">Data_Read</obj_property>
          <obj_property name="ObjectShortName">Data_Read</obj_property>
-      </wvobject>
-   </wvobject>
-   <wvobject fp_name="group84" type="group">
-      <obj_property name="label">reset, clk</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="/dma_tb/DUT/CLK" type="logic">
-         <obj_property name="ElementShortName">CLK</obj_property>
-         <obj_property name="ObjectShortName">CLK</obj_property>
-      </wvobject>
-      <wvobject fp_name="/dma_tb/DUT/Reset" type="logic">
-         <obj_property name="ElementShortName">Reset</obj_property>
-         <obj_property name="ObjectShortName">Reset</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group90" type="group">
@@ -89,38 +94,13 @@
          <obj_property name="ElementShortName">OE</obj_property>
          <obj_property name="ObjectShortName">OE</obj_property>
       </wvobject>
-      <wvobject fp_name="/dma_tb/DUT/DMA_RQ" type="logic">
-         <obj_property name="ElementShortName">DMA_RQ</obj_property>
-         <obj_property name="ObjectShortName">DMA_RQ</obj_property>
-      </wvobject>
       <wvobject fp_name="/dma_tb/DUT/DMA_ACK" type="logic">
          <obj_property name="ElementShortName">DMA_ACK</obj_property>
          <obj_property name="ObjectShortName">DMA_ACK</obj_property>
       </wvobject>
-      <wvobject fp_name="group63" type="group">
-         <obj_property name="label">ByteCounter</obj_property>
-         <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
-         <wvobject fp_name="/dma_tb/DUT/byte_count" type="other">
-            <obj_property name="ElementShortName">byte_count</obj_property>
-            <obj_property name="ObjectShortName">byte_count</obj_property>
-         </wvobject>
-         <wvobject fp_name="/dma_tb/DUT/start_ByteCount" type="logic">
-            <obj_property name="ElementShortName">start_ByteCount</obj_property>
-            <obj_property name="ObjectShortName">start_ByteCount</obj_property>
-         </wvobject>
-         <wvobject fp_name="/dma_tb/DUT/end_ByteCount" type="logic">
-            <obj_property name="ElementShortName">end_ByteCount</obj_property>
-            <obj_property name="ObjectShortName">end_ByteCount</obj_property>
-         </wvobject>
-         <wvobject fp_name="/dma_tb/DUT/ByteEndOfCount" type="other">
-            <obj_property name="ElementShortName">ByteEndOfCount</obj_property>
-            <obj_property name="ObjectShortName">ByteEndOfCount</obj_property>
-         </wvobject>
-      </wvobject>
-      <wvobject fp_name="/dma_tb/DUT/CurrentState" type="other">
-         <obj_property name="ElementShortName">CurrentState</obj_property>
-         <obj_property name="ObjectShortName">CurrentState</obj_property>
+      <wvobject fp_name="/dma_tb/DUT/DMA_RQ" type="logic">
+         <obj_property name="ElementShortName">DMA_RQ</obj_property>
+         <obj_property name="ObjectShortName">DMA_RQ</obj_property>
       </wvobject>
       <wvobject fp_name="/dma_tb/DUT/Send_comm" type="logic">
          <obj_property name="ElementShortName">Send_comm</obj_property>
@@ -131,9 +111,35 @@
          <obj_property name="ObjectShortName">READY</obj_property>
       </wvobject>
    </wvobject>
+   <wvobject fp_name="group63" type="group">
+      <obj_property name="label">ByteCounter</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/dma_tb/DUT/byte_count" type="other">
+         <obj_property name="ElementShortName">byte_count</obj_property>
+         <obj_property name="ObjectShortName">byte_count</obj_property>
+      </wvobject>
+      <wvobject fp_name="/dma_tb/DUT/start_ByteCount" type="logic">
+         <obj_property name="ElementShortName">start_ByteCount</obj_property>
+         <obj_property name="ObjectShortName">start_ByteCount</obj_property>
+      </wvobject>
+      <wvobject fp_name="/dma_tb/DUT/end_ByteCount" type="logic">
+         <obj_property name="ElementShortName">end_ByteCount</obj_property>
+         <obj_property name="ObjectShortName">end_ByteCount</obj_property>
+      </wvobject>
+      <wvobject fp_name="/dma_tb/DUT/ByteEndOfCount" type="other">
+         <obj_property name="ElementShortName">ByteEndOfCount</obj_property>
+         <obj_property name="ObjectShortName">ByteEndOfCount</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/dma_tb/DUT/CurrentState" type="other">
+      <obj_property name="ElementShortName">CurrentState</obj_property>
+      <obj_property name="ObjectShortName">CurrentState</obj_property>
+   </wvobject>
    <wvobject fp_name="group95" type="group">
       <obj_property name="label">memoria</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/dma_tb/DUT/Address" type="array">
          <obj_property name="ElementShortName">Address[7:0]</obj_property>
          <obj_property name="ObjectShortName">Address[7:0]</obj_property>
@@ -159,22 +165,5 @@
          <obj_property name="ElementShortName">DMA_RQ</obj_property>
          <obj_property name="ObjectShortName">DMA_RQ</obj_property>
       </wvobject>
-      <wvobject fp_name="/dma_tb/DUT/DMA_ACK" type="logic">
-         <obj_property name="ElementShortName">DMA_ACK</obj_property>
-         <obj_property name="ObjectShortName">DMA_ACK</obj_property>
-      </wvobject>
-      <wvobject fp_name="/dma_tb/DUT/Send_comm" type="logic">
-         <obj_property name="ElementShortName">Send_comm</obj_property>
-         <obj_property name="ObjectShortName">Send_comm</obj_property>
-      </wvobject>
-      <wvobject fp_name="/dma_tb/DUT/CurrentState" type="other">
-         <obj_property name="ElementShortName">CurrentState</obj_property>
-         <obj_property name="ObjectShortName">CurrentState</obj_property>
-      </wvobject>
-   </wvobject>
-   <wvobject fp_name="group106" type="group">
-      <obj_property name="label">counter_rx</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
    </wvobject>
 </wave_config>
