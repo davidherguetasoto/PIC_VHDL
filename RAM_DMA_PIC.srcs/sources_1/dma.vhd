@@ -129,11 +129,12 @@ GESTION_SALIDAS: process(CurrentState, RCVD_Data, byte_count, Databus, TX_RDY)
 begin       
     case CurrentState is    
         when Idle =>       
+            READY <= '1';
             DMA_RQ <= '0';
             Data_Read <= '0';
             Valid_D <= '1';
-            Write_en <= 'Z';
-            OE <= 'Z';
+            Write_en <= '0';
+            OE <= '0';
             databus <= (others => 'Z');
             Address <= (others => 'Z');
             TX_Data <= (others => '0');
@@ -141,10 +142,11 @@ begin
             start_ByteCount <='0';
             
         when SolicitudCarga_RX =>
+            READY <= '1';
             databus <= (others => 'Z');
             address <= X"00";
             write_en <= '0';
-            oe <= 'Z';
+            oe <= '0';
             Data_Read <= '0';  
             DMA_RQ <= '1';
             ByteEndOfCount <= MAX_RX_DATA;
@@ -153,6 +155,7 @@ begin
             TX_Data <= (others => '0');
             
         when Carga_RX =>
+            READY <= '1';
             databus <= RCVD_Data;
             address <= std_logic_vector(to_unsigned(byte_count, 8));
             ByteEndOfCount <= MAX_RX_DATA;
@@ -165,6 +168,7 @@ begin
             TX_Data <= (others => '0');
             
        when FinCarga_RX =>
+            READY <= '1';
             databus <= X"FF";
             address <= NEW_INST;
             ByteEndOfCount <= MAX_RX_DATA;
@@ -177,10 +181,11 @@ begin
             TX_Data <= (others => '0');
             
         when FinBus_RX =>
+            READY <= '1';
             databus <= (others => 'Z');
             Address <= (others => 'Z');
-            write_en <= 'Z';
-            oe <= 'Z';
+            write_en <= '0';
+            oe <= '0';
             Data_Read <= '0';  
             DMA_RQ <= '0';   
             ByteEndOfCount <= MAX_RX_DATA;
@@ -189,11 +194,12 @@ begin
             TX_Data <= (others => '0');
             
         when Carga_TX =>
+            READY <= '0';
             DMA_RQ <= '1';
             Data_Read <= '0';
             Valid_D <= '1';
-            Write_en <= 'Z';
-            OE <= 'Z';
+            Write_en <= '0';
+            OE <= '0';
             databus <= (others => 'Z');
             Address <= (others => 'Z');
             TX_Data <= (others => '0');
@@ -201,6 +207,7 @@ begin
             start_ByteCount <='0';
             
         when Envio_TX =>
+            READY <= '0';
             DMA_RQ <= '1';
             TX_Data <= Databus;
             databus <= (others => 'Z');
@@ -214,11 +221,12 @@ begin
             
            
         when DevolverDataBus_TX => 
+            READY <= '0';
             DMA_RQ <= '0';
             Data_Read <= '0';
             Valid_D <= '1';
-            Write_en <= 'Z';
-            OE <= 'Z';
+            Write_en <= '0';
+            OE <= '0';
             databus <= (others => 'Z');
             Address <= (others => 'Z');
             TX_Data <= (others => '0');
@@ -226,11 +234,12 @@ begin
             start_ByteCount <='0';
             
         when EsperarCPU_TX =>
+            READY <= '1';
             DMA_RQ <= '0';
             Data_Read <= '0';
             Valid_D <= 'Z';
-            Write_en <= 'Z';
-            OE <= 'Z';
+            Write_en <= '0';
+            OE <= '0';
             databus <= (others => 'Z');
             Address <= (others => 'Z');
             TX_Data <= (others => '0');
@@ -238,11 +247,12 @@ begin
             start_ByteCount <='0';
             
         when others => 
+            READY <= '1';
             DMA_RQ <= '0';
             Data_Read <= '0';
             Valid_D <= '1';
-            Write_en <= 'Z';
-            OE <= 'Z';
+            Write_en <= '0';
+            OE <= '0';
             databus <= (others => 'Z');
             Address <= (others => 'Z');
             TX_Data <= (others => '0');
@@ -251,8 +261,6 @@ begin
                          
     end case;                  
 end process;
-
-READY <='0' when Send_comm='1' and not(CurrentState=EsperarCPU_TX) else '1';
     
 word_counter : process(clk, reset) 
   begin 

@@ -14,7 +14,7 @@ entity PICtop is
     i_address     : in std_logic_vector(7 downto 0);          -- Signals needed to access directly to the RAM (read/write)
     databus     : inout std_logic_vector(7 downto 0);     -- Signals needed to access directly to the RAM (read/write)
     i_send        : in  std_logic;                            -- Indicates the DMA to send the RAM positions 4 y 5 (CPU response)
-    i_req         : in std_logic; --DUDA 
+    --i_req         : in std_logic; --DUDA 
      
     RS232_RX    : in  std_logic;           -- RS232 RX line
     RS232_TX    : out std_logic;           -- RS232 TX line
@@ -186,7 +186,7 @@ begin  -- behavior
 
 ------ (2) ADDITIONAL MULTIPLEXERS TO READ/WRITE DIRECTLY IN RAM
    i_address_req <= i_write_en or not(i_oe);
-   address_mem <= i_address when (i_req = '1') else address;
+   address_mem <= i_address when (i_address_req = '1') else address;
    write_en_mem <= i_write_en or write_en;
    oe_mem <= ( (i_oe and oe) or (write_en_mem) );   -- oe is active low (expression has been simplified)
          --oe_mem <= not( (not(i_oe) or not(oe)) and not(write_en_mem) );

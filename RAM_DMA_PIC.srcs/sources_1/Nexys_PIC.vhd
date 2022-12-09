@@ -52,8 +52,7 @@ architecture a_behavior of nexys_PIC is
 
 -- declaración de componentes 
     component clk_wiz_0
-        port (
-          reset     : in  std_logic;
+        port (          
           clk_in1   : in  std_logic;
           clk_out1  : out  std_logic;
           locked    : out std_logic);
@@ -131,7 +130,6 @@ begin
 -- 5.Instanciación de los componentes 
   reset_p <= not reset;
     clk_20MHz : clk_wiz_0 PORT MAP(
-        reset => reset_p,
         clk_in1 => CLK100MHz,
         clk_out1 => clk,
         locked => open);
