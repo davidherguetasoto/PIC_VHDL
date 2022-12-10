@@ -187,8 +187,8 @@ begin  -- behavior
 ------ (2) ADDITIONAL MULTIPLEXERS TO READ/WRITE DIRECTLY IN RAM
    i_address_req <= i_write_en or not(i_oe);
    address_mem <= i_address when (i_address_req = '1') else address;
-   write_en_mem <= i_write_en or write_en;
-   oe_mem <= ( (i_oe and oe) or (write_en_mem) );   -- oe is active low (expression has been simplified)
+   write_en_mem <= i_write_en when write_en = 'Z' else i_write_en or write_en;
+   oe_mem <= write_en_mem when oe = 'Z' else ( (i_oe and oe) or (write_en_mem) );   -- oe is active low (expression has been simplified)
          --oe_mem <= not( (not(i_oe) or not(oe)) and not(write_en_mem) );
    --databus <= i_databus;     -- bidirectional access
    --i_databus <= databus;
