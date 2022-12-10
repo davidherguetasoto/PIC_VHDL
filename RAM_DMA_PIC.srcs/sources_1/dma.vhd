@@ -133,8 +133,8 @@ begin
             DMA_RQ <= '0';
             Data_Read <= '0';
             Valid_D <= '1';
-            Write_en <= '0';
-            OE <= '0';
+            Write_en <= 'Z';
+            OE <= 'Z';
             databus <= (others => 'Z');
             Address <= (others => 'Z');
             TX_Data <= (others => '0');
@@ -146,7 +146,7 @@ begin
             databus <= (others => 'Z');
             address <= X"00";
             write_en <= '0';
-            oe <= '0';
+            oe <= 'Z';
             Data_Read <= '0';  
             DMA_RQ <= '1';
             ByteEndOfCount <= MAX_RX_DATA;
@@ -184,8 +184,8 @@ begin
             READY <= '1';
             databus <= (others => 'Z');
             Address <= (others => 'Z');
-            write_en <= '0';
-            oe <= '0';
+            write_en <= 'Z';
+            oe <= 'Z';
             Data_Read <= '0';  
             DMA_RQ <= '0';   
             ByteEndOfCount <= MAX_RX_DATA;
@@ -198,8 +198,8 @@ begin
             DMA_RQ <= '1';
             Data_Read <= '0';
             Valid_D <= '1';
-            Write_en <= '0';
-            OE <= '0';
+            Write_en <= 'Z';
+            OE <= 'Z';
             databus <= (others => 'Z');
             Address <= (others => 'Z');
             TX_Data <= (others => '0');
@@ -225,8 +225,8 @@ begin
             DMA_RQ <= '0';
             Data_Read <= '0';
             Valid_D <= '1';
-            Write_en <= '0';
-            OE <= '0';
+            Write_en <= 'Z';
+            OE <= 'Z';
             databus <= (others => 'Z');
             Address <= (others => 'Z');
             TX_Data <= (others => '0');
@@ -238,8 +238,8 @@ begin
             DMA_RQ <= '0';
             Data_Read <= '0';
             Valid_D <= 'Z';
-            Write_en <= '0';
-            OE <= '0';
+            Write_en <= 'Z';
+            OE <= 'Z';
             databus <= (others => 'Z');
             Address <= (others => 'Z');
             TX_Data <= (others => '0');
@@ -251,8 +251,8 @@ begin
             DMA_RQ <= '0';
             Data_Read <= '0';
             Valid_D <= '1';
-            Write_en <= '0';
-            OE <= '0';
+            Write_en <= 'Z';
+            OE <= 'Z';
             databus <= (others => 'Z');
             Address <= (others => 'Z');
             TX_Data <= (others => '0');
