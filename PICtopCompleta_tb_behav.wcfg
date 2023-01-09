@@ -13,12 +13,12 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
-      <ZoomEndTime time="800.000001 us"></ZoomEndTime>
-      <Cursor1Time time="800.000000 us"></Cursor1Time>
+      <ZoomStartTime time="546.641025 us"></ZoomStartTime>
+      <ZoomEndTime time="1,811.871796 us"></ZoomEndTime>
+      <Cursor1Time time="1,601.000000 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="247"></NameColumnWidth>
+      <NameColumnWidth column_width="242"></NameColumnWidth>
       <ValueColumnWidth column_width="72"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="16" />
@@ -330,22 +330,10 @@
          <obj_property name="ElementShortName">temp_h[6:0]</obj_property>
          <obj_property name="ObjectShortName">temp_h[6:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/PICtopCompleta_tb/UUT/RAM_PHY/CS_ram_especifica" type="logic">
-         <obj_property name="ElementShortName">CS_ram_especifica</obj_property>
-         <obj_property name="ObjectShortName">CS_ram_especifica</obj_property>
-      </wvobject>
-      <wvobject fp_name="/PICtopCompleta_tb/UUT/RAM_PHY/CS_ram_general" type="logic">
-         <obj_property name="ElementShortName">CS_ram_general</obj_property>
-         <obj_property name="ObjectShortName">CS_ram_general</obj_property>
-      </wvobject>
       <wvobject fp_name="group429" type="group">
          <obj_property name="label">RAM especifica</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="isExpanded"></obj_property>
-         <wvobject fp_name="/PICtopCompleta_tb/UUT/RAM_PHY/INST_RAM_ESPECIFICA/CS" type="logic">
-            <obj_property name="ElementShortName">CS</obj_property>
-            <obj_property name="ObjectShortName">CS</obj_property>
-         </wvobject>
          <wvobject fp_name="/PICtopCompleta_tb/UUT/RAM_PHY/INST_RAM_ESPECIFICA/contents_ram" type="array">
             <obj_property name="ElementShortName">contents_ram[63:0][7:0]</obj_property>
             <obj_property name="ObjectShortName">contents_ram[63:0][7:0]</obj_property>
@@ -355,13 +343,9 @@
       <wvobject fp_name="group364" type="group">
          <obj_property name="label">RAM general</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <wvobject fp_name="/PICtopCompleta_tb/UUT/RAM_PHY/INST_RAM_GENERAL/CS" type="logic">
-            <obj_property name="ElementShortName">CS</obj_property>
-            <obj_property name="ObjectShortName">CS</obj_property>
-         </wvobject>
          <wvobject fp_name="/PICtopCompleta_tb/UUT/RAM_PHY/INST_RAM_GENERAL/contents_ram" type="array">
-            <obj_property name="ElementShortName">contents_ram[255:64][7:0]</obj_property>
-            <obj_property name="ObjectShortName">contents_ram[255:64][7:0]</obj_property>
+            <obj_property name="ElementShortName">contents_ram[63:0][7:0]</obj_property>
+            <obj_property name="ObjectShortName">contents_ram[63:0][7:0]</obj_property>
          </wvobject>
       </wvobject>
    </wvobject>
