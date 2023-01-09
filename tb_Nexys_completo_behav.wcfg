@@ -13,12 +13,12 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="602.688000 us"></ZoomStartTime>
-      <ZoomEndTime time="1,206.198128 us"></ZoomEndTime>
-      <Cursor1Time time="2,400.000000 us"></Cursor1Time>
+      <ZoomStartTime time="802,992.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="803,989.501 ns"></ZoomEndTime>
+      <Cursor1Time time="2,400,000.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="257"></NameColumnWidth>
+      <NameColumnWidth column_width="252"></NameColumnWidth>
       <ValueColumnWidth column_width="72"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="11" />
@@ -91,10 +91,12 @@
    <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/Temp_H" type="array">
       <obj_property name="ElementShortName">Temp_H[6:0]</obj_property>
       <obj_property name="ObjectShortName">Temp_H[6:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/Temp_L" type="array">
       <obj_property name="ElementShortName">Temp_L[6:0]</obj_property>
       <obj_property name="ObjectShortName">Temp_L[6:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="group940" type="group">
       <obj_property name="label">topPIC</obj_property>
@@ -116,10 +118,12 @@
       <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/Temp_L" type="array">
          <obj_property name="ElementShortName">Temp_L[6:0]</obj_property>
          <obj_property name="ObjectShortName">Temp_L[6:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/Temp_H" type="array">
          <obj_property name="ElementShortName">Temp_H[6:0]</obj_property>
          <obj_property name="ObjectShortName">Temp_H[6:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/TX_Data" type="array">
          <obj_property name="ElementShortName">TX_Data[7:0]</obj_property>
@@ -132,10 +136,12 @@
       <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/databus" type="array">
          <obj_property name="ElementShortName">databus[7:0]</obj_property>
          <obj_property name="ObjectShortName">databus[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="group1112" type="group">
          <obj_property name="label">RAM</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/write_en" type="logic">
             <obj_property name="ElementShortName">write_en</obj_property>
             <obj_property name="ObjectShortName">write_en</obj_property>
@@ -147,22 +153,24 @@
          <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/address" type="array">
             <obj_property name="ElementShortName">address[7:0]</obj_property>
             <obj_property name="ObjectShortName">address[7:0]</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/contents_ram" type="array">
             <obj_property name="DisplayName">label</obj_property>
             <obj_property name="ElementShortName">contents_ram[63:0][7:0]</obj_property>
             <obj_property name="ObjectShortName">contents_ram[63:0][7:0]</obj_property>
             <obj_property name="label">contents_ram_especifica[63:0][7:0]</obj_property>
-            <obj_property name="isExpanded"></obj_property>
          </wvobject>
          <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_GENERAL/contents_ram" type="array">
             <obj_property name="ElementShortName">contents_ram[191:0][7:0]</obj_property>
             <obj_property name="ObjectShortName">contents_ram[191:0][7:0]</obj_property>
+            <obj_property name="isExpanded"></obj_property>
          </wvobject>
       </wvobject>
       <wvobject fp_name="group1289" type="group">
          <obj_property name="label">CPU</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/CPU_PHY/ROM_Data" type="array">
             <obj_property name="ElementShortName">ROM_Data[11:0]</obj_property>
             <obj_property name="ObjectShortName">ROM_Data[11:0]</obj_property>
@@ -170,6 +178,7 @@
          <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/CPU_PHY/ROM_Addr" type="array">
             <obj_property name="ElementShortName">ROM_Addr[11:0]</obj_property>
             <obj_property name="ObjectShortName">ROM_Addr[11:0]</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/CPU_PHY/RAM_Addr" type="array">
             <obj_property name="ElementShortName">RAM_Addr[7:0]</obj_property>
@@ -263,6 +272,7 @@
       <wvobject fp_name="group1356" type="group">
          <obj_property name="label">ALU</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/ALU_PHY/u_instruction" type="other">
             <obj_property name="ElementShortName">u_instruction</obj_property>
             <obj_property name="ObjectShortName">u_instruction</obj_property>
@@ -294,14 +304,17 @@
          <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/ALU_PHY/REG_A" type="array">
             <obj_property name="ElementShortName">REG_A[7:0]</obj_property>
             <obj_property name="ObjectShortName">REG_A[7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/ALU_PHY/REG_B" type="array">
             <obj_property name="ElementShortName">REG_B[7:0]</obj_property>
             <obj_property name="ObjectShortName">REG_B[7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/ALU_PHY/REG_ACC" type="array">
             <obj_property name="ElementShortName">REG_ACC[8:0]</obj_property>
             <obj_property name="ObjectShortName">REG_ACC[8:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
       </wvobject>
       <wvobject fp_name="group1168" type="group">
@@ -311,7 +324,7 @@
          <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/DMA_PHY/RCVD_Data" type="array">
             <obj_property name="ElementShortName">RCVD_Data[7:0]</obj_property>
             <obj_property name="ObjectShortName">RCVD_Data[7:0]</obj_property>
-            <obj_property name="Radix">HEXRADIX</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/DMA_PHY/RX_Full" type="logic">
             <obj_property name="ElementShortName">RX_Full</obj_property>
@@ -418,7 +431,6 @@
    <wvobject fp_name="group6502" type="group">
       <obj_property name="label">RS232</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RS232_PHY/Data_in" type="array">
          <obj_property name="ElementShortName">Data_in[7:0]</obj_property>
          <obj_property name="ObjectShortName">Data_in[7:0]</obj_property>

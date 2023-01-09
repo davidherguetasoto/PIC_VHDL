@@ -32,7 +32,7 @@ begin
 
 end process;
 
-databus <= contents_ram(to_integer(unsigned(address))) when oe = '0' and unsigned(address) >= 64 and (unsigned(address) <= 255) else (others => 'Z');
+databus <= contents_ram(to_integer(unsigned(address))-64) when oe = '0' and unsigned(address) >= 64 and (unsigned(address) <= 255) else (others => 'Z');
 
 END behavior;
 
