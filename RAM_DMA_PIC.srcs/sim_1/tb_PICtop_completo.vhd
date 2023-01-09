@@ -71,6 +71,20 @@ begin  -- TestBench
      Transmit(RS232_RX, X"34");
      wait for 40 us;
      Transmit(RS232_RX, X"31");
+     wait for 80 us;
+-- Encender interruptor 2 (I 2 1)
+     Transmit(RS232_RX, X"49");
+     wait for 40 us;
+     Transmit(RS232_RX, X"32");
+     wait for 40 us;
+     Transmit(RS232_RX, X"31");
+     wait for 80 us;
+-- Apagar interruptor 4 (I 4 0)
+     Transmit(RS232_RX, X"49");
+     wait for 40 us;
+     Transmit(RS232_RX, X"34");
+     wait for 40 us;
+     Transmit(RS232_RX, X"30");
      wait;
   end process SEND_STUFF;
    

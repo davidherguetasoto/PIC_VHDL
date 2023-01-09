@@ -203,9 +203,7 @@ begin
            when others => 
                REG_ACC <= REG_ACC;
                REG_A <= REG_A;
-               REG_B <= REG_B;
-               FlagE <= '0';               
-           
+               REG_B <= REG_B;      
       end case;
    end if;              
 end process;

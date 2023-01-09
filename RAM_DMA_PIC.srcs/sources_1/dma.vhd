@@ -53,7 +53,7 @@ begin
         end if; 
     end process; 
     
-    next_state : process(CurrentState, Send_comm, RX_Empty, DMA_ACK, RX_Full, TX_RDY, end_ByteCount)
+    next_state : process(CurrentState, Send_comm, RX_Empty, DMA_ACK, RX_Full, TX_RDY, end_ByteCount, RCVD_Data, byte_count, Databus)
     begin 
     
         --valores por defecto        
