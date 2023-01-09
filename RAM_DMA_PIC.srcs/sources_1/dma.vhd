@@ -40,8 +40,9 @@ architecture Behavioral of dma is
     signal byte_count : integer;
     signal start_ByteCount : STD_LOGIC;
     signal end_ByteCount : STD_LOGIC;
-    signal ByteEndOfCount : integer;    --Dependiendo del estado en el que se encuentre, la maquina le cargara un valor de fin u otro 
-
+    signal ByteEndOfCount : integer;    --Dependiendo del estado en el que se encuentre, la maquina le cargara un valor de fin u otro
+    
+    signal TX_RDY_aux : std_logic; -- Señal auxiliar para detectar flancos de bajada de TX_RDY 
 begin
     FFs : process(clk, reset)
     begin 
@@ -54,18 +55,37 @@ begin
     
     next_state : process(CurrentState, Send_comm, RX_Empty, DMA_ACK, RX_Full, TX_RDY, end_ByteCount)
     begin 
+    
+        --valores por defecto        
+        READY <= '1';
+        DMA_RQ <= '0';
+        Data_Read <= '0';
+        Valid_D <= '1';
+        Write_en <= 'Z';
+        OE <= 'Z';
+        databus <= (others => 'Z');
+        Address <= (others => 'Z');
+        TX_Data <= (others => '0');
+        ByteEndOfCount <= 0;
+        start_ByteCount <='0';  
+        
         case CurrentState is
-            when Idle =>   
+            when Idle =>                   
                 if Send_comm = '1' then
+                    READY <= '0';
                     NextState <= Carga_TX;
-                elsif RX_Empty = '0' then
+                elsif RX_Empty = '0' then                    
                     NextState <= SolicitudCarga_RX;
-                else
+                else                    
                     NextState <= Idle;                
                 end if;  
                   
             --Recepción
             when SolicitudCarga_RX =>
+                address <= X"00";
+                write_en <= '0';
+                DMA_RQ <= '1';
+                ByteEndOfCount <= MAX_RX_DATA;
                 if DMA_ACK = '1' then
                     NextState <= Carga_RX;
                 else
@@ -73,6 +93,14 @@ begin
                 end if;
             
             when Carga_RX =>
+                databus <= RCVD_Data;
+                address <= std_logic_vector(to_unsigned(byte_count, 8));
+                ByteEndOfCount <= MAX_RX_DATA;
+                start_ByteCount <= '1';
+                write_en <= '1';
+                oe <= '1';  
+                Data_Read <= '1'; 
+                DMA_RQ <= '1';
                 if end_ByteCount = '1' then
                     NextState <= FinCarga_RX;
                 else
@@ -80,13 +108,21 @@ begin
                 end if;  
                 
             when FinCarga_RX =>
-                if RX_Empty = '0' then
+                databus <= X"FF";
+                address <= NEW_INST;
+                ByteEndOfCount <= MAX_RX_DATA;
+                write_en <= '1';
+                oe <= '1';
+                Data_Read <= '1'; 
+                DMA_RQ <= '1';
+                if RX_Empty = '1' then
                     NextState <= FinBus_RX;
                 else
                     NextState <= FinCarga_RX;
                 end if;     
                 
             when FinBus_RX =>
+                ByteEndOfCount <= MAX_RX_DATA;
                 if DMA_ACK = '0' then
                     NextState <= Idle;
                 else
@@ -95,13 +131,26 @@ begin
                             
             --Transmisión      
             when Carga_TX =>                
-                if DMA_ACK = '1' and TX_RDY = '1' then
+                READY <= '0';
+                DMA_RQ <= '1';
+                ByteEndOfCount <= MAX_TX_DATA;
+                --if DMA_ACK = '1' and TX_RDY = '1' then             
+                if TX_RDY = '1' then
                     NextState <= Envio_TX;
                 else
                     NextState <= Carga_TX;
                 end if;
                 
             when Envio_TX =>
+                READY <= '0';
+                DMA_RQ <= '1';
+                TX_Data <= Databus;
+                Write_en <= '0';
+                OE <= '0';
+                ByteEndOfCount <= MAX_TX_DATA;
+                start_ByteCount <='1';
+                Address <= std_logic_vector(unsigned(DMA_TX_BUFFER_MSB) + to_unsigned(byte_count,Address'length));                                  
+                Valid_D <= '0';
                 if TX_RDY = '1' and end_ByteCount = '1' then
                     NextState <= DevolverDataBus_TX;
                 else
@@ -109,6 +158,8 @@ begin
                 end if; 
                 
             when DevolverDataBus_TX =>
+                READY <= '0';
+                ByteEndOfCount <= MAX_TX_DATA;
                 if DMA_ACK = '0' then 
                     NextState <= EsperarCPU_TX;
                 else
@@ -116,6 +167,7 @@ begin
                 end if;
                 
             when EsperarCPU_TX =>
+                ByteEndOfCount <= MAX_TX_DATA;
                 if Send_comm = '0' then 
                     NextState <= Idle;
                 else 
@@ -124,133 +176,6 @@ begin
         end case;
     end process;
     
-GESTION_SALIDAS: process(CurrentState, RCVD_Data, byte_count, Databus)
-begin       
-    case CurrentState is    
-        when Idle =>       
-            DMA_RQ <= '0';
-            Data_Read <= '0';
-            Valid_D <= '1';
-            Write_en <= '0';
-            OE <= '0';
-            databus <= (others => 'Z');
-            Address <= (others => '0');
-            TX_Data <= (others => '0');
-            ByteEndOfCount <= 0;
-            start_ByteCount <='0';
-            
-        when SolicitudCarga_RX =>
-            databus <= (others => 'Z');
-            address <= X"00";
-            write_en <= '0';
-            oe <= '0';
-            Data_Read <= '0';  
-            DMA_RQ <= '1';
-            ByteEndOfCount <= MAX_RX_DATA;
-            start_ByteCount <='0';
-            Valid_D <= '1';           
-            TX_Data <= (others => '0');
-            
-        when Carga_RX =>
-            databus <= RCVD_Data;
-            address <= std_logic_vector(to_unsigned(byte_count, 8));
-            ByteEndOfCount <= MAX_RX_DATA;
-            start_ByteCount <= '1';
-            write_en <= '1';
-            oe <= '1';  
-            Data_Read <= '1'; 
-            DMA_RQ <= '1';
-            Valid_D <= '1';           
-            TX_Data <= (others => '0');
-       
-       when FinCarga_RX =>
-            databus <= X"FF";
-            address <= NEW_INST;
-            ByteEndOfCount <= MAX_RX_DATA;
-            start_ByteCount <='0';
-            write_en <= '1';
-            oe <= '1';
-            Data_Read <= '1'; 
-            DMA_RQ <= '1';
-            Valid_D <= '1';           
-            TX_Data <= (others => '0');
-        
-        when FinBus_RX =>
-            databus <= (others => 'Z');
-            address <= X"00";
-            write_en <= '0';
-            oe <= '0';
-            Data_Read <= '0';  
-            DMA_RQ <= '0';   
-            ByteEndOfCount <= MAX_RX_DATA;
-            start_ByteCount <='0';
-            Valid_D <= '1';           
-            TX_Data <= (others => '0');
-
-        when Carga_TX =>
-            DMA_RQ <= '1';
-            Data_Read <= '0';
-            Valid_D <= '1';
-            Write_en <= '0';
-            OE <= '0';
-            databus <= (others => 'Z');
-            Address <= (others => '0');
-            TX_Data <= (others => '0');
-            ByteEndOfCount <= MAX_TX_DATA;
-            start_ByteCount <='0';
-            
-        when Envio_TX =>
-            DMA_RQ <= '1';
-            TX_Data <= Databus;
-            databus <= (others => 'Z');
-            Write_en <= '0';
-            OE <= '0';
-            ByteEndOfCount <= MAX_TX_DATA;
-            start_ByteCount <='1';
-            Address <= std_logic_vector(unsigned(DMA_TX_BUFFER_MSB) + to_unsigned(byte_count,Address'length));                                  
-            Valid_D <= '0';
-            Data_Read <= '0';
-           
-        when DevolverDataBus_TX => 
-            DMA_RQ <= '0';
-            Data_Read <= '0';
-            Valid_D <= '1';
-            Write_en <= '0';
-            OE <= '0';
-            databus <= (others => 'Z');
-            Address <= (others => '0');
-            TX_Data <= (others => '0');
-            ByteEndOfCount <= MAX_TX_DATA;
-            start_ByteCount <='0';
-           
-        when EsperarCPU_TX =>
-            DMA_RQ <= '0';
-            Data_Read <= '0';
-            Valid_D <= '1';
-            Write_en <= '0';
-            OE <= '0';
-            databus <= (others => 'Z');
-            Address <= (others => '0');
-            TX_Data <= (others => '0');
-            ByteEndOfCount <= MAX_TX_DATA;
-            start_ByteCount <='0';
-            
-        when others => 
-            DMA_RQ <= '0';
-            Data_Read <= '0';
-            Valid_D <= '1';
-            Write_en <= '0';
-            OE <= '0';
-            databus <= (others => 'Z');
-            Address <= (others => '0');
-            TX_Data <= (others => '0');
-            ByteEndOfCount <= 0;
-            start_ByteCount <='0';                
-    end case;                  
-end process;
-
-READY <='0' when Send_comm='1' and not(CurrentState=EsperarCPU_TX) else '1';
-    
 word_counter : process(clk, reset) 
   begin 
     if reset = '0' then
@@ -258,13 +183,20 @@ word_counter : process(clk, reset)
         end_ByteCount <= '0';       
     elsif rising_edge(clk) then
         if start_ByteCount = '1' then
-             if (CurrentState = Carga_RX and RX_Empty = '0') or (CurrentState = Envio_TX and TX_RDY = '1') then
+             if (CurrentState = Carga_RX and RX_Empty = '0') then
+                if byte_count < ByteEndOfCount-1 then                     
+                    byte_count <= byte_count + 1; 
+                    end_ByteCount <= '0'; 
+                else
+                    end_ByteCount <= '1';                                          
+                end if;
+             elsif  (CurrentState = Envio_TX and TX_RDY = '1' and TX_RDY_aux ='1') then
                 if byte_count < ByteEndOfCount - 1 then                     
                     byte_count <= byte_count + 1; 
                     end_ByteCount <= '0'; 
                 else
                     end_ByteCount <= '1';                                          
-                end if;  
+                end if;
              end if;         
         end if;         
         if end_ByteCount = '1' then 
@@ -274,4 +206,17 @@ word_counter : process(clk, reset)
     end if;               
  end process;
  
+TX_RDY_AUX_reg: process(clk, reset)
+    begin
+        if reset = '0' then 
+            TX_RDY_aux <= '0';
+        elsif rising_edge(clk) then 
+            if TX_RDY = '0' then 
+                TX_RDY_aux <= '1';
+            else 
+                TX_RDY_aux <= '0';
+            end if;
+        end if;
+    end process;
+    
 end Behavioral;

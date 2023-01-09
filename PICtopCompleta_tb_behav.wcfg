@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="PICtopCompleta_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="PICtopCompleta_tb" />
+            <top_module name="glbl" />
+            <top_module name="pic_pkg" />
+            <top_module name="rs232_test" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="800.000001 us"></ZoomEndTime>
+      <Cursor1Time time="800.000000 us"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="247"></NameColumnWidth>
+      <ValueColumnWidth column_width="72"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="16" />
+   <wvobject fp_name="/PICtopCompleta_tb/UUT/Reset" type="logic">
+      <obj_property name="ElementShortName">Reset</obj_property>
+      <obj_property name="ObjectShortName">Reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PICtopCompleta_tb/UUT/Clk" type="logic">
+      <obj_property name="ElementShortName">Clk</obj_property>
+      <obj_property name="ObjectShortName">Clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_RX" type="logic">
+      <obj_property name="ElementShortName">RS232_RX</obj_property>
+      <obj_property name="ObjectShortName">RS232_RX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_TX" type="logic">
+      <obj_property name="ElementShortName">RS232_TX</obj_property>
+      <obj_property name="ObjectShortName">RS232_TX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PICtopCompleta_tb/UUT/ALU_op" type="other">
+      <obj_property name="ElementShortName">ALU_op</obj_property>
+      <obj_property name="ObjectShortName">ALU_op</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PICtopCompleta_tb/UUT/switches" type="array">
+      <obj_property name="ElementShortName">switches[7:0]</obj_property>
+      <obj_property name="ObjectShortName">switches[7:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PICtopCompleta_tb/UUT/Temp_L" type="array">
+      <obj_property name="ElementShortName">Temp_L[6:0]</obj_property>
+      <obj_property name="ObjectShortName">Temp_L[6:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PICtopCompleta_tb/UUT/Temp_H" type="array">
+      <obj_property name="ElementShortName">Temp_H[6:0]</obj_property>
+      <obj_property name="ObjectShortName">Temp_H[6:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PICtopCompleta_tb/UUT/databus" type="array">
+      <obj_property name="ElementShortName">databus[7:0]</obj_property>
+      <obj_property name="ObjectShortName">databus[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Transmitter/data" type="array">
+      <obj_property name="ElementShortName">data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="group159" type="group">
+      <obj_property name="label">RS232</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Clk" type="logic">
+         <obj_property name="ElementShortName">Clk</obj_property>
+         <obj_property name="ObjectShortName">Clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Reset" type="logic">
+         <obj_property name="ElementShortName">Reset</obj_property>
+         <obj_property name="ObjectShortName">Reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/TX_RDY" type="logic">
+         <obj_property name="ElementShortName">TX_RDY</obj_property>
+         <obj_property name="ObjectShortName">TX_RDY</obj_property>
+      </wvobject>
+      <wvobject fp_name="group90" type="group">
+         <obj_property name="label">RS232_TX</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/TX_Data" type="array">
+            <obj_property name="ElementShortName">TX_Data[7:0]</obj_property>
+            <obj_property name="ObjectShortName">TX_Data[7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Transmitter/eot" type="logic">
+            <obj_property name="ElementShortName">eot</obj_property>
+            <obj_property name="ObjectShortName">eot</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Transmitter/tx" type="logic">
+            <obj_property name="ElementShortName">tx</obj_property>
+            <obj_property name="ObjectShortName">tx</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Transmitter/CurrentState" type="other">
+            <obj_property name="ElementShortName">CurrentState</obj_property>
+            <obj_property name="ObjectShortName">CurrentState</obj_property>
+         </wvobject>
+         <wvobject fp_name="group97" type="group">
+            <obj_property name="label">pulse_counter</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+            <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Transmitter/pulse_width" type="other">
+               <obj_property name="ElementShortName">pulse_width</obj_property>
+               <obj_property name="ObjectShortName">pulse_width</obj_property>
+            </wvobject>
+            <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Transmitter/start_PulseCounter" type="logic">
+               <obj_property name="ElementShortName">start_PulseCounter</obj_property>
+               <obj_property name="ObjectShortName">start_PulseCounter</obj_property>
+            </wvobject>
+            <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Transmitter/end_PulseCounter" type="logic">
+               <obj_property name="ElementShortName">end_PulseCounter</obj_property>
+               <obj_property name="ObjectShortName">end_PulseCounter</obj_property>
+            </wvobject>
+            <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Transmitter/end2_PulseCounter" type="logic">
+               <obj_property name="ElementShortName">end2_PulseCounter</obj_property>
+               <obj_property name="ObjectShortName">end2_PulseCounter</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="group98" type="group">
+            <obj_property name="label">Data_counter</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Transmitter/data_count" type="other">
+               <obj_property name="ElementShortName">data_count</obj_property>
+               <obj_property name="ObjectShortName">data_count</obj_property>
+            </wvobject>
+            <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Transmitter/start_DataCounter" type="logic">
+               <obj_property name="ElementShortName">start_DataCounter</obj_property>
+               <obj_property name="ObjectShortName">start_DataCounter</obj_property>
+            </wvobject>
+            <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Transmitter/end_DataCounter" type="logic">
+               <obj_property name="ElementShortName">end_DataCounter</obj_property>
+               <obj_property name="ObjectShortName">end_DataCounter</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="group99" type="group">
+            <obj_property name="label">double_bit</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Transmitter/start_doubleBit" type="logic">
+               <obj_property name="ElementShortName">start_doubleBit</obj_property>
+               <obj_property name="ObjectShortName">start_doubleBit</obj_property>
+            </wvobject>
+            <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Transmitter/end_1Bit" type="logic">
+               <obj_property name="ElementShortName">end_1Bit</obj_property>
+               <obj_property name="ObjectShortName">end_1Bit</obj_property>
+            </wvobject>
+            <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Transmitter/end_2Bit" type="logic">
+               <obj_property name="ElementShortName">end_2Bit</obj_property>
+               <obj_property name="ObjectShortName">end_2Bit</obj_property>
+            </wvobject>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group110" type="group">
+         <obj_property name="label">RS232_RX</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/RCVD_Data" type="array">
+            <obj_property name="ElementShortName">RCVD_Data[7:0]</obj_property>
+            <obj_property name="ObjectShortName">RCVD_Data[7:0]</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Receiver/LineRD_in" type="logic">
+            <obj_property name="ElementShortName">LineRD_in</obj_property>
+            <obj_property name="ObjectShortName">LineRD_in</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Receiver/Valid_out" type="logic">
+            <obj_property name="ElementShortName">Valid_out</obj_property>
+            <obj_property name="ObjectShortName">Valid_out</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Receiver/Code_out" type="logic">
+            <obj_property name="ElementShortName">Code_out</obj_property>
+            <obj_property name="ObjectShortName">Code_out</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Receiver/Store_out" type="logic">
+            <obj_property name="ElementShortName">Store_out</obj_property>
+            <obj_property name="ObjectShortName">Store_out</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Receiver/present_state" type="other">
+            <obj_property name="ElementShortName">present_state</obj_property>
+            <obj_property name="ObjectShortName">present_state</obj_property>
+         </wvobject>
+         <wvobject fp_name="group111" type="group">
+            <obj_property name="label">HalfBitCounter</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Receiver/HalfBitCounter" type="other">
+               <obj_property name="ElementShortName">HalfBitCounter</obj_property>
+               <obj_property name="ObjectShortName">HalfBitCounter</obj_property>
+            </wvobject>
+            <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Receiver/start_HalfBitCounter" type="logic">
+               <obj_property name="ElementShortName">start_HalfBitCounter</obj_property>
+               <obj_property name="ObjectShortName">start_HalfBitCounter</obj_property>
+            </wvobject>
+            <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Receiver/end_HalfBitCounter" type="logic">
+               <obj_property name="ElementShortName">end_HalfBitCounter</obj_property>
+               <obj_property name="ObjectShortName">end_HalfBitCounter</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="group112" type="group">
+            <obj_property name="label">BitCounter</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Receiver/BitCounter" type="other">
+               <obj_property name="ElementShortName">BitCounter</obj_property>
+               <obj_property name="ObjectShortName">BitCounter</obj_property>
+            </wvobject>
+            <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Receiver/start_BitCounter" type="logic">
+               <obj_property name="ElementShortName">start_BitCounter</obj_property>
+               <obj_property name="ObjectShortName">start_BitCounter</obj_property>
+            </wvobject>
+            <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Receiver/end_BitCounter" type="logic">
+               <obj_property name="ElementShortName">end_BitCounter</obj_property>
+               <obj_property name="ObjectShortName">end_BitCounter</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="group113" type="group">
+            <obj_property name="label">DataCount</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Receiver/DataCount" type="other">
+               <obj_property name="ElementShortName">DataCount</obj_property>
+               <obj_property name="ObjectShortName">DataCount</obj_property>
+            </wvobject>
+            <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Receiver/start_DataCount" type="logic">
+               <obj_property name="ElementShortName">start_DataCount</obj_property>
+               <obj_property name="ObjectShortName">start_DataCount</obj_property>
+            </wvobject>
+            <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Receiver/end_DataCount" type="logic">
+               <obj_property name="ElementShortName">end_DataCount</obj_property>
+               <obj_property name="ObjectShortName">end_DataCount</obj_property>
+            </wvobject>
+            <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Receiver/reset_DataCount" type="logic">
+               <obj_property name="ElementShortName">reset_DataCount</obj_property>
+               <obj_property name="ObjectShortName">reset_DataCount</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Receiver/end_1bit" type="logic">
+            <obj_property name="ElementShortName">end_1bit</obj_property>
+            <obj_property name="ObjectShortName">end_1bit</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group134" type="group">
+         <obj_property name="label">ShiftRegister</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Shift/Enable" type="logic">
+            <obj_property name="ElementShortName">Enable</obj_property>
+            <obj_property name="ObjectShortName">Enable</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Shift/D" type="logic">
+            <obj_property name="ElementShortName">D</obj_property>
+            <obj_property name="ObjectShortName">D</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Shift/s_Q" type="array">
+            <obj_property name="ElementShortName">s_Q[7:0]</obj_property>
+            <obj_property name="ObjectShortName">s_Q[7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Shift/Q" type="array">
+            <obj_property name="ElementShortName">Q[7:0]</obj_property>
+            <obj_property name="ObjectShortName">Q[7:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group158" type="group">
+         <obj_property name="label">FIFO_RS232</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Internal_memory/srst" type="logic">
+            <obj_property name="ElementShortName">srst</obj_property>
+            <obj_property name="ObjectShortName">srst</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Internal_memory/wr_en" type="logic">
+            <obj_property name="ElementShortName">wr_en</obj_property>
+            <obj_property name="ObjectShortName">wr_en</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Internal_memory/rd_en" type="logic">
+            <obj_property name="ElementShortName">rd_en</obj_property>
+            <obj_property name="ObjectShortName">rd_en</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Internal_memory/full" type="logic">
+            <obj_property name="ElementShortName">full</obj_property>
+            <obj_property name="ObjectShortName">full</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Internal_memory/empty" type="logic">
+            <obj_property name="ElementShortName">empty</obj_property>
+            <obj_property name="ObjectShortName">empty</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Internal_memory/din" type="array">
+            <obj_property name="ElementShortName">din[7:0]</obj_property>
+            <obj_property name="ObjectShortName">din[7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/RS232_PHY/Internal_memory/dout" type="array">
+            <obj_property name="ElementShortName">dout[7:0]</obj_property>
+            <obj_property name="ObjectShortName">dout[7:0]</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group461" type="group">
+      <obj_property name="label">RAM</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/RAM_PHY/Clk" type="logic">
+         <obj_property name="ElementShortName">Clk</obj_property>
+         <obj_property name="ObjectShortName">Clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/RAM_PHY/Reset" type="logic">
+         <obj_property name="ElementShortName">Reset</obj_property>
+         <obj_property name="ObjectShortName">Reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/RAM_PHY/address" type="array">
+         <obj_property name="ElementShortName">address[7:0]</obj_property>
+         <obj_property name="ObjectShortName">address[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/RAM_PHY/databus" type="array">
+         <obj_property name="ElementShortName">databus[7:0]</obj_property>
+         <obj_property name="ObjectShortName">databus[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/RAM_PHY/write_en" type="logic">
+         <obj_property name="ElementShortName">write_en</obj_property>
+         <obj_property name="ObjectShortName">write_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/RAM_PHY/oe" type="logic">
+         <obj_property name="ElementShortName">oe</obj_property>
+         <obj_property name="ObjectShortName">oe</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/RAM_PHY/switches" type="array">
+         <obj_property name="ElementShortName">switches[7:0]</obj_property>
+         <obj_property name="ObjectShortName">switches[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/RAM_PHY/temp_h" type="array">
+         <obj_property name="ElementShortName">temp_h[6:0]</obj_property>
+         <obj_property name="ObjectShortName">temp_h[6:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/RAM_PHY/CS_ram_especifica" type="logic">
+         <obj_property name="ElementShortName">CS_ram_especifica</obj_property>
+         <obj_property name="ObjectShortName">CS_ram_especifica</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/RAM_PHY/CS_ram_general" type="logic">
+         <obj_property name="ElementShortName">CS_ram_general</obj_property>
+         <obj_property name="ObjectShortName">CS_ram_general</obj_property>
+      </wvobject>
+      <wvobject fp_name="group429" type="group">
+         <obj_property name="label">RAM especifica</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/RAM_PHY/INST_RAM_ESPECIFICA/CS" type="logic">
+            <obj_property name="ElementShortName">CS</obj_property>
+            <obj_property name="ObjectShortName">CS</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/RAM_PHY/INST_RAM_ESPECIFICA/contents_ram" type="array">
+            <obj_property name="ElementShortName">contents_ram[63:0][7:0]</obj_property>
+            <obj_property name="ObjectShortName">contents_ram[63:0][7:0]</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group364" type="group">
+         <obj_property name="label">RAM general</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/RAM_PHY/INST_RAM_GENERAL/CS" type="logic">
+            <obj_property name="ElementShortName">CS</obj_property>
+            <obj_property name="ObjectShortName">CS</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/RAM_PHY/INST_RAM_GENERAL/contents_ram" type="array">
+            <obj_property name="ElementShortName">contents_ram[255:64][7:0]</obj_property>
+            <obj_property name="ObjectShortName">contents_ram[255:64][7:0]</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group516" type="group">
+      <obj_property name="label">DMA</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/CLK" type="logic">
+         <obj_property name="ElementShortName">CLK</obj_property>
+         <obj_property name="ObjectShortName">CLK</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/Reset" type="logic">
+         <obj_property name="ElementShortName">Reset</obj_property>
+         <obj_property name="ObjectShortName">Reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/Databus" type="array">
+         <obj_property name="ElementShortName">Databus[7:0]</obj_property>
+         <obj_property name="ObjectShortName">Databus[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/Address" type="array">
+         <obj_property name="ElementShortName">Address[7:0]</obj_property>
+         <obj_property name="ObjectShortName">Address[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/DMA_RQ" type="logic">
+         <obj_property name="ElementShortName">DMA_RQ</obj_property>
+         <obj_property name="ObjectShortName">DMA_RQ</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/DMA_ACK" type="logic">
+         <obj_property name="ElementShortName">DMA_ACK</obj_property>
+         <obj_property name="ObjectShortName">DMA_ACK</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/OE" type="logic">
+         <obj_property name="ElementShortName">OE</obj_property>
+         <obj_property name="ObjectShortName">OE</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/Write_en" type="logic">
+         <obj_property name="ElementShortName">Write_en</obj_property>
+         <obj_property name="ObjectShortName">Write_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/CurrentState" type="other">
+         <obj_property name="ElementShortName">CurrentState</obj_property>
+         <obj_property name="ObjectShortName">CurrentState</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/READY" type="logic">
+         <obj_property name="ElementShortName">READY</obj_property>
+         <obj_property name="ObjectShortName">READY</obj_property>
+      </wvobject>
+      <wvobject fp_name="group519" type="group">
+         <obj_property name="label">DMA_TX</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/Send_comm" type="logic">
+            <obj_property name="ElementShortName">Send_comm</obj_property>
+            <obj_property name="ObjectShortName">Send_comm</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/TX_RDY" type="logic">
+            <obj_property name="ElementShortName">TX_RDY</obj_property>
+            <obj_property name="ObjectShortName">TX_RDY</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/TX_RDY_aux" type="logic">
+            <obj_property name="ElementShortName">TX_RDY_aux</obj_property>
+            <obj_property name="ObjectShortName">TX_RDY_aux</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/Valid_D" type="logic">
+            <obj_property name="ElementShortName">Valid_D</obj_property>
+            <obj_property name="ObjectShortName">Valid_D</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/TX_Data" type="array">
+            <obj_property name="ElementShortName">TX_Data[7:0]</obj_property>
+            <obj_property name="ObjectShortName">TX_Data[7:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group518" type="group">
+         <obj_property name="label">DMA_RX</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/RCVD_Data" type="array">
+            <obj_property name="ElementShortName">RCVD_Data[7:0]</obj_property>
+            <obj_property name="ObjectShortName">RCVD_Data[7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/RX_Empty" type="logic">
+            <obj_property name="ElementShortName">RX_Empty</obj_property>
+            <obj_property name="ObjectShortName">RX_Empty</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/RX_Full" type="logic">
+            <obj_property name="ElementShortName">RX_Full</obj_property>
+            <obj_property name="ObjectShortName">RX_Full</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/Data_Read" type="logic">
+            <obj_property name="ElementShortName">Data_Read</obj_property>
+            <obj_property name="ObjectShortName">Data_Read</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/ACK_out" type="logic">
+            <obj_property name="ElementShortName">ACK_out</obj_property>
+            <obj_property name="ObjectShortName">ACK_out</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group517" type="group">
+         <obj_property name="label">Byte_Count</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/byte_count" type="other">
+            <obj_property name="ElementShortName">byte_count</obj_property>
+            <obj_property name="ObjectShortName">byte_count</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/start_ByteCount" type="logic">
+            <obj_property name="ElementShortName">start_ByteCount</obj_property>
+            <obj_property name="ObjectShortName">start_ByteCount</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/end_ByteCount" type="logic">
+            <obj_property name="ElementShortName">end_ByteCount</obj_property>
+            <obj_property name="ObjectShortName">end_ByteCount</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/ByteEndOfCount" type="other">
+            <obj_property name="ElementShortName">ByteEndOfCount</obj_property>
+            <obj_property name="ObjectShortName">ByteEndOfCount</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group546" type="group">
+      <obj_property name="label">ROM</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/ROM_PHY/Instruction" type="array">
+         <obj_property name="ElementShortName">Instruction[11:0]</obj_property>
+         <obj_property name="ObjectShortName">Instruction[11:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/ROM_PHY/Program_counter" type="array">
+         <obj_property name="ElementShortName">Program_counter[11:0]</obj_property>
+         <obj_property name="ObjectShortName">Program_counter[11:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group598" type="group">
+      <obj_property name="label">ALU</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/ALU_PHY/Clk" type="logic">
+         <obj_property name="ElementShortName">Clk</obj_property>
+         <obj_property name="ObjectShortName">Clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/ALU_PHY/Reset" type="logic">
+         <obj_property name="ElementShortName">Reset</obj_property>
+         <obj_property name="ObjectShortName">Reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/ALU_PHY/u_instruction" type="other">
+         <obj_property name="ElementShortName">u_instruction</obj_property>
+         <obj_property name="ObjectShortName">u_instruction</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/ALU_PHY/FlagZ" type="logic">
+         <obj_property name="ElementShortName">FlagZ</obj_property>
+         <obj_property name="ObjectShortName">FlagZ</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/ALU_PHY/FlagC" type="logic">
+         <obj_property name="ElementShortName">FlagC</obj_property>
+         <obj_property name="ObjectShortName">FlagC</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/ALU_PHY/FlagN" type="logic">
+         <obj_property name="ElementShortName">FlagN</obj_property>
+         <obj_property name="ObjectShortName">FlagN</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/ALU_PHY/FlagE" type="logic">
+         <obj_property name="ElementShortName">FlagE</obj_property>
+         <obj_property name="ObjectShortName">FlagE</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/ALU_PHY/Index_Reg" type="array">
+         <obj_property name="ElementShortName">Index_Reg[7:0]</obj_property>
+         <obj_property name="ObjectShortName">Index_Reg[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/ALU_PHY/Databus" type="array">
+         <obj_property name="ElementShortName">Databus[7:0]</obj_property>
+         <obj_property name="ObjectShortName">Databus[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/ALU_PHY/REG_A" type="array">
+         <obj_property name="ElementShortName">REG_A[7:0]</obj_property>
+         <obj_property name="ObjectShortName">REG_A[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/ALU_PHY/REG_B" type="array">
+         <obj_property name="ElementShortName">REG_B[7:0]</obj_property>
+         <obj_property name="ObjectShortName">REG_B[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/ALU_PHY/REG_ACC" type="array">
+         <obj_property name="ElementShortName">REG_ACC[8:0]</obj_property>
+         <obj_property name="ObjectShortName">REG_ACC[8:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group701" type="group">
+      <obj_property name="label">CPU</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/CPU_PHY/Reset" type="logic">
+         <obj_property name="ElementShortName">Reset</obj_property>
+         <obj_property name="ObjectShortName">Reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/CPU_PHY/Clk" type="logic">
+         <obj_property name="ElementShortName">Clk</obj_property>
+         <obj_property name="ObjectShortName">Clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/CPU_PHY/current_state" type="other">
+         <obj_property name="ElementShortName">current_state</obj_property>
+         <obj_property name="ObjectShortName">current_state</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/CPU_PHY/Alu_op" type="other">
+         <obj_property name="ElementShortName">Alu_op</obj_property>
+         <obj_property name="ObjectShortName">Alu_op</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/CPU_PHY/ROM_Data" type="array">
+         <obj_property name="ElementShortName">ROM_Data[11:0]</obj_property>
+         <obj_property name="ObjectShortName">ROM_Data[11:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/CPU_PHY/ROM_Addr" type="array">
+         <obj_property name="ElementShortName">ROM_Addr[11:0]</obj_property>
+         <obj_property name="ObjectShortName">ROM_Addr[11:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/CPU_PHY/RAM_Addr" type="array">
+         <obj_property name="ElementShortName">RAM_Addr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">RAM_Addr[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/CPU_PHY/RAM_Write" type="logic">
+         <obj_property name="ElementShortName">RAM_Write</obj_property>
+         <obj_property name="ObjectShortName">RAM_Write</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/CPU_PHY/RAM_OE" type="logic">
+         <obj_property name="ElementShortName">RAM_OE</obj_property>
+         <obj_property name="ObjectShortName">RAM_OE</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/CPU_PHY/Databus" type="array">
+         <obj_property name="ElementShortName">Databus[7:0]</obj_property>
+         <obj_property name="ObjectShortName">Databus[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/CPU_PHY/DMA_RQ" type="logic">
+         <obj_property name="ElementShortName">DMA_RQ</obj_property>
+         <obj_property name="ObjectShortName">DMA_RQ</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/CPU_PHY/DMA_ACK" type="logic">
+         <obj_property name="ElementShortName">DMA_ACK</obj_property>
+         <obj_property name="ObjectShortName">DMA_ACK</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/CPU_PHY/SEND_comm" type="logic">
+         <obj_property name="ElementShortName">SEND_comm</obj_property>
+         <obj_property name="ObjectShortName">SEND_comm</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/CPU_PHY/DMA_READY" type="logic">
+         <obj_property name="ElementShortName">DMA_READY</obj_property>
+         <obj_property name="ObjectShortName">DMA_READY</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/CPU_PHY/Index_Reg" type="array">
+         <obj_property name="ElementShortName">Index_Reg[7:0]</obj_property>
+         <obj_property name="ObjectShortName">Index_Reg[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/CPU_PHY/FlagZ" type="logic">
+         <obj_property name="ElementShortName">FlagZ</obj_property>
+         <obj_property name="ObjectShortName">FlagZ</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/CPU_PHY/FlagC" type="logic">
+         <obj_property name="ElementShortName">FlagC</obj_property>
+         <obj_property name="ObjectShortName">FlagC</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/CPU_PHY/FlagN" type="logic">
+         <obj_property name="ElementShortName">FlagN</obj_property>
+         <obj_property name="ObjectShortName">FlagN</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/CPU_PHY/FlagE" type="logic">
+         <obj_property name="ElementShortName">FlagE</obj_property>
+         <obj_property name="ObjectShortName">FlagE</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/CPU_PHY/PC_reg" type="array">
+         <obj_property name="ElementShortName">PC_reg[7:0]</obj_property>
+         <obj_property name="ObjectShortName">PC_reg[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/CPU_PHY/INS_reg" type="array">
+         <obj_property name="ElementShortName">INS_reg[7:0]</obj_property>
+         <obj_property name="ObjectShortName">INS_reg[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PICtopCompleta_tb/UUT/CPU_PHY/TMP_reg" type="array">
+         <obj_property name="ElementShortName">TMP_reg[7:0]</obj_property>
+         <obj_property name="ObjectShortName">TMP_reg[7:0]</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

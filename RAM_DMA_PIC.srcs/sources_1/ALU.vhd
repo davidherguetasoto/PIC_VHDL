@@ -36,6 +36,8 @@ begin
         REG_B <= (others=>'0');
         REG_ACC <= (others=>'0');
         Index_Reg <= (others=>'0');
+        FlagE <= '0';
+        FlagZ <= '0';
     elsif clk'event and clk='1' then    
     --DEFINICIÓN DE INSTRUCCIONES DE LA ALU
         case u_instruction is 
@@ -127,7 +129,8 @@ begin
             when op_and => 
                for i in REG_ACC'right to REG_ACC'left-1 loop 
                     REG_ACC(i) <= REG_A(i) and REG_B(i);
-                end loop;                
+                end loop; 
+                REG_ACC(REG_ACC'left) <= '0';               
                 REG_A <= REG_A;
                 REG_B <= REG_B;
                 FlagE <= '0';
@@ -137,6 +140,7 @@ begin
                 for i in REG_ACC'right to REG_ACC'left-1 loop 
                     REG_ACC(i) <= REG_A(i) or REG_B(i);
                 end loop;                 
+                REG_ACC(REG_ACC'left) <= '0';
                 REG_A <= REG_A;
                 REG_B <= REG_B;
                 FlagE <= '0';
@@ -145,7 +149,8 @@ begin
             when op_xor => 
                for i in REG_ACC'right to REG_ACC'left-1 loop 
                     REG_ACC(i) <= REG_A(i) xor REG_B(i);
-                end loop;                  
+                end loop;
+                REG_ACC(REG_ACC'left) <= '0';                  
                 REG_A <= REG_A;
                 REG_B <= REG_B;
                 FlagE <= '0';
@@ -153,32 +158,53 @@ begin
       --ASCII a Binario 
            when op_ascii2bin => 
                if REG_A >= std_logic_vector(to_unsigned(48,REG_A'length)) and REG_A <= std_logic_vector(to_unsigned(57,REG_A'length)) then
-                   REG_A <= std_logic_vector(unsigned(REG_A)-to_unsigned(48,REG_A'length));
+                   REG_ACC(REG_ACC'high-1 downto 0) <= std_logic_vector(unsigned(REG_A)-to_unsigned(48,REG_A'length));
                    FlagE<= '0';
                else 
-                REG_A <= REG_A;
+                REG_ACC <= REG_ACC;
                 FlagE <= '1';
                end if;
-               REG_ACC <= REG_ACC;
+               REG_A <= REG_A;
                REG_B <= REG_B;
            
       --Binario a ASCII 
            when op_bin2ascii => 
               if REG_A >= std_logic_vector(to_unsigned(0,REG_A'length)) and REG_A <= std_logic_vector(to_unsigned(9,REG_A'length)) then
-                  REG_A <= std_logic_vector(unsigned(REG_A)+to_unsigned(48,REG_A'length));
+                  REG_ACC(REG_ACC'high-1 downto 0) <= std_logic_vector(unsigned(REG_A)+to_unsigned(48,REG_A'length));
                   FlagE <= '0';
               else
-                  REG_A <= REG_A;
+                  REG_ACC <= REG_ACC;
                   FlagE <= '1';
               end if;
-              REG_ACC <= REG_ACC;
+              REG_A <= REG_A;
               REG_B <= REG_B;
+           
+           when op_cmpe =>
+              if REG_A = REG_B then
+                  FlagZ <= '1';
+              else
+                  FlagZ <= '0';
+              end if;
+              
+           when op_cmpg =>
+              if REG_A > REG_B then
+                  FlagZ <= '1';
+              else
+                  FlagZ <= '0';
+              end if;
+              
+           when op_cmpl =>
+              if REG_A < REG_B then
+                  FlagZ <= '1';
+              else
+                  FlagZ <= '0';
+              end if;
               
            when others => 
                REG_ACC <= REG_ACC;
                REG_A <= REG_A;
                REG_B <= REG_B;
-               FlagE <= '0';
+               FlagE <= '0';               
            
       end case;
    end if;              
@@ -189,18 +215,6 @@ end process;
 FlagC <= '0' when Reset = '0' else
          REG_ACC(REG_ACC'high) when u_instruction = op_add or u_instruction = op_sub else
          '0';
-         
-FlagZ <= '0' when Reset = '0' else 
-         '1' when (REG_ACC(REG_ACC'high downto 0) = std_logic_vector(to_unsigned(0,REG_ACC'length))) and (u_instruction = op_add or u_instruction = op_sub or u_instruction = op_and or u_instruction = op_or or u_instruction = op_xor) else
-         '1' when (REG_A = REG_B) and (u_instruction = op_cmpe) else 
-         '1' when (REG_A > REG_B) and (u_instruction = op_cmpg) else 
-         '1' when (REG_A < REG_B) and (u_instruction = op_cmpl) else 
-         '0';
-         
---FlagE <= '0' when Reset = '0' else 
---         '1' when (REG_A < std_logic_vector(to_unsigned(48,REG_A'length)) or REG_A > std_logic_vector(to_unsigned(57,REG_A'length))) and (u_instruction = op_ascii2bin) else
---         '1' when (REG_A > std_logic_vector(to_unsigned(9,REG_A'length))) and (u_instruction = op_bin2ascii) else 
---         '0';
          
 FlagN <= '0'; 
 
