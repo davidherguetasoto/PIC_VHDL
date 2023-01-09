@@ -117,48 +117,72 @@ begin  -- TestBench
 -------------------------------------------------------------------------------
 
   SEND_STUFF : process
+  variable data:std_logic_vector(9 downto 0);
   begin
 
     BTNU <= '1';
+    JA(2)<='1';
     wait for 40 us;
     BTNU <= '0';
     wait for 40 us;
+     
+    data := "0010010011";
+    for i in 0 to 7 loop 
+        JA(2)<=data(7-i);
+        wait for 8680 ns;
+    end loop;
+    wait for 40 us;
+    
+    data := "0001101001";
+    for i in 0 to 7 loop 
+        JA(2)<=data(7-i);
+        wait for 8680 ns;
+    end loop;
+    wait for 40 us;
+    
+    data := "0001100011";
+    for i in 0 to 7 loop 
+        JA(2)<=data(7-i);
+        wait for 8680 ns;
+    end loop;
+    wait;
+    
   
- -- Encender interruptor 4 (I 4 1) 
-     Transmit(JA(2), X"49");
-     wait for 40 us;
-     Transmit(JA(2), X"34");
-     wait for 40 us;
-     Transmit(JA(2), X"31");
-     wait for 80 us;
--- Encender interruptor 2 (I 2 1)
-     Transmit(JA(2), X"49");
-     wait for 40 us;
-     Transmit(JA(2), X"32");
-     wait for 40 us;
-     Transmit(JA(2), X"31");
-     wait for 80 us;
--- Apagar interruptor 4 (I 4 0)
-     Transmit(JA(2), X"49");
-     wait for 40 us;
-     Transmit(JA(2), X"34");
-     wait for 40 us;
-     Transmit(JA(2), X"30");
-          wait for 80 us;
--- Poner temperatura (T 1 4)
-     Transmit(JA(2), X"54");
-     wait for 40 us;
-     Transmit(JA(2), X"31");
-     wait for 40 us;
-     Transmit(JA(2), X"34");
-          wait for 80 us;
--- Poner temperatura (T 2 1)
-     Transmit(JA(2), X"54");
-     wait for 40 us;
-     Transmit(JA(2), X"32");
-     wait for 40 us;
-     Transmit(JA(2), X"31");
-     wait;
+-- -- Encender interruptor 4 (I 4 1) 
+--     Transmit(JA(2), X"49");
+--     wait for 40 us;
+--     Transmit(JA(2), X"34");
+--     wait for 40 us;
+--     Transmit(JA(2), X"31");
+--     wait for 80 us;
+---- Encender interruptor 2 (I 2 1)
+--     Transmit(JA(2), X"49");
+--     wait for 40 us;
+--     Transmit(JA(2), X"32");
+--     wait for 40 us;
+--     Transmit(JA(2), X"31");
+--     wait for 80 us;
+---- Apagar interruptor 4 (I 4 0)
+--     Transmit(JA(2), X"49");
+--     wait for 40 us;
+--     Transmit(JA(2), X"34");
+--     wait for 40 us;
+--     Transmit(JA(2), X"30");
+--          wait for 80 us;
+---- Poner temperatura (T 1 4)
+--     Transmit(JA(2), X"54");
+--     wait for 40 us;
+--     Transmit(JA(2), X"31");
+--     wait for 40 us;
+--     Transmit(JA(2), X"34");
+--          wait for 80 us;
+---- Poner temperatura (T 2 1)
+--     Transmit(JA(2), X"54");
+--     wait for 40 us;
+--     Transmit(JA(2), X"32");
+--     wait for 40 us;
+--     Transmit(JA(2), X"31");
+--     wait;
   end process SEND_STUFF;
    
 end TestBench;
