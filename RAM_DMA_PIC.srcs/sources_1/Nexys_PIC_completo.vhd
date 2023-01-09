@@ -32,14 +32,14 @@ entity nexys_PIC_completo is
     AN                 : out  STD_LOGIC_VECTOR(7 downto 0);    
 
 -- Botones de usuario (x5)
-    BTNC             : in  STD_LOGIC;    
+  --  BTNC             : in  STD_LOGIC;    
     BTNU             : in  STD_LOGIC;    
-    BTNL             : in  STD_LOGIC;    
-    BTNR             : in  STD_LOGIC;    
+  --  BTNL             : in  STD_LOGIC;    
+  --  BTNR             : in  STD_LOGIC;    
 --    BTND             : in  STD_LOGIC;    
 
 -- Interruptores (x16) y LEDs
-    SW                 : in   STD_LOGIC_VECTOR(15 downto 0);    
+ --   SW                 : in   STD_LOGIC_VECTOR(15 downto 0);    
     LED                : out  STD_LOGIC_VECTOR(15 downto 0);   
 
 -- Reloj de la FPGA
@@ -48,7 +48,7 @@ entity nexys_PIC_completo is
 	 );  
 end nexys_PIC_completo;
 
-architecture a_behavior of nexys_PIC_completo is
+architecture behavior of nexys_PIC_completo is
 
 -- declaración de componentes 
     component clk_wiz_0
@@ -70,7 +70,8 @@ component PICtop_completo is
 end component;
 
 -- declaración de señales 
-    signal reset, reset_p : std_logic;
+    --signal reset, reset_p : std_logic;
+    signal reset : std_logic;
     signal clk : std_logic;
     signal contador : UNSIGNED(31 downto 0); 
     --signal flag : std_logic;
@@ -80,23 +81,15 @@ end component;
     signal RD, TD  : std_logic;  
     signal Temp_H, Temp_L     : std_logic_vector(6 downto 0);
     
--- signals to access directly to the RAM  
-    signal i_address, i_data_in, i_data_out, databus  : std_logic_vector(7 downto 0); 
-    signal i_write_en, i_oe : std_logic;  
-    signal i_send, i_send_r, i_send_pulse  : std_logic;  
 
 begin
 
 -- 1.Botones
      reset <= not(BTNU);      -- Button UP     => Reset (active low)
-     i_write_en <= BTNL;      -- Button LEFT   => Write RAM position 
-     i_oe <= not(BTNR);       -- Button WRITE  => Read RAM position
-     i_send <= BTNC;          -- Button CENTER => Send RAM positions 4-5
 
 -- 2.Datos de entrada y salida
-     LED(7 downto 0) <= i_data_out;    -- Lower LED byte => Show the data written to/read from the RAM 
-     i_data_in <= SW(7 downto 0);      -- Lower  SW byte => Data to be written to the RAM
-     i_address <= SW(15 downto 8);     -- Upper  SW byte => RAM read/write address 
+     LED(7 downto 0) <= switches;    -- Lower LED byte => Show the data written to/read from the RAM 
+     
 
 -- 3a.Realimentación lineas TD => RD  (necesita un cable entre los pines 1 y 2 del pmodJA)
      JA(1) <= TD;   -- OUTPUT PORT     
@@ -120,7 +113,7 @@ begin
 
 
 -- 5.Instanciación de los componentes 
-  reset_p <= not reset;
+  --reset_p <= not reset;
     clk_20MHz : clk_wiz_0 PORT MAP(
         clk_in1 => CLK100MHz,
         clk_out1 => clk,
@@ -141,11 +134,9 @@ begin
     process(reset, clk)
     begin
       if reset='0' then
-	    i_send_r <= '0';
         contador <= (others => '0');
         --flag <= '0';
       elsif clk'event and clk='1' then
-	      i_send_r <= i_send;
           contador <= contador + 1;
           if contador >= 100000000 then
             contador <= (others => '0');
@@ -153,21 +144,7 @@ begin
           end if; 
       end if;
     end process;      
-	i_send_pulse <= i_send and not(i_send_r);
              
 			  
 --7.Otros procesos
-    -- Entrega (write) / Captura y almacena (read) los datos del databus
-    process(reset, clk)
-    begin
-      if reset='0' then
-        i_data_out <= (others => '0');
-      elsif clk'event and clk='1' then
-          if (i_oe = '0') or (i_write_en='1') then
-            i_data_out <= databus;
-          end if;
-      end if;
-    end process;  
-    databus <= i_data_in when (i_write_en='1' and i_oe='1') else (others => 'Z');
-    
-end a_behavior;
+end behavior;
