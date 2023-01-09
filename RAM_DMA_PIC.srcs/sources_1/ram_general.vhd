@@ -15,7 +15,7 @@ END ram_general;
 
 ARCHITECTURE behavior OF ram_general IS
 
-  SIGNAL contents_ram : array8_ram(255 downto 64);
+  SIGNAL contents_ram : array8_ram(191 downto 0);
 
 BEGIN
 
@@ -26,7 +26,7 @@ p_ram : process (clk)  -- no reset
 begin
   if clk'event and clk = '1' then
     if write_en = '1' and unsigned(address) >= 64 and (unsigned(address) <= 255) then
-      contents_ram(to_integer(unsigned(address))) <= databus;
+      contents_ram(to_integer(unsigned(address))-64) <= databus;
     end if;
   end if;
 

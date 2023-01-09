@@ -144,6 +144,20 @@ begin  -- TestBench
      Transmit(JA(2), X"34");
      wait for 40 us;
      Transmit(JA(2), X"30");
+          wait for 80 us;
+-- Poner temperatura (T 1 4)
+     Transmit(JA(2), X"54");
+     wait for 40 us;
+     Transmit(JA(2), X"31");
+     wait for 40 us;
+     Transmit(JA(2), X"34");
+          wait for 80 us;
+-- Poner temperatura (T 2 1)
+     Transmit(JA(2), X"54");
+     wait for 40 us;
+     Transmit(JA(2), X"32");
+     wait for 40 us;
+     Transmit(JA(2), X"31");
      wait;
   end process SEND_STUFF;
    

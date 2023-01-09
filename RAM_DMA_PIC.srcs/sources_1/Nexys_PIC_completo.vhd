@@ -88,7 +88,7 @@ begin
      reset <= not(BTNU);      -- Button UP     => Reset (active low)
 
 -- 2.Datos de entrada y salida
-     LED(7 downto 0) <= switches;    -- Lower LED byte => Show the data written to/read from the RAM 
+
      
 
 -- 3a.Realimentación lineas TD => RD  (necesita un cable entre los pines 1 y 2 del pmodJA)
@@ -128,7 +128,8 @@ begin
         Temp_L     => Temp_L,
         Temp_H     => Temp_H );
 
-
+     LED(7 downto 0) <= switches;
+     LED(15 downto 8)<=(others => '0');
 -- 6.Procesos adicionales 
     -- Contador para hacer el barrido de los datos en los displays
     process(reset, clk)

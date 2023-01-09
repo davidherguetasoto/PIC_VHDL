@@ -13,12 +13,12 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="298.246 ns"></ZoomStartTime>
-      <ZoomEndTime time="1,943.861 ns"></ZoomEndTime>
-      <Cursor1Time time="1,000.000 ns"></Cursor1Time>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="800.000000 us"></ZoomEndTime>
+      <Cursor1Time time="192.539109 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="287"></NameColumnWidth>
+      <NameColumnWidth column_width="282"></NameColumnWidth>
       <ValueColumnWidth column_width="72"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="10" />
@@ -41,6 +41,7 @@
    <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/JA" type="array">
       <obj_property name="ElementShortName">JA[2:1]</obj_property>
       <obj_property name="ObjectShortName">JA[2:1]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
    </wvobject>
    <wvobject fp_name="group922" type="group">
       <obj_property name="label">Displays</obj_property>
@@ -154,8 +155,8 @@
          </wvobject>
          <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_GENERAL/contents_ram" type="array">
             <obj_property name="DisplayName">label</obj_property>
-            <obj_property name="ElementShortName">contents_ram[63:0][7:0]</obj_property>
-            <obj_property name="ObjectShortName">contents_ram[63:0][7:0]</obj_property>
+            <obj_property name="ElementShortName">contents_ram[191:0][7:0]</obj_property>
+            <obj_property name="ObjectShortName">contents_ram[191:0][7:0]</obj_property>
             <obj_property name="label">contents_ram_general[63:0][7:0]</obj_property>
          </wvobject>
       </wvobject>
