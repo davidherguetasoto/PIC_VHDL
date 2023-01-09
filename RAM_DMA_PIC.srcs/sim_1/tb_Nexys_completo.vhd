@@ -125,24 +125,69 @@ begin  -- TestBench
     wait for 40 us;
     BTNU <= '0';
     wait for 40 us;
-     
-    data := "0010010011";
-    for i in 0 to 7 loop 
-        JA(2)<=data(7-i);
+  
+  -- I41 (HAY QUE AÑADIR 1 AL FINAL (BIT DE FIN) Y 0 AL PRINCIPIO (BIT START))  
+    data := "1010010010";
+    for i in 0 to 9 loop 
+        JA(2)<=data(i);
         wait for 8680 ns;
     end loop;
     wait for 40 us;
     
-    data := "0001101001";
-    for i in 0 to 7 loop 
-        JA(2)<=data(7-i);
+    data := "1001101000";
+    for i in 0 to 9 loop 
+        JA(2)<=data(i);
         wait for 8680 ns;
     end loop;
     wait for 40 us;
     
-    data := "0001100011";
-    for i in 0 to 7 loop 
-        JA(2)<=data(7-i);
+    data := "1001100010";
+    for i in 0 to 9 loop 
+        JA(2)<=data(i);
+        wait for 8680 ns;
+    end loop;
+    wait for 40 us;
+    
+    -- T15
+        data := "1010101000";
+    for i in 0 to 9 loop 
+        JA(2)<=data(i);
+        wait for 8680 ns;
+    end loop;
+    wait for 40 us;
+    
+    data := "1001100010";
+    for i in 0 to 9 loop 
+        JA(2)<=data(i);
+        wait for 8680 ns;
+    end loop;
+    wait for 40 us;
+    
+    data := "1001101010";
+    for i in 0 to 9 loop 
+        JA(2)<=data(i);
+        wait for 8680 ns;
+    end loop;
+    wait for 40 us;
+    
+    -- T 2 2 
+         data := "1010101000";
+    for i in 0 to 9 loop 
+        JA(2)<=data(i);
+        wait for 8680 ns;
+    end loop;
+    wait for 40 us;
+    
+    data := "1001100100";
+    for i in 0 to 9 loop 
+        JA(2)<=data(i);
+        wait for 8680 ns;
+    end loop;
+    wait for 40 us;
+    
+    data := "1001100100";
+    for i in 0 to 9 loop 
+        JA(2)<=data(i);
         wait for 8680 ns;
     end loop;
     wait;
