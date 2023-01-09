@@ -15,7 +15,7 @@ END ram_general;
 
 ARCHITECTURE behavior OF ram_general IS
 
-  SIGNAL contents_ram : array8_ram(63 downto 0);
+  SIGNAL contents_ram : array8_ram(255 downto 64);
 
 BEGIN
 

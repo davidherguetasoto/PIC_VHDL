@@ -13,12 +13,12 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="546.641025 us"></ZoomStartTime>
-      <ZoomEndTime time="1,811.871796 us"></ZoomEndTime>
-      <Cursor1Time time="1,601.000000 us"></Cursor1Time>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="800.000001 us"></ZoomEndTime>
+      <Cursor1Time time="800.000000 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="242"></NameColumnWidth>
+      <NameColumnWidth column_width="237"></NameColumnWidth>
       <ValueColumnWidth column_width="72"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="16" />
@@ -309,6 +309,7 @@
       <wvobject fp_name="/PICtopCompleta_tb/UUT/RAM_PHY/address" type="array">
          <obj_property name="ElementShortName">address[7:0]</obj_property>
          <obj_property name="ObjectShortName">address[7:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/PICtopCompleta_tb/UUT/RAM_PHY/databus" type="array">
          <obj_property name="ElementShortName">databus[7:0]</obj_property>
@@ -344,8 +345,8 @@
          <obj_property name="label">RAM general</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <wvobject fp_name="/PICtopCompleta_tb/UUT/RAM_PHY/INST_RAM_GENERAL/contents_ram" type="array">
-            <obj_property name="ElementShortName">contents_ram[63:0][7:0]</obj_property>
-            <obj_property name="ObjectShortName">contents_ram[63:0][7:0]</obj_property>
+            <obj_property name="ElementShortName">contents_ram[255:64][7:0]</obj_property>
+            <obj_property name="ObjectShortName">contents_ram[255:64][7:0]</obj_property>
          </wvobject>
       </wvobject>
    </wvobject>
