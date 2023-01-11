@@ -23,7 +23,10 @@ ARCHITECTURE behavior OF ram_especifica IS
   SIGNAL contents_ram : array8_ram(63 downto 0);
   attribute keep:boolean;
   attribute keep of contents_ram:signal is true;
-
+  attribute keep of oe:signal is true;
+  attribute keep of write_en:signal is true;
+  attribute keep of address:signal is true;
+  
 BEGIN
 p_ram : process (clk, reset)
 begin
@@ -33,13 +36,13 @@ begin
     end loop;    
     contents_ram(to_integer(unsigned(T_STAT))) <= "00010000"; 
   elsif clk'event and clk = '1' then
-    if write_en = '1' and (unsigned(address) <= contents_ram'high) then
+    if write_en = '1' and oe='0' then
       contents_ram(to_integer(unsigned(address))) <= databus;
     end if;
   end if;
 end process;
 
-databus <= contents_ram(to_integer(unsigned(address))) when oe = '0' and (unsigned(address) <= contents_ram'high) else (others => 'Z');
+databus <= contents_ram(to_integer(unsigned(address))) when oe = '0' and write_en='0' else (others => 'Z');
 
 gen_switches : for i in 0 to 7 generate
    switches(i) <= contents_ram(to_integer(unsigned(SWITCH_BASE) + to_unsigned(i,SWITCH_BASE'length)))(0);
