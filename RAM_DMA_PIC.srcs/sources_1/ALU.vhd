@@ -19,14 +19,18 @@ port (
 end ALU;
 
 architecture Behavioral of ALU is
-
+  attribute keep:boolean;
+  attribute keep of FlagZ:signal is true;
+  attribute keep of u_instruction:signal is true;
 --------------------------------------------------------
 --REGISTROS
 signal REG_A : std_logic_vector(Databus'high downto 0);
 signal REG_B : std_logic_vector(Databus'high downto 0);
 signal REG_ACC : std_logic_vector(Databus'high+1 downto 0);
 --------------------------------------------------------
-
+attribute keep of REG_A:signal is true;
+attribute keep of REG_ACC:signal is true;
+attribute keep of REG_B:signal is true;
 begin
 
 process(Reset, Clk)

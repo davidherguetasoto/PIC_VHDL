@@ -21,6 +21,8 @@ END ram_especifica;
 ARCHITECTURE behavior OF ram_especifica IS
 
   SIGNAL contents_ram : array8_ram(63 downto 0);
+  attribute keep:boolean;
+  attribute keep of contents_ram:signal is true;
 
 BEGIN
 p_ram : process (clk, reset)

@@ -32,6 +32,8 @@ architecture Behavioral of CPU is
 		type State is (Idle, Fetch, Op_Fetch, Decode, Execute, Receive, Transmit);
 
 		signal current_state, next_state: State;
+		attribute keep:boolean;
+        attribute keep of current_state:signal is true;
 		signal PC_reg, INS_reg, TMP_reg: std_logic_vector(7 downto 0);
 		signal PC_reg_tmp, INS_reg_tmp, TMP_reg_tmp: std_logic_vector(7 downto 0);
 		

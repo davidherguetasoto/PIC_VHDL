@@ -15,7 +15,9 @@ END ram_general;
 
 ARCHITECTURE behavior OF ram_general IS
 
-  SIGNAL contents_ram : array8_ram(191 downto 0);
+  SIGNAL contents_ram : array8_ram(255 downto 0);
+  attribute keep:boolean;
+  attribute keep of contents_ram:signal is true;
 
 BEGIN
 
@@ -25,14 +27,14 @@ BEGIN
 p_ram : process (clk)  -- no reset
 begin
   if clk'event and clk = '1' then
-    if write_en = '1' and unsigned(address) >= 64 and (unsigned(address) <= 255) then
+    if write_en = '1' and unsigned(address) >= 64 and (unsigned(address) <= 319) then
       contents_ram(to_integer(unsigned(address))-64) <= databus;
     end if;
   end if;
 
 end process;
 
-databus <= contents_ram(to_integer(unsigned(address))-64) when oe = '0' and unsigned(address) >= 64 and (unsigned(address) <= 255) else (others => 'Z');
+databus <= contents_ram(to_integer(unsigned(address))-64) when oe = '0' and unsigned(address) >= 64 and (unsigned(address) <= 319) else (others => 'Z');
 
 END behavior;
 
