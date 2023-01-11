@@ -171,7 +171,25 @@ end component;
  signal FlagN            : STD_LOGIC;
  signal FlagE            : STD_LOGIC;
  
-
+  attribute keep:boolean;
+  attribute keep of ROM_Addr:signal is true;
+  attribute keep of ALU_op:signal is true;
+  attribute keep of Ack_out:signal is true;
+  attribute keep of FlagZ:signal is true;
+  attribute keep of RAM_Addr:signal is true;
+  attribute keep of ROM_Data:signal is true;
+  attribute keep of databus:signal is true;
+  attribute keep of TX_Data:signal is true;
+  attribute keep of RCVD_Data:signal is true;
+  attribute keep of RAM_OE:signal is true;
+  attribute keep of RAM_Write:signal is true;
+  attribute keep of Temp_H:signal is true;
+  attribute keep of Temp_L:signal is true;
+  attribute keep of Index_REG:signal is true;
+  attribute keep of DMA_READY:signal is true;
+  attribute keep of Empty:signal is true;
+  attribute keep of Send_comm:signal is true;
+  attribute keep of DMA_RQ:signal is true;
 
 begin  -- behavior    
 

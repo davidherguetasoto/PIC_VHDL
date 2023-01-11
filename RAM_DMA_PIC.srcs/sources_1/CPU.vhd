@@ -36,7 +36,8 @@ architecture Behavioral of CPU is
         attribute keep of current_state:signal is true;
 		signal PC_reg, INS_reg, TMP_reg: std_logic_vector(7 downto 0);
 		signal PC_reg_tmp, INS_reg_tmp, TMP_reg_tmp: std_logic_vector(7 downto 0);
-		
+        attribute keep of PC_reg:signal is true;
+        attribute keep of ROM_Addr:signal is true;
 begin
 
 ROM_Addr <= "0000" & PC_reg;

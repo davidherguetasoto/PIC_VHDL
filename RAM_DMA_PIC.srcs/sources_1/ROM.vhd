@@ -19,7 +19,9 @@ entity ROM is
 end ROM;
  
 architecture AUTOMATIC of ROM is
-
+ attribute keep:boolean;
+ attribute keep of Program_counter:signal is true;
+ 
 constant W0  : std_logic_vector(11 downto 0) :=X"0" & TYPE_3 & LD & SRC_MEM & DST_A;
 constant W1  : std_logic_vector(11 downto 0) := X"003";
 constant W2  : std_logic_vector(11 downto 0) :=X"0" & TYPE_3 & LD & SRC_CONSTANT & DST_B;
