@@ -14,11 +14,11 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0.000000 us"></ZoomStartTime>
-      <ZoomEndTime time="1,251.343286 us"></ZoomEndTime>
+      <ZoomEndTime time="3,300.000001 us"></ZoomEndTime>
       <Cursor1Time time="1.000000 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="232"></NameColumnWidth>
+      <NameColumnWidth column_width="227"></NameColumnWidth>
       <ValueColumnWidth column_width="72"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="16" />
@@ -297,7 +297,6 @@
    <wvobject fp_name="group461" type="group">
       <obj_property name="label">RAM</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/PICtopCompleta_tb/UUT/RAM_PHY/Clk" type="logic">
          <obj_property name="ElementShortName">Clk</obj_property>
          <obj_property name="ObjectShortName">Clk</obj_property>
@@ -421,6 +420,7 @@
       <wvobject fp_name="group519" type="group">
          <obj_property name="label">DMA_TX</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/Send_comm" type="logic">
             <obj_property name="ElementShortName">Send_comm</obj_property>
             <obj_property name="ObjectShortName">Send_comm</obj_property>
@@ -440,6 +440,7 @@
          <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/TX_Data" type="array">
             <obj_property name="ElementShortName">TX_Data[7:0]</obj_property>
             <obj_property name="ObjectShortName">TX_Data[7:0]</obj_property>
+            <obj_property name="Radix">ASCIIRADIX</obj_property>
          </wvobject>
       </wvobject>
       <wvobject fp_name="group518" type="group">
@@ -449,6 +450,7 @@
          <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/RCVD_Data" type="array">
             <obj_property name="ElementShortName">RCVD_Data[7:0]</obj_property>
             <obj_property name="ObjectShortName">RCVD_Data[7:0]</obj_property>
+            <obj_property name="Radix">ASCIIRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/PICtopCompleta_tb/UUT/DMA_PHY/RX_Empty" type="logic">
             <obj_property name="ElementShortName">RX_Empty</obj_property>

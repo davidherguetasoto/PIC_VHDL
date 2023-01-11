@@ -99,6 +99,20 @@ begin  -- TestBench
      Transmit(RS232_RX, X"32");
      wait for 40 us;
      Transmit(RS232_RX, X"31");
+               wait for 80 us;
+-- Actuador  (A 5 7)
+     Transmit(RS232_RX, X"41");
+     wait for 40 us;
+     Transmit(RS232_RX, X"35");
+     wait for 40 us;
+     Transmit(RS232_RX, X"37");
+     wait for 80 us;
+-- (S A 5)
+     Transmit(RS232_RX, X"53");
+     wait for 40 us;
+     Transmit(RS232_RX, X"41");
+     wait for 40 us;
+     Transmit(RS232_RX, X"35");
      wait;
   end process SEND_STUFF;
    

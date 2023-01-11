@@ -190,6 +190,44 @@ begin  -- TestBench
         JA(2)<=data(i);
         wait for 8680 ns;
     end loop;
+        wait for 40 us;
+ -- A 5 7   
+    data := "1010000010";
+    for i in 0 to 9 loop 
+        JA(2)<=data(i);
+        wait for 8680 ns;
+    end loop;    wait for 40 us;
+    
+    data := "1001101010";
+    for i in 0 to 9 loop 
+        JA(2)<=data(i);
+        wait for 8680 ns;
+    end loop;    wait for 40 us;
+    
+    data := "1001101110";
+    for i in 0 to 9 loop 
+        JA(2)<=data(i);
+        wait for 8680 ns;
+    end loop;
+        wait for 40 us;
+  -- S A 5  
+    data := "1010100110";
+    for i in 0 to 9 loop 
+        JA(2)<=data(i);
+        wait for 8680 ns;
+    end loop;    wait for 40 us;
+    
+    data := "1010000010";
+    for i in 0 to 9 loop 
+        JA(2)<=data(i);
+        wait for 8680 ns;
+    end loop;    wait for 40 us;
+    
+    data := "1001101010";
+    for i in 0 to 9 loop 
+        JA(2)<=data(i);
+        wait for 8680 ns;
+    end loop;
     wait;
     
   
