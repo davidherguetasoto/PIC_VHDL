@@ -3,7 +3,7 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="tb_Nexys_completo_behav.wdb" id="1">
+      <db_ref path="tb_Nexys_completo_time_impl.wdb" id="1">
          <top_modules>
             <top_module name="glbl" />
             <top_module name="pic_pkg" />
@@ -13,13 +13,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="415,637.500 ns"></ZoomStartTime>
-      <ZoomEndTime time="416,492.501 ns"></ZoomEndTime>
-      <Cursor1Time time="416,230.000 ns"></Cursor1Time>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="2,344.893701 us"></ZoomEndTime>
+      <Cursor1Time time="1,563.564433 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="234"></NameColumnWidth>
-      <ValueColumnWidth column_width="72"></ValueColumnWidth>
+      <NameColumnWidth column_width="343"></NameColumnWidth>
+      <ValueColumnWidth column_width="156"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="12" />
    <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/CLK100MHZ" type="logic">
@@ -74,9 +74,9 @@
          <obj_property name="ElementShortName">databus[7:0]</obj_property>
          <obj_property name="ObjectShortName">databus[7:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/ALU_op" type="other">
-         <obj_property name="ElementShortName">ALU_op</obj_property>
-         <obj_property name="ObjectShortName">ALU_op</obj_property>
+      <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/ALU_op" type="array">
+         <obj_property name="ElementShortName">ALU_op[4:0]</obj_property>
+         <obj_property name="ObjectShortName">ALU_op[4:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/ALU_PHY/REG_A" type="array">
          <obj_property name="ElementShortName">REG_A[7:0]</obj_property>
@@ -119,25 +119,25 @@
          <obj_property name="ElementShortName">databus[7:0]</obj_property>
          <obj_property name="ObjectShortName">databus[7:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/ALU_op" type="other">
-         <obj_property name="ElementShortName">ALU_op</obj_property>
-         <obj_property name="ObjectShortName">ALU_op</obj_property>
+      <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/ALU_op" type="array">
+         <obj_property name="ElementShortName">ALU_op[4:0]</obj_property>
+         <obj_property name="ObjectShortName">ALU_op[4:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/CPU_PHY/next_state" type="other">
-         <obj_property name="ElementShortName">next_state</obj_property>
-         <obj_property name="ObjectShortName">next_state</obj_property>
+      <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/CPU_PHY/next_state" type="array">
+         <obj_property name="ElementShortName">next_state[2:0]</obj_property>
+         <obj_property name="ObjectShortName">next_state[2:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/CPU_PHY/PC_reg" type="array">
          <obj_property name="ElementShortName">PC_reg[7:0]</obj_property>
          <obj_property name="ObjectShortName">PC_reg[7:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/CPU_PHY/current_state" type="other">
-         <obj_property name="ElementShortName">current_state</obj_property>
-         <obj_property name="ObjectShortName">current_state</obj_property>
+      <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/CPU_PHY/current_state" type="array">
+         <obj_property name="ElementShortName">current_state[2:0]</obj_property>
+         <obj_property name="ObjectShortName">current_state[2:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/CPU_PHY/next_state" type="other">
-         <obj_property name="ElementShortName">next_state</obj_property>
-         <obj_property name="ObjectShortName">next_state</obj_property>
+      <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/CPU_PHY/next_state" type="array">
+         <obj_property name="ElementShortName">next_state[2:0]</obj_property>
+         <obj_property name="ObjectShortName">next_state[2:0]</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group1282" type="group">
@@ -225,10 +225,160 @@
       <wvobject fp_name="group2009" type="group">
          <obj_property name="label">RAM_Especifica</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[0]_63 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[0]_63 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[0]_63 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[1]_62 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[1]_62 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[1]_62 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[2]_61 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[2]_61 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[2]_61 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[3]_60 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[3]_60 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[3]_60 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[4]_59 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[4]_59 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[4]_59 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[5]_58 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[5]_58 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[5]_58 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[10]_53 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[10]_53 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[10]_53 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[11]_52 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[11]_52 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[11]_52 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[12]_51 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[12]_51 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[12]_51 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[13]_50 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[13]_50 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[13]_50 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[14]_49 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[14]_49 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[14]_49 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[15]_48 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[15]_48 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[15]_48 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[16]_0 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[16]_0 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[16]_0 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[17]_1 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[17]_1 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[17]_1 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[18]_2 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[18]_2 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[18]_2 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[19]_3 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[19]_3 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[19]_3 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[20]_4 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[20]_4 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[20]_4 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[21]_5 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[21]_5 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[21]_5 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[22]_6 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[22]_6 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[22]_6 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[23]_7 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[23]_7 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[23]_7 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[24]_47 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[24]_47 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[24]_47 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[25]_46 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[25]_46 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[25]_46 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[26]_45 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[26]_45 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[26]_45 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[27]_44 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[27]_44 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[27]_44 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[28]_43 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[28]_43 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[28]_43 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[29]_42 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[29]_42 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[29]_42 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[32]_39 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[32]_39 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[32]_39 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[33]_38 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[33]_38 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[33]_38 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[34]_37 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[34]_37 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[34]_37 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[35]_36 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[35]_36 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[35]_36 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[36]_35 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[36]_35 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[36]_35 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[37]_34 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[37]_34 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[37]_34 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[38]_33 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[38]_33 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[38]_33 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[39]_32 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[39]_32 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[39]_32 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[40]_31 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[40]_31 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[40]_31 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[41]_30 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[41]_30 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[41]_30 [7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[49]_8 " type="array">
+            <obj_property name="ElementShortName">\contents_ram[49]_8 [7:0]</obj_property>
+            <obj_property name="ObjectShortName">\contents_ram[49]_8 [7:0]</obj_property>
+         </wvobject>
       </wvobject>
       <wvobject fp_name="group2060" type="group">
          <obj_property name="label">RAM_General</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group2418" type="group">
@@ -249,13 +399,13 @@
       <wvobject fp_name="group2470" type="group">
          <obj_property name="label">RX</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RS232_PHY/Receiver/BitCounter" type="other">
-            <obj_property name="ElementShortName">BitCounter</obj_property>
-            <obj_property name="ObjectShortName">BitCounter</obj_property>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RS232_PHY/Receiver/BitCounter" type="array">
+            <obj_property name="ElementShortName">BitCounter[31:0]</obj_property>
+            <obj_property name="ObjectShortName">BitCounter[31:0]</obj_property>
          </wvobject>
-         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RS232_PHY/Receiver/HalfBitCounter" type="other">
-            <obj_property name="ElementShortName">HalfBitCounter</obj_property>
-            <obj_property name="ObjectShortName">HalfBitCounter</obj_property>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RS232_PHY/Receiver/HalfBitCounter" type="array">
+            <obj_property name="ElementShortName">HalfBitCounter[31:0]</obj_property>
+            <obj_property name="ObjectShortName">HalfBitCounter[31:0]</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RS232_PHY/Receiver/LineRD_in" type="logic">
             <obj_property name="ElementShortName">LineRD_in</obj_property>
@@ -273,13 +423,13 @@
             <obj_property name="ElementShortName">end_HalfBitCounter</obj_property>
             <obj_property name="ObjectShortName">end_HalfBitCounter</obj_property>
          </wvobject>
-         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RS232_PHY/Receiver/next_state" type="other">
-            <obj_property name="ElementShortName">next_state</obj_property>
-            <obj_property name="ObjectShortName">next_state</obj_property>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RS232_PHY/Receiver/next_state" type="array">
+            <obj_property name="ElementShortName">next_state[1:0]</obj_property>
+            <obj_property name="ObjectShortName">next_state[1:0]</obj_property>
          </wvobject>
-         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RS232_PHY/Receiver/present_state" type="other">
-            <obj_property name="ElementShortName">present_state</obj_property>
-            <obj_property name="ObjectShortName">present_state</obj_property>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RS232_PHY/Receiver/present_state" type="array">
+            <obj_property name="ElementShortName">present_state[1:0]</obj_property>
+            <obj_property name="ObjectShortName">present_state[1:0]</obj_property>
          </wvobject>
       </wvobject>
       <wvobject fp_name="group2760" type="group">
@@ -812,9 +962,9 @@
       <wvobject fp_name="group2993" type="group">
          <obj_property name="label">Shift</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RS232_PHY/Shift/D" type="logic">
-            <obj_property name="ElementShortName">D</obj_property>
-            <obj_property name="ObjectShortName">D</obj_property>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RS232_PHY/Shift/D" type="array">
+            <obj_property name="ElementShortName">D[0:0]</obj_property>
+            <obj_property name="ObjectShortName">D[0:0]</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RS232_PHY/Shift/Q" type="array">
             <obj_property name="ElementShortName">Q[7:0]</obj_property>
@@ -824,13 +974,9 @@
       <wvobject fp_name="group2999" type="group">
          <obj_property name="label">TX</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RS232_PHY/Transmitter/NextState" type="other">
-            <obj_property name="ElementShortName">NextState</obj_property>
-            <obj_property name="ObjectShortName">NextState</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RS232_PHY/Transmitter/start" type="logic">
-            <obj_property name="ElementShortName">start</obj_property>
-            <obj_property name="ObjectShortName">start</obj_property>
+         <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RS232_PHY/Transmitter/NextState" type="array">
+            <obj_property name="ElementShortName">NextState[1:0]</obj_property>
+            <obj_property name="ObjectShortName">NextState[1:0]</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RS232_PHY/Transmitter/end2_PulseCounter" type="logic">
             <obj_property name="ElementShortName">end2_PulseCounter</obj_property>
