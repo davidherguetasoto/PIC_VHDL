@@ -63,18 +63,18 @@ ARCHITECTURE behavior OF RAM IS
   
 BEGIN
 
-selector_RAM:process(address,write_en)
+selector_RAM:process(address,write_en,oe)
 begin
     if unsigned(address) < to_unsigned(64,address'length) then
         address_RAM_ESPECIFICA<=address;
-        OE_RAM_ESPECIFICA<='0';
+        OE_RAM_ESPECIFICA<=oe;
         WRITE_RAM_ESPECIFICA<=write_en;
         address_RAM_GENERAL<=(others=>'Z');
         OE_RAM_GENERAL<='1';
         WRITE_RAM_GENERAL<='0';
     elsif unsigned(address) >= to_unsigned(64,address'length) and unsigned(address) <= to_unsigned(255,address'length) then 
         address_RAM_GENERAL<= std_logic_vector(unsigned(address)-to_unsigned(64,address'length)); --address-64
-        OE_RAM_GENERAL<='0';
+        OE_RAM_GENERAL<=oe;
         WRITE_RAM_GENERAL<=write_en;
         address_RAM_ESPECIFICA<=(others=>'Z');
         OE_RAM_ESPECIFICA<='1';

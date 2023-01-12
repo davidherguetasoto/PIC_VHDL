@@ -47,8 +47,8 @@ begin
 		-- Valores por defecto
 		Databus <= (others => 'Z');
 		RAM_Addr <= (others => 'Z'); -- By default, address zero of the RAM is selected.
-		RAM_Write <= 'Z'; -- By default, values are not written in the RAM. (The write enable is active high).
-		RAM_OE <= 'Z'; -- By default, the output of the RAM is not enabled. (The RAM OE is active low).
+		RAM_Write <= '0'; -- By default, values are not written in the RAM. (The write enable is active high).
+		RAM_OE <= '1'; -- By default, the output of the RAM is not enabled. (The RAM OE is active low).
 		DMA_Ack <= '0';
 		Send_comm <= '0';
 		ALU_op <= nop;

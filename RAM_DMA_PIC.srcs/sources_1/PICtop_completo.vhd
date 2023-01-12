@@ -170,8 +170,22 @@ end component;
  signal FlagC            : STD_LOGIC;
  signal FlagN            : STD_LOGIC;
  signal FlagE            : STD_LOGIC;
+ signal RAM_Address_DMA  : std_logic_vector(7 downto 0);
+ signal RAM_Address_CPU  : std_logic_vector(7 downto 0);
+ signal RAM_WRITE_DMA    : std_logic;
+ signal RAM_WRITE_CPU    : std_logic;
+ signal RAM_OE_CPU       : std_logic;
+ signal RAM_OE_DMA       : std_logic;
+ 
  
   attribute keep:boolean;
+  attribute keep of RAM_OE_CPU:signal is true;
+  attribute keep of RAM_OE_DMA:signal is true;
+  attribute keep of RAM_Address_CPU:signal is true;
+  attribute keep of RAM_Address_DMA:signal is true;
+  attribute keep of RAM_WRITE_CPU:signal is true;
+  attribute keep of RAM_WRITE_DMA:signal is true;
+  
   attribute keep of ROM_Addr:signal is true;
   attribute keep of ALU_op:signal is true;
   attribute keep of Ack_out:signal is true;
@@ -192,6 +206,23 @@ end component;
   attribute keep of DMA_RQ:signal is true;
 
 begin  -- behavior    
+
+direccionamiento_RAM:process(RAM_Address_CPU,RAM_Address_DMA,RAM_WRITE_CPU,RAM_WRITE_DMA, RAM_OE_CPU, RAM_OE_DMA, RAM_Addr)
+begin
+    if (RAM_OE_CPU='0' or RAM_WRITE_CPU='1') then 
+        RAM_Addr<=RAM_Address_CPU;
+        RAM_Write<=RAM_WRITE_CPU;
+        RAM_OE<=RAM_OE_CPU;
+    elsif(RAM_OE_DMA='0' or RAM_WRITE_DMA='1') then 
+        RAM_Addr<=RAM_Address_DMA;
+        RAM_Write<=RAM_WRITE_DMA;
+        RAM_OE<=RAM_OE_DMA;        
+    else 
+        RAM_Addr <= RAM_Addr;
+        RAM_Write<='0';
+        RAM_OE<='1';
+    end if;
+end process;
 
   RS232_PHY: RS232top
     generic map(
@@ -237,10 +268,10 @@ begin  -- behavior
         TX_RDY    => TX_RDY,
         Valid_D   => Valid_D,
         TX_Data   => TX_Data,
-        Address   => RAM_Addr,
+        Address   => RAM_Address_DMA,
         Databus   => databus,
-        Write_en  => RAM_Write,
-        OE        => RAM_OE,
+        Write_en  => RAM_WRITE_DMA,
+        OE        => RAM_OE_DMA,
         DMA_RQ    => DMA_RQ,
         DMA_ACK   => DMA_ACK,
         Send_comm => Send_comm,
@@ -252,9 +283,9 @@ begin  -- behavior
         Reset => Reset,
         ROM_Data => ROM_Data,
         ROM_Addr => ROM_Addr,
-        RAM_Addr => RAM_Addr,
-        RAM_Write => RAM_Write,
-        RAM_OE => RAM_OE,
+        RAM_Addr => RAM_Address_CPU,
+        RAM_Write => RAM_WRITE_CPU,
+        RAM_OE => RAM_OE_CPU,
         Databus => databus,
         DMA_RQ => DMA_RQ,
         DMA_ACK => DMA_ACK,

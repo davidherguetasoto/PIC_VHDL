@@ -36,7 +36,7 @@ begin
     end loop;    
     contents_ram(to_integer(unsigned(T_STAT))) <= "00010000"; 
   elsif clk'event and clk = '1' then
-    if write_en = '1' and oe='0' then
+    if write_en = '1' and oe='1' then
       contents_ram(to_integer(unsigned(address))) <= databus;
     end if;
   end if;

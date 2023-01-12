@@ -61,8 +61,8 @@ begin
         DMA_RQ <= '0';
         Data_Read <= '0';
         Valid_D <= '1';
-        Write_en <= 'Z';
-        OE <= 'Z';
+        Write_en <= '0';
+        OE <= '1';
         databus <= (others => 'Z');
         Address <= (others => 'Z');
         TX_Data <= (others => '0');
