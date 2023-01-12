@@ -11,13 +11,13 @@ entity nexys_PIC_completo is
   port (
     
 	-- Puertos PMOD de usuario (x4)
-	JA 				: inout STD_LOGIC_VECTOR(2 downto 1);    
+	--JA 				: inout STD_LOGIC_VECTOR(2 downto 1);    
 	
     --Interfaz USB-RS232
---    UART_TXD_IN     : in  STD_LOGIC;
---    UART_RXD_OUT    : out  STD_LOGIC;
---    UART_CTS        : in  STD_LOGIC;
---    UART_RTS        : in  STD_LOGIC;
+    UART_TXD_IN     : in  STD_LOGIC;
+    UART_RXD_OUT    : out  STD_LOGIC;
+    UART_CTS        : in  STD_LOGIC;
+    UART_RTS        : in  STD_LOGIC;
 
 ---------------------------------------------------------------------------------------
 	-- Displays 7 segmentos (x8)
@@ -92,13 +92,13 @@ begin
      
 
 -- 3a.Realimentación lineas TD => RD  (necesita un cable entre los pines 1 y 2 del pmodJA)
-     JA(1) <= TD;   -- OUTPUT PORT     
-     JA(2) <= 'Z';   -- OUTPUT PORT
-     RD <= JA(2);   -- INPUT PORT
+--     JA(1) <= TD;   -- OUTPUT PORT     
+--     JA(2) <= 'Z';   -- OUTPUT PORT
+--     RD <= JA(2);   -- INPUT PORT
 
 -- 3b.conexión de las lineas TD y RD PC mediante el puerto microUSB (puerto serie RS232)
---    UART_RXD_OUT <= TD;
---    RD <= UART_TXD_IN;
+    UART_RXD_OUT <= TD;
+    RD <= UART_TXD_IN;
 
 -- 4.Displays: Muestra el valor de la temperatura en los dos displays inferiores, y anula los otros 6. 
     CA <= not(temp_H(0)) when contador(16)='1' else not(temp_L(0));
