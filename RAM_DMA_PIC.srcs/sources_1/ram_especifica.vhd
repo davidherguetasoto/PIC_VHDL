@@ -27,6 +27,8 @@ ARCHITECTURE behavior OF ram_especifica IS
   attribute keep of write_en:signal is true;
   attribute keep of address:signal is true;
   
+  signal content_ram_temp : STD_LOGIC_VECTOR(7 downto 0);
+  
 BEGIN
 p_ram : process (clk, reset)
 begin
@@ -51,14 +53,20 @@ end generate;
 -------------------------------------------------------------------------
 -- Decodificador de BCD a 7 segmentos
 -------------------------------------------------------------------------
+
 with contents_ram(to_integer(unsigned(T_STAT)))(7 downto 4) select
+content_ram_temp <=
+    "11111111" when "0000", -- error   
+    contents_ram(to_integer(unsigned(T_STAT)))(7 downto 0) when others;  
+    
+with content_ram_temp(7 downto 4) select
 Temp_H <=
     "0000110" when "0001",  -- 1
     "1011011" when "0010",  -- 2
     "1111001" when others;  -- E (error)
-    
-with contents_ram(to_integer(unsigned(T_STAT)))(3 downto 0) select
-Temp_L <=
+
+with content_ram_temp(3 downto 0) select
+Temp_L <=   
     "0111111" when "0000",  -- 0
     "0000110" when "0001",  -- 1
     "1011011" when "0010",  -- 2
@@ -68,7 +76,7 @@ Temp_L <=
     "1111101" when "0110",  -- 6
     "0000111" when "0111",  -- 7
     "1111111" when "1000",  -- 8
-    "1101111" when "1001",  -- 9
-    "1010000" when others;  -- r (error)  
+    "1101111" when "1001",  -- 9    
+    "1010000" when others;    -- r (error)  
 
 END behavior;
