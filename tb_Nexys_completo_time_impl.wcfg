@@ -13,9 +13,9 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
-      <ZoomEndTime time="2,344.893701 us"></ZoomEndTime>
-      <Cursor1Time time="1,563.564433 us"></Cursor1Time>
+      <ZoomStartTime time="20.307667 us"></ZoomStartTime>
+      <ZoomEndTime time="2,392.307668 us"></ZoomEndTime>
+      <Cursor1Time time="415.641000 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="343"></NameColumnWidth>
@@ -168,7 +168,7 @@
       <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/TX_Data" type="array">
          <obj_property name="ElementShortName">TX_Data[7:0]</obj_property>
          <obj_property name="ObjectShortName">TX_Data[7:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="Radix">ASCIIRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/databus" type="array">
          <obj_property name="ElementShortName">databus[7:0]</obj_property>
@@ -229,26 +229,32 @@
          <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[0]_63 " type="array">
             <obj_property name="ElementShortName">\contents_ram[0]_63 [7:0]</obj_property>
             <obj_property name="ObjectShortName">\contents_ram[0]_63 [7:0]</obj_property>
+            <obj_property name="Radix">ASCIIRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[1]_62 " type="array">
             <obj_property name="ElementShortName">\contents_ram[1]_62 [7:0]</obj_property>
             <obj_property name="ObjectShortName">\contents_ram[1]_62 [7:0]</obj_property>
+            <obj_property name="Radix">ASCIIRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[2]_61 " type="array">
             <obj_property name="ElementShortName">\contents_ram[2]_61 [7:0]</obj_property>
             <obj_property name="ObjectShortName">\contents_ram[2]_61 [7:0]</obj_property>
+            <obj_property name="Radix">ASCIIRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[3]_60 " type="array">
             <obj_property name="ElementShortName">\contents_ram[3]_60 [7:0]</obj_property>
             <obj_property name="ObjectShortName">\contents_ram[3]_60 [7:0]</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[4]_59 " type="array">
             <obj_property name="ElementShortName">\contents_ram[4]_59 [7:0]</obj_property>
             <obj_property name="ObjectShortName">\contents_ram[4]_59 [7:0]</obj_property>
+            <obj_property name="Radix">ASCIIRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[5]_58 " type="array">
             <obj_property name="ElementShortName">\contents_ram[5]_58 [7:0]</obj_property>
             <obj_property name="ObjectShortName">\contents_ram[5]_58 [7:0]</obj_property>
+            <obj_property name="Radix">ASCIIRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[10]_53 " type="array">
             <obj_property name="ElementShortName">\contents_ram[10]_53 [7:0]</obj_property>
@@ -373,6 +379,7 @@
          <wvobject fp_name="/tb_Nexys_completo/Unit_nexys_PIC/UUT/RAM_PHY/INST_RAM_ESPECIFICA/\contents_ram[49]_8 " type="array">
             <obj_property name="ElementShortName">\contents_ram[49]_8 [7:0]</obj_property>
             <obj_property name="ObjectShortName">\contents_ram[49]_8 [7:0]</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
          </wvobject>
       </wvobject>
       <wvobject fp_name="group2060" type="group">
