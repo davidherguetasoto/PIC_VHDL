@@ -218,7 +218,7 @@ begin
         RAM_Write<=RAM_WRITE_DMA;
         RAM_OE<=RAM_OE_DMA;        
     else 
-        RAM_Addr <= RAM_Addr;
+        RAM_Addr <= (others=>'0');
         RAM_Write<='0';
         RAM_OE<='1';
     end if;

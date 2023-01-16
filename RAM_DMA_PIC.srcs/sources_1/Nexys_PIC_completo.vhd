@@ -11,7 +11,7 @@ entity nexys_PIC_completo is
   port (
     
 	-- Puertos PMOD de usuario (x4)
-	--JA 				: inout STD_LOGIC_VECTOR(2 downto 1);    --Descomentar JA y comentar USB tanto aqui como en el fichero .XDC para simulaciones
+--	JA 				: inout STD_LOGIC_VECTOR(2 downto 1);    --Descomentar JA y comentar USB tanto aqui como en el fichero .XDC para simulaciones
 	
     --Interfaz USB-RS232
     UART_TXD_IN     : in  STD_LOGIC;
