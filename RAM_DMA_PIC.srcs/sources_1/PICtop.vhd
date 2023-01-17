@@ -5,25 +5,18 @@ USE IEEE.numeric_std.all;
 
 USE work.PIC_pkg.all;
 
-entity terna_top is
-  port (
-    Reset    : in  std_logic;                      -- Asynchronous, active low
-    Clk      : in  std_logic;                      -- System clock, 20 MHz, rising_edge
-    i_write_en    : in  std_logic;                            -- Signals needed to access directly to the RAM (read/write)
-    i_oe          : in  std_logic;                            -- Signals needed to access directly to the RAM (read/write)
-    i_address     : in std_logic_vector(7 downto 0);          -- Signals needed to access directly to the RAM (read/write)
-    databus     : inout std_logic_vector(7 downto 0);     -- Signals needed to access directly to the RAM (read/write)
-    i_send        : in  std_logic;                            -- Indicates the DMA to send the RAM positions 4 y 5 (CPU response)
-    --i_req         : in std_logic; --DUDA 
-     
-    RS232_RX    : in  std_logic;           -- RS232 RX line
-    RS232_TX    : out std_logic;           -- RS232 TX line
+entity PICtop is
+ port (
+    Reset    : in  std_logic;                         -- Asynchronous, active low
+    Clk      : in  std_logic;                         -- System clock, 20 MHz, rising_edge    
+    RS232_RX    : in  std_logic;                      -- RS232 RX line
+    RS232_TX    : out std_logic;                      -- RS232 TX line
     switches    : out std_logic_vector(7 downto 0);   -- Switch status bargraph
     Temp_L      : out std_logic_vector(6 downto 0);   -- Display value for TL
     Temp_H      : out std_logic_vector(6 downto 0));  -- Display value for TH 
-    end terna_top;
+end PICtop;
 
-architecture behavior of terna_top is
+architecture behavior of PICtop is
 
 ---------------------------------------------------------------------
 --CONSTANTES DEL PUERTO SERIE RS232
@@ -32,27 +25,31 @@ architecture behavior of terna_top is
   constant data_width: integer:=8;                 --Ancho de palabra del dato enviado por el puerto RS232
   constant n_start_bit:std_logic:='0';             --Nº de bits de Start y Stop en el RS232. Si '1' dos bits, si '0' 1 bit.
 ----------------------------------------------------------------------
-   
+
+-----------------------------------------------------------------------------
+-- RS232
   component RS232top
     generic(baudrate: integer; clk_freq_RS232: integer; data_width: integer; n_start_bit:std_logic);
     port (
       Reset     : in  std_logic;
       Clk       : in  std_logic;
-      Data_in   : in  std_logic_vector(data_width-1 downto 0);
+      Data_in   : in  std_logic_vector(7 downto 0);
       Valid_D   : in  std_logic;
       Ack_in    : out std_logic;
       TX_RDY    : out std_logic;
       TD        : out std_logic;
       RD        : in  std_logic;
-      Data_out  : out std_logic_vector(data_width-1 downto 0);
+      Data_out  : out std_logic_vector(7 downto 0);
       Data_read : in  std_logic;
       Full      : out std_logic;
       Empty     : out std_logic);
   end component;
   
-   ------------------------------------------------------------------------
-  -- RAM
-  ------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+-- RAM
+------------------------------------------------------------------------
   
    component RAM
     port (
@@ -67,9 +64,9 @@ architecture behavior of terna_top is
       Temp_H   : out std_logic_vector(6 downto 0));
   end component;
   
-  ------------------------------------------------------------------------
-  --  DMA
-  ------------------------------------------------------------------------
+------------------------------------------------------------------------
+--  DMA
+------------------------------------------------------------------------
   
    component DMA
     port ( Reset 		: in STD_LOGIC;
@@ -92,31 +89,140 @@ architecture behavior of terna_top is
            READY 		: out STD_LOGIC	);
   end component;
   
-  ------------------------------------------------------------------------
-  -- Internal Signals
-  ------------------------------------------------------------------------
+ ------------------------------------------------------------------------
+--  CPU
+------------------------------------------------------------------------
+ 
+ component CPU is
+    port ( Reset : in  STD_LOGIC;
+           Clk : in  STD_LOGIC;
+           ROM_Data : in  STD_LOGIC_VECTOR (11 downto 0);
+           ROM_Addr : out  STD_LOGIC_VECTOR (11 downto 0);
+           RAM_Addr : out  STD_LOGIC_VECTOR (7 downto 0);
+           RAM_Write : out  STD_LOGIC;
+           RAM_OE : out  STD_LOGIC;
+           Databus : inout  STD_LOGIC_VECTOR (7 downto 0);
+           DMA_RQ : in  STD_LOGIC;
+           DMA_ACK : out  STD_LOGIC;
+           SEND_comm : out  STD_LOGIC;
+           DMA_READY : in  STD_LOGIC;
+           Alu_op : out  alu_op;
+           Index_Reg : in  STD_LOGIC_VECTOR (7 downto 0);
+           FlagZ : in  STD_LOGIC;
+           FlagC : in  STD_LOGIC;
+           FlagN : in  STD_LOGIC;
+           FlagE : in  STD_LOGIC);
+end component;
 
- signal TX_Data      : STD_LOGIC_VECTOR (7 downto 0);
- signal RCVD_Data    : STD_LOGIC_VECTOR (7 downto 0);
- signal address      : STD_LOGIC_VECTOR (7 downto 0);
- --signal databus      : STD_LOGIC_VECTOR (7 downto 0);
- signal Valid_D      : STD_LOGIC;
- signal Ack_out      : STD_LOGIC;
- signal TX_RDY       : STD_LOGIC;
- signal Data_Read    : STD_LOGIC;
- signal Full         : STD_LOGIC;
- signal Empty        : STD_LOGIC;
- signal Write_en     : STD_LOGIC;
- signal OE           : STD_LOGIC;
- signal DMA_RQ       : STD_LOGIC;
- signal DMA_ACK      : STD_LOGIC;
- signal Send_comm    : STD_LOGIC;
- signal READY        : STD_LOGIC;
+------------------------------------------------------------------------
+-- ROM
+------------------------------------------------------------------------
 
- signal write_en_mem, oe_mem, i_address_req  : STD_LOGIC;
- signal address_mem  : STD_LOGIC_VECTOR(7 downto 0);
-    
+component ROM is
+  port (
+    Instruction     : out std_logic_vector(11 downto 0);  -- Instruction bus
+    Program_counter : in  std_logic_vector(11 downto 0));
+end component;
+
+------------------------------------------------------------------------
+-- ALU
+------------------------------------------------------------------------
+
+component ALU is
+port (
+    Reset : in std_logic; -- asynnchronous, active low
+    Clk : in std_logic; -- Sys clock, 20MHz, rising_edge
+    u_instruction : in alu_op; -- u-instructions from CPU
+    FlagZ : out std_logic; -- Zero flag
+    FlagC : out std_logic; -- Carry flag
+    FlagN : out std_logic; -- Nibble carry bit
+    FlagE : out std_logic; -- Error flag
+    Index_Reg : out std_logic_vector(7 downto 0); -- Index register
+    Databus : inout std_logic_vector(7 downto 0) -- System Data bus
+);
+end component;
+
+------------------------------------------------------------------------
+-- Internal Signals
+------------------------------------------------------------------------
+
+ signal TX_Data          : STD_LOGIC_VECTOR (7 downto 0);
+ signal RCVD_Data        : STD_LOGIC_VECTOR (7 downto 0);
+ signal databus          : STD_LOGIC_VECTOR (7 downto 0);
+ signal Valid_D          : STD_LOGIC;
+ signal Ack_out          : STD_LOGIC;
+ signal TX_RDY           : STD_LOGIC;
+ signal Data_Read        : STD_LOGIC;
+ signal Full             : STD_LOGIC;
+ signal Empty            : STD_LOGIC;
+ signal DMA_RQ           : STD_LOGIC;
+ signal DMA_ACK          : STD_LOGIC;
+ signal Send_comm        : STD_LOGIC;
+ signal DMA_READY        : STD_LOGIC;
+ signal ROM_Data         : STD_LOGIC_VECTOR (11 downto 0);
+ signal ROM_Addr         : STD_LOGIC_VECTOR (11 downto 0);
+ signal RAM_Addr         : STD_LOGIC_VECTOR (7 downto 0);
+ signal RAM_Write        : STD_LOGIC;
+ signal RAM_OE           : STD_LOGIC;
+ signal ALU_op           : alu_op;
+ signal Index_REG        : STD_LOGIC_VECTOR (7 downto 0);
+ signal FlagZ            : STD_LOGIC;
+ signal FlagC            : STD_LOGIC;
+ signal FlagN            : STD_LOGIC;
+ signal FlagE            : STD_LOGIC;
+ signal RAM_Address_DMA  : std_logic_vector(7 downto 0);
+ signal RAM_Address_CPU  : std_logic_vector(7 downto 0);
+ signal RAM_WRITE_DMA    : std_logic;
+ signal RAM_WRITE_CPU    : std_logic;
+ signal RAM_OE_CPU       : std_logic;
+ signal RAM_OE_DMA       : std_logic;
+ 
+ 
+  attribute keep:boolean;
+  attribute keep of RAM_OE_CPU:signal is true;
+  attribute keep of RAM_OE_DMA:signal is true;
+  attribute keep of RAM_Address_CPU:signal is true;
+  attribute keep of RAM_Address_DMA:signal is true;
+  attribute keep of RAM_WRITE_CPU:signal is true;
+  attribute keep of RAM_WRITE_DMA:signal is true;
+  
+  attribute keep of ROM_Addr:signal is true;
+  attribute keep of ALU_op:signal is true;
+  attribute keep of Ack_out:signal is true;
+  attribute keep of FlagZ:signal is true;
+  attribute keep of RAM_Addr:signal is true;
+  attribute keep of ROM_Data:signal is true;
+  attribute keep of databus:signal is true;
+  attribute keep of TX_Data:signal is true;
+  attribute keep of RCVD_Data:signal is true;
+  attribute keep of RAM_OE:signal is true;
+  attribute keep of RAM_Write:signal is true;
+  attribute keep of Temp_H:signal is true;
+  attribute keep of Temp_L:signal is true;
+  attribute keep of Index_REG:signal is true;
+  attribute keep of DMA_READY:signal is true;
+  attribute keep of Empty:signal is true;
+  attribute keep of Send_comm:signal is true;
+  attribute keep of DMA_RQ:signal is true;
+
 begin  -- behavior    
+
+direccionamiento_RAM:process(RAM_Address_CPU,RAM_Address_DMA,RAM_WRITE_CPU,RAM_WRITE_DMA, RAM_OE_CPU, RAM_OE_DMA, RAM_Addr)
+begin
+    if (RAM_OE_CPU='0' or RAM_WRITE_CPU='1') then 
+        RAM_Addr<=RAM_Address_CPU;
+        RAM_Write<=RAM_WRITE_CPU;
+        RAM_OE<=RAM_OE_CPU;
+    elsif(RAM_OE_DMA='0' or RAM_WRITE_DMA='1') then 
+        RAM_Addr<=RAM_Address_DMA;
+        RAM_Write<=RAM_WRITE_DMA;
+        RAM_OE<=RAM_OE_DMA;        
+    else 
+        RAM_Addr <= (others=>'0');
+        RAM_Write<='0';
+        RAM_OE<='1';
+    end if;
+end process;
 
   RS232_PHY: RS232top
     generic map(
@@ -142,9 +248,9 @@ begin  -- behavior
     port map (
         Clk      => Clk,
         Reset    => Reset,
-        write_en => write_en_mem,
-        oe       => oe_mem,
-        address  => address_mem,
+        write_en => RAM_Write,
+        oe       => RAM_OE,
+        address  => RAM_Addr,
         databus  => databus,
         Switches => switches,
         Temp_L   => Temp_L,
@@ -162,36 +268,51 @@ begin  -- behavior
         TX_RDY    => TX_RDY,
         Valid_D   => Valid_D,
         TX_Data   => TX_Data,
-        Address   => address,
+        Address   => RAM_Address_DMA,
         Databus   => databus,
-        Write_en  => Write_en,
-        OE        => OE,
+        Write_en  => RAM_WRITE_DMA,
+        OE        => RAM_OE_DMA,
         DMA_RQ    => DMA_RQ,
         DMA_ACK   => DMA_ACK,
         Send_comm => Send_comm,
-        READY     => READY );
-
-
------- (1) SIGNALS USED TO GIVE CONTROL OF THE DATABUS TO THE DMA WHEN NEEDED 
-    process(reset, clk)
-    begin
-      if reset='0' then
-        DMA_ACK <= '0';
-        Send_comm <= '0';
-      elsif clk'event and clk='1' then
-        DMA_ACK <= DMA_RQ;
-        Send_comm <= i_send and (READY);
-      end if;
-    end process;  
-
------- (2) ADDITIONAL MULTIPLEXERS TO READ/WRITE DIRECTLY IN RAM
-   i_address_req <= i_write_en or not(i_oe);
-   address_mem <= i_address when (i_address_req = '1') else address;
-   write_en_mem <= i_write_en when write_en = 'Z' else i_write_en or write_en;
-   oe_mem <= write_en_mem when oe = 'Z' else ( (i_oe and oe) or (write_en_mem) );   -- oe is active low (expression has been simplified)
-         --oe_mem <= not( (not(i_oe) or not(oe)) and not(write_en_mem) );
-   --databus <= i_databus;     -- bidirectional access
-   --i_databus <= databus;
-    
+        READY     => DMA_READY );
+        
+ CPU_PHY: CPU 
+    port map(
+        Clk => Clk,
+        Reset => Reset,
+        ROM_Data => ROM_Data,
+        ROM_Addr => ROM_Addr,
+        RAM_Addr => RAM_Address_CPU,
+        RAM_Write => RAM_WRITE_CPU,
+        RAM_OE => RAM_OE_CPU,
+        Databus => databus,
+        DMA_RQ => DMA_RQ,
+        DMA_ACK => DMA_ACK,
+        Send_comm => Send_comm,
+        DMA_READY => DMA_READY,
+        ALU_op => ALU_op, 
+        Index_REG => Index_REG,
+        FlagZ => FlagZ,
+        FlagC => FlagC,
+        FlagE => FlagE,
+        FlagN => FlagN);
+        
+ ROM_PHY: ROM 
+    port map(
+        Instruction => ROM_Data,
+        Program_counter => ROM_Addr);
+        
+ ALU_PHY: ALU 
+    port map(
+        Reset => Reset,
+        Clk => Clk,
+        u_instruction => ALU_op,
+        FlagZ => FlagZ,
+        FlagC => FlagC,
+        FlagN => FlagN,
+        FlagE => FlagE,
+        Index_REG => Index_REG,
+        Databus => Databus);
+         
 end behavior;
-
