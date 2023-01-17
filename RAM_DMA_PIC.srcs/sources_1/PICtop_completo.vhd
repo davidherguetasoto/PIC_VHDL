@@ -5,7 +5,7 @@ USE IEEE.numeric_std.all;
 
 USE work.PIC_pkg.all;
 
-entity PICtop_completo is
+entity PICtop is
  port (
     Reset    : in  std_logic;                         -- Asynchronous, active low
     Clk      : in  std_logic;                         -- System clock, 20 MHz, rising_edge    
@@ -14,9 +14,9 @@ entity PICtop_completo is
     switches    : out std_logic_vector(7 downto 0);   -- Switch status bargraph
     Temp_L      : out std_logic_vector(6 downto 0);   -- Display value for TL
     Temp_H      : out std_logic_vector(6 downto 0));  -- Display value for TH 
-end PICtop_completo;
+end PICtop;
 
-architecture behavior of PICtop_completo is
+architecture behavior of PICtop is
 
 ---------------------------------------------------------------------
 --CONSTANTES DEL PUERTO SERIE RS232

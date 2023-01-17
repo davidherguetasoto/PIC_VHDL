@@ -5,12 +5,12 @@ USE IEEE.numeric_std.all;
 USE work.RS232_test.all;
 USE work.PIC_pkg.all;
 
-entity tb_Nexys_completo is
-end tb_Nexys_completo;
+entity tb_Nexys_PIC is
+end tb_Nexys_PIC;
 
-architecture TestBench of tb_Nexys_completo is
+architecture TestBench of tb_Nexys_PIC is
 
-  component nexys_PIC_completo is
+  component nexys_PIC is
   port (
     
 	-- Puertos PMOD de usuario (x4)
@@ -80,7 +80,7 @@ end component;
 begin  -- TestBench
 
   -- Instantiation of "Unit Under Test" 
-  Unit_nexys_PIC :  nexys_PIC_completo
+  Unit_nexys_PIC :  nexys_PIC
     port map (
 	UART_RXD_OUT => UART_RXD_OUT,
 	UART_TXD_IN => UART_TXD_IN,

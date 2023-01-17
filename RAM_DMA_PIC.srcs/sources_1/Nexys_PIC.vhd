@@ -7,7 +7,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
-entity nexys_PIC is
+entity nexys_terna is
   port (
     
 	-- Puertos PMOD de usuario (x4)
@@ -46,9 +46,9 @@ entity nexys_PIC is
     CLK100MHZ        : in   STD_LOGIC
 
 	 );  
-end nexys_PIC;
+end nexys_terna;
 
-architecture a_behavior of nexys_PIC is
+architecture a_behavior of nexys_terna is
 
 -- declaración de componentes 
     component clk_wiz_0
@@ -58,7 +58,7 @@ architecture a_behavior of nexys_PIC is
           locked    : out std_logic);
     end component;
 
-    component PICtop is
+    component terna_top is
   port (
     Reset       : in  std_logic;           -- Asynchronous, active low
     Clk         : in  std_logic;           -- System clock, 20 MHz, rising_edge
@@ -134,7 +134,7 @@ begin
         clk_out1 => clk,
         locked => open);
 
-    UUT : PICtop PORT MAP(
+    UUT : terna_top PORT MAP(
         Reset      => reset, 
         Clk        => clk,
         i_write_en => i_write_en,

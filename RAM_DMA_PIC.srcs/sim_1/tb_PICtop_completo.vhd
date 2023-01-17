@@ -5,12 +5,12 @@ USE IEEE.numeric_std.all;
 USE work.RS232_test.all;
 USE work.PIC_pkg.all;
 
-entity PICtopCompleta_tb is
-end PICtopCompleta_tb;
+entity PICtop_tb is
+end PICtop_tb;
 
-architecture TestBench of PICtopCompleta_tb is
+architecture TestBench of PICtop_tb is
 
-  component PICtop_completo
+  component PICtop
      port (
     Reset    : in  std_logic;                         -- Asynchronous, active low
     Clk      : in  std_logic;                         -- System clock, 20 MHz, rising_edge    
@@ -35,7 +35,7 @@ architecture TestBench of PICtopCompleta_tb is
   
 begin  -- TestBench
 
-  UUT: PICtop_completo
+  UUT: PICtop
     port map (
         Reset    => Reset,
         Clk      => Clk,

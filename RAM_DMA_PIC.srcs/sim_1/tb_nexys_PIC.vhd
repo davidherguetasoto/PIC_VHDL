@@ -3,12 +3,12 @@ library ieee;
    use ieee.std_logic_1164.all;
    use ieee.numeric_std.all;
    
-entity TB_nexys_PIC is
-end TB_nexys_PIC;
+entity tb_Nexys_terna is
+end tb_Nexys_terna;
 
-architecture Testbench of TB_nexys_PIC is
+architecture Testbench of tb_Nexys_terna is
 
-  component nexys_PIC is 
+  component nexys_terna is 
   port (
     
 	-- Puertos PMOD de usuario (x4)
@@ -73,7 +73,7 @@ architecture Testbench of TB_nexys_PIC is
 begin
 
   -- Instantiation of "Unit Under Test" 
-  Unit_nexys_PIC :  nexys_PIC
+  Unit_nexys_PIC :  nexys_terna
     port map (
 	JA => JA,
 
